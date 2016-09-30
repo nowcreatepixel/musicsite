@@ -1,0 +1,569 @@
+@import 'https://fonts.googleapis.com/css?family=Montserrat|PT+Serif';
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  font-weight: normal; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff; }
+
+h1, h2 {
+  font-family: "PT Serif", Georgia, "Times New Roman", Times, serif; }
+
+h3, h4 {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase; }
+
+#preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  background: #fff url("/img/loading.gif") no-repeat center center; }
+
+#load {
+  width: 89px;
+  height: 99px;
+  position: absolute;
+  top: 44%;
+  top: calc(50% - 69px);
+  left: 46%;
+  left: calc(50% - 59px);
+  z-index: 999;
+  text-align: center; }
+  #load #loader {
+    width: 59px;
+    height: 69px;
+    position: relative;
+    top: 0; }
+  #load p {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #949494;
+    margin-top: 20px; }
+
+#top-nav-logo {
+  height: 50px;
+  width: 100%;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: 999; }
+  #top-nav-logo .mainlogo {
+    width: 136px;
+    position: relative;
+    top: 30px;
+    left: 30px;
+    -webkit-transform: translateY(-100px);
+    -moz-transform: translateY(-100px);
+    transform: translateY(-100px);
+    -webkit-animation: slideDown 0.6s;
+    animation: slideDown  0.6s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 1.5s;
+    animation-delay: 1.5s;
+    -webkit-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+    -moz-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+    animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+    /* custom */ }
+    #top-nav-logo .mainlogo #logo {
+      width: 136px;
+      height: 30px; }
+      #top-nav-logo .mainlogo #logo #shape {
+        fill: #fff; }
+      #top-nav-logo .mainlogo #logo #first, #top-nav-logo .mainlogo #logo #second {
+        opacity: 0;
+        -webkit-animation: fadeIn 0.8s;
+        animation: fadeIn  0.8s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 2.3s;
+        animation-delay: 2.3s; }
+  #top-nav-logo #navtoggle {
+    position: absolute;
+    width: 20px;
+    height: 25px;
+    top: 30px;
+    right: 40px;
+    /*@include black;*/
+    z-index: 999;
+    cursor: pointer;
+    overflow: hidden;
+    opacity: 1;
+    -webkit-transform: translateY(-100px);
+    -moz-transform: translateY(-100px);
+    transform: translateY(-100px);
+    -webkit-animation: slideDown 0.6s;
+    animation: slideDown  0.6s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 1.8s;
+    animation-delay: 1.8s; }
+    #top-nav-logo #navtoggle span {
+      background-color: #ffffff;
+      height: 3px;
+      width: 100%;
+      position: absolute;
+      top: 14px;
+      left: 0;
+      -webkit-transition: all .35s ease;
+      -moz-transition: all .35s ease;
+      -o-transition: all .35s ease;
+      transition: all .35s ease; }
+      #top-nav-logo #navtoggle span:nth-of-type(2) {
+        top: 14px;
+        left: -50%;
+        -webkit-animation: navRevealSecond 0.8s;
+        animation: navRevealSecond 0.8s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 2.3s;
+        animation-delay: 2.3s; }
+      #top-nav-logo #navtoggle span:nth-of-type(3) {
+        top: 14px;
+        left: 50%;
+        -webkit-animation: navRevealSecond 0.8s;
+        animation: navRevealSecond 0.8s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 2.3s;
+        animation-delay: 2.3s; }
+      #top-nav-logo #navtoggle span:nth-of-type(4) {
+        top: 14px;
+        -webkit-animation: navRevealFirst 0.8s;
+        animation: navRevealFirst 0.8s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 2.3s;
+        animation-delay: 2.3s; }
+    #top-nav-logo #navtoggle:hover {
+      opacity: 1; }
+
+#content-wrapper {
+  width: 100%;
+  font-size: 0; }
+
+.lead-photo {
+  height: 100%;
+  width: 30%;
+  margin-left: -4%;
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  z-index: 10;
+  /*-webkit-transform: skewX(-5deg);
+        -moz-transform: skewX(-5deg);
+        -o-transform: skewX(-5deg);
+        transform: skewX(-5deg);*/ }
+  .lead-photo .photo-holder span {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    position: relative;
+    display: block;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+    -webkit-animation: fadeOut 1.5s;
+    animation: fadeOut 1.5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s; }
+  .lead-photo .photo-holder {
+    opacity: 0.8;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    right: -120%;
+    top: 0;
+    background: url("../img/img1.jpg");
+    background-position: 0 0;
+    background-size: cover;
+    z-index: 1;
+    -webkit-animation: wipeLeft 0.8s;
+    animation: wipeLeft 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+    -webkit-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+    -moz-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+    -o-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+    animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+    /* custom */
+    /*-webkit-transform: skewX(5deg);
+        -moz-transform: skewX(5deg);
+         -o-transform: skewX(5deg);
+        transform: skewX(5deg);*/ }
+
+.lead-content {
+  height: 100%;
+  width: 69.6%;
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+  background-color: #191d1d;
+  -webkit-animation: wipeRight 1s;
+  animation: wipeRight 1s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+  -moz-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+  -o-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+  animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+  /* custom */ }
+  .lead-content .lead-content-holder {
+    width: 50%;
+    height: auto;
+    position: absolute;
+    top: 25%;
+    right: 10%;
+    text-align: center;
+    overflow: hidden; }
+    .lead-content .lead-content-holder .lead-title {
+      height: auto;
+      width: 100%;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+      top: 0;
+      left: 0;
+      margin-bottom: 40px; }
+      .lead-content .lead-content-holder .lead-title h1 {
+        color: #fff;
+        opacity: 0;
+        -webkit-transform: translateY(300px);
+        -moz-transform: translateY(300px);
+        transform: translateY(300px);
+        -webkit-animation: textFadeIn 1s;
+        animation: textFadeIn 1s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 2s;
+        animation-delay: 2s; }
+    .lead-content .lead-content-holder span.break {
+      background-color: #ffffff;
+      opacity: 0;
+      height: 5px;
+      width: 50px;
+      margin-bottom: 40px;
+      display: block;
+      position: relative;
+      left: 50%;
+      left: calc(50% - 25px);
+      -webkit-animation: fadeIn 0.6s;
+      animation: fadeIn 0.6s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      -webkit-animation-delay: 2.5s;
+      animation-delay: 2.5s;
+      -webkit-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+      -moz-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+      -o-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+      animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+      /* custom */ }
+    .lead-content .lead-content-holder h4 {
+      opacity: 0;
+      margin-bottom: 90px;
+      color: #fff;
+      font-size: 12px;
+      -webkit-animation: fadeIn 0.6s;
+      animation: fadeIn 0.6s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      -webkit-animation-delay: 3.2s;
+      animation-delay: 3.2s; }
+
+.feature-btn-holder {
+  text-align: center;
+  width: 100%;
+  height: auto;
+  position: relative;
+  display: block; }
+
+.feature-btn {
+  background-color: transparent;
+  padding: 0 50px;
+  border-width: 0;
+  border-style: solid;
+  border-color: #fff;
+  border-image: none;
+  position: relative;
+  width: 280px;
+  height: 54px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
+  cursor: pointer; }
+  .feature-btn .btn-top {
+    width: 0%;
+    height: 1px;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    display: block;
+    position: absolute;
+    -webkit-animation: featureBtnTop 0.8s;
+    animation: featureBtnTop 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 3.6s;
+    animation-delay: 3.6s; }
+  .feature-btn .btn-right {
+    width: 1px;
+    height: 0%;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    display: block;
+    position: absolute;
+    -webkit-animation: featureBtnRight 0.8s;
+    animation: featureBtnRight 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 3.6s;
+    animation-delay: 3.6s; }
+  .feature-btn .btn-bottom {
+    width: 0%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    display: block;
+    position: absolute;
+    -webkit-animation: featureBtnBottom 0.8s;
+    animation: featureBtnBottom 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 3.6s;
+    animation-delay: 3.6s; }
+  .feature-btn .btn-left {
+    width: 1px;
+    height: 0%;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    display: block;
+    position: absolute;
+    -webkit-animation: featureBtnLeft 0.8s;
+    animation: featureBtnLeft 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 3.6s;
+    animation-delay: 3.6s; }
+  .feature-btn .btn-text {
+    color: #fff;
+    font-size: 14.4px;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    line-height: 54px;
+    opacity: 0;
+    -webkit-animation: fadeIn 0.8s;
+    animation: fadeIn 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 3.8s;
+    animation-delay: 3.8s; }
+
+@-webkit-keyframes wipeRight {
+  0% {
+    width: 0%; }
+  100% {
+    width: 100%; } }
+
+@keyframes wipeRight {
+  0% {
+    width: 0%; }
+  100% {
+    width: 100%; } }
+
+@-webkit-keyframes wipeLeft {
+  0% {
+    right: -120%; }
+  100% {
+    right: -12%; } }
+
+@keyframes wipeLeft {
+  0% {
+    right: -120%; }
+  100% {
+    right: -12%; } }
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes slideDown {
+  0% {
+    transform: translateY(-100px); }
+  100% {
+    transform: translateY(0px); } }
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100px); }
+  100% {
+    transform: translateY(0px); } }
+
+@-webkit-keyframes navRevealFirst {
+  0% {
+    top: 14px; }
+  100% {
+    top: 0; } }
+
+@keyframes navRevealFirst {
+  0% {
+    top: 14px; }
+  100% {
+    top: 0; } }
+
+@-webkit-keyframes navRevealSecond {
+  0% {
+    top: 14px; }
+  100% {
+    top: 7px; } }
+
+@keyframes navRevealSecond {
+  0% {
+    top: 14px; }
+  100% {
+    top: 7px; } }
+
+@-webkit-keyframes textFadeIn {
+  0% {
+    opacity: 0;
+    font-size: 64px;
+    -webkit-transform: translateY(100px);
+    -moz-transform: translateY(100px);
+    transform: translateY(100px); }
+  100% {
+    opacity: 1;
+    font-size: 64px;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    transform: translateY(0px); } }
+
+@keyframes textFadeIn {
+  0% {
+    opacity: 0;
+    font-size: 64px;
+    -webkit-transform: translateY(100px);
+    -moz-transform: translateY(100px);
+    transform: translateY(100px); }
+  100% {
+    opacity: 1;
+    font-size: 64px;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    transform: translateY(0px); } }
+
+@-webkit-keyframes revealBreak {
+  0% {
+    height: 0px; }
+  100% {
+    height: 4px; } }
+
+@keyframes revealBreak {
+  0% {
+    height: 0px; }
+  100% {
+    height: 4px; } }
+
+@-webkit-keyframes featureBtnTop {
+  0% {
+    width: 0%;
+    left: 100%; }
+  100% {
+    width: 100%;
+    left: 0; } }
+
+@keyframes featureBtnTop {
+  0% {
+    width: 0%;
+    left: 100%; }
+  100% {
+    width: 100%;
+    left: 0; } }
+
+@-webkit-keyframes featureBtnBottom {
+  0% {
+    width: 0%;
+    left: -100%; }
+  100% {
+    width: 100%;
+    left: 0; } }
+
+@keyframes featureBtnBottom {
+  0% {
+    width: 0%;
+    left: -100%; }
+  100% {
+    width: 100%;
+    left: 0; } }
+
+@-webkit-keyframes featureBtnRight {
+  0% {
+    height: 0%;
+    top: 100%; }
+  100% {
+    height: 100%;
+    top: 0%; } }
+
+@keyframes featureBtnRight {
+  0% {
+    height: 0%;
+    top: 100%; }
+  100% {
+    height: 100%;
+    top: 0%; } }
+
+@-webkit-keyframes featureBtnLeft {
+  0% {
+    height: 0%;
+    top: -100%; }
+  100% {
+    height: 100%;
+    top: 0%; } }
+
+@keyframes featureBtnLeft {
+  0% {
+    height: 0%;
+    top: -100%; }
+  100% {
+    height: 100%;
+    top: 0%; } }
