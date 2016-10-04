@@ -7,9 +7,11 @@ var src = './scss/*.scss';
 var dest = 'css';
 
 gulp.task('sass', function () {
+
     gulp.src('scss/*.scss').pipe(sass())
     .pipe(gulp.dest('css'))
-    .pipe(browserSync.reload({stream: true}));  
+    /*remove commented out line below when using this task*/
+    /*.pipe(browserSync.reload({stream: true}))*/;
 });
 
 
@@ -25,9 +27,9 @@ gulp.task('watch', function () {
     gulp.watch(src, ['sass']);
     gulp.watch('./*.html').on('change', browserSync.reload);
     gulp.watch('./js/*.js').on('change', browserSync.reload);
-    /*comment out if reloading browser on sass change is not required*/
-    gulp.watch('./scss/*.scss').on('change', browserSync.reload);
-    
+    /*comment out if reloading browser on css change is not required*/
+    gulp.watch('./css/*.css').on('change', browserSync.reload);
+
 });
 
 gulp.task('jshint', function () {
