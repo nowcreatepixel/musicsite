@@ -1,9 +1,8 @@
 /* PRELOADER */
-$(document).ready(function(){
 $(window).load(function(){
 	$('#load').fadeOut('slow',function(){$(this).remove();});
 });
-});
+
 
 
 /* VARIABLES */
@@ -61,19 +60,19 @@ $(document).ready(function () {
     $lyricEls = $('.introLyric');
     $titleEls = $('.introTitle'); 
     
-    setInterval(function () {      
+    setInterval(function () { 
         $lyricEls.removeClass('introLyric');
         $lyricEls.addClass('lyricAnimate');
         $titleEls.removeClass('introTitle');
         $titleEls.addClass('titleAnimate');
-        TweenMax.to('.lyricAnimate', 0.5, {css:{opacity:0}});
-        TweenMax.to('.titleAnimate', 0.5, {css:{opacity:0}});
+        TweenMax.to('.lyricAnimate', 0.8, {css:{opacity:0, transform:'translateY(200px)'}});
+        TweenMax.to('.titleAnimate', 0.8, {css:{opacity:0}});
         index = index + 1 < lyrics.length ? index + 1 : 0;
         
         window.setTimeout(function () {
         $('.lyricAnimate').text(lyrics[index]);
         $('.titleAnimate').text(titles[index]);
-        TweenMax.to('.lyricAnimate', 0.5, {css:{opacity:1}});
+        TweenMax.to('.lyricAnimate', 0.5, {css:{opacity:1, transform:'translateY(0px)'}});
         TweenMax.to('.titleAnimate', 0.5, {css:{opacity:1}});
         }, 700);       
         

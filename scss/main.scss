@@ -7,6 +7,13 @@
 // Variables
 // --------------------------------------------------------
 
+// Breakpoints
+$breakpointDesktopLarge: 1280px;
+$breakpointDesktopSmall: 1040px;  
+$breakpointMobileLandscape: 830px;
+$breakpointMobilePortrait: 630px;
+$breakpointMinHeight: 400px;
+
 // Colors
 $mint: #75f2df;
 $mint-darken: darken($mint, 30%);
@@ -26,18 +33,21 @@ $font-size-base:          14px !default;
 $font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
 $font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
 
-$font-size-h1:            floor(($font-size-base * 4.6)) !default; // ~36px
+$font-size-h1:            floor(($font-size-base * 4.6)) !default; // ~64px
+$font-size-h1-md:         floor(($font-size-base * 3.5)) !default; // ~49px
+$font-size-h1-sm:         floor(($font-size-base * 3)) !default; // ~42px
+$font-size-h1-xsm:         floor(($font-size-base * 2)) !default; // ~28px
+
 $font-size-h2:            floor(($font-size-base * 2.15)) !default; // ~30px
 $font-size-h3:            ceil(($font-size-base * 1.7)) !default; // ~24px
 $font-size-h4:            ceil(($font-size-base * 0.85)) !default; // ~12px
 // not used //
 $font-size-h5:            $font-size-base !default;
-$font-size-extrasmall:            ceil(($font-size-base * 0.75)) !default; // ~12px
+$font-size-extrasmall:    ceil(($font-size-base * 0.75)) !default; // ~11px
 
 
 // Buttons
 $btn-font-weight: normal !default;
-
 $btn-default-color: $white;
 $btn-default-bg: $dark-grey;
 $btn-default-border: $white;
@@ -85,8 +95,7 @@ h3, h4 {
 // Content
 // ----------------------------------------------------------
 
-#preloader { position: fixed; left: 0; top: 0; z-index: 999; width: 100%; height: 100%; overflow: visible; background: #fff url("/img/loading.gif") no-repeat center center; }
-
+// Preloader //
 #load {
     width:89px;
     height:99px;
@@ -152,11 +161,11 @@ animation-direction: alternate;
         font-family: $font-family-sans-serif;
         color: $light-grey;
         margin-top: 30px;
-         -webkit-animation: fadeIn 1s;
-         animation: fadeIn  1s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    }
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn  1s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+      }
     
     
 }
@@ -164,7 +173,7 @@ animation-direction: alternate;
    
 
 
-
+// SVG LOGO //
 #top-nav-logo {
     height:50px;
     width:100%;
@@ -174,7 +183,6 @@ animation-direction: alternate;
     left:0;
     z-index:999;
 
-     // SVG LOGO //
     .mainlogo {
         width: 136px;
         position:relative;
@@ -282,11 +290,19 @@ animation-direction: alternate;
     }
 
 
+
+
+
+
+// CONTENT CONTAINER //
 #content-wrapper {
     width:100%;
-    font-size:0; // fix for whitespace between divs //
+   /* font-size:0;*/ // fix for whitespace between divs //
     }
 
+
+
+// PHOTO HOLDER //
 .lead-photo {
     height:100%;
     width:30%;
@@ -299,6 +315,7 @@ animation-direction: alternate;
         -moz-transform: skewX(-5deg);
         -o-transform: skewX(-5deg);
         transform: skewX(-5deg);
+    @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){display:none;}
 
 
       .photo-holder span {
@@ -390,12 +407,16 @@ animation-direction: alternate;
 
  }
 
+
+
+// CONTENT HOLDER //
 .lead-content {
     height:100%;
     width:100%;
     position:relative;
-    display:inline-block;
+    display:block;
     z-index:0;
+    overflow:hidden;
     background-color: $dark-grey;
     -webkit-animation: wipeRight 1s;
     animation: wipeRight 1s;
@@ -405,16 +426,46 @@ animation-direction: alternate;
    -moz-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
      -o-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
         animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165); /* custom */
+    
+    .bgmask {
+        width:100%;
+        height:100%;
+        position:absolute;
+        background-color: #000;
+        opacity:0;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        background: url('../img/img12.jpg');
+          background-position: 0 0;
+        background-size: cover;
+        // fade in alt bg //
+         @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
+           -webkit-animation: fadeInSemi 1s;
+           animation: fadeInSemi 1s;
+           -webkit-animation-delay: 1s;
+            animation-delay: 1s;
+           -webkit-animation-fill-mode: forwards;
+           animation-fill-mode: forwards;
+          }
+    }
 
-
+    
+    // lead content lyrics, titles //
     .lead-content-holder {
        width: 50%;
        height: auto;
        position:absolute;
        top: 25%;
        right: 10%;
+       bottom:0;
        text-align:center;
         overflow:hidden;
+        @media only screen and (max-width: $breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
+            width: 70%;
+            right: 15%;}
+         @media only screen and (max-height:$breakpointMinHeight){top: 20%;}
 
         .lead-title {
           height:auto;
@@ -430,22 +481,30 @@ animation-direction: alternate;
           color:$white;
           opacity:1;
               
+              
               &.introLyric {
                   color:$white;
                   opacity:0;
-          /*-webkit-transform: translateY(300px);
-          -moz-transform: translateY(300px);
-          transform: translateY(300px);*/
+                  visibility:hidden;
+                  font-size:$font-size-h1;
           -webkit-animation: textFadeIn 1s;
           animation: textFadeIn 1s;
           -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
           -webkit-animation-delay: 2s;
           animation-delay: 2s;
+                  @media only screen and (max-width:$breakpointDesktopLarge) {font-size:$font-size-h1-md;} 
+                   @media only screen and (max-width:$breakpointMobilePortrait) {font-size:$font-size-h1-sm;}
+                   @media only screen and (max-height:$breakpointMinHeight) {font-size:$font-size-h1-sm;} 
+                 
               }
               
               &.lyricAnimate {
                    font-size:$font-size-h1;
+                   @media only screen and (max-width:$breakpointDesktopLarge) {font-size:$font-size-h1-md;} 
+                   @media only screen and (max-width:$breakpointMobilePortrait) {font-size:$font-size-h1-sm;}
+                  @media only screen and (max-height:$breakpointMinHeight) {font-size:$font-size-h1-sm;} 
+
               }
               
          }
@@ -469,16 +528,20 @@ animation-direction: alternate;
         -webkit-animation-delay: 2.5s;
        animation-delay: 2.5s;
              -webkit-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
-   -moz-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
-     -o-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
-        animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165); /* custom */
+             -moz-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
+             -o-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
+             animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165); /* custom */
+             @media only screen and (max-height:$breakpointMinHeight) {display:none;}
         }
+        
 
         h4 {
             opacity:0;
-            margin-bottom:90px;
+            margin-bottom:80px;
+            margin-bottom:12%;
             color:$white;
             font-size:$font-size-h4;
+             @media only screen and (max-height:$breakpointMinHeight) {display:none;}
             
             &.introTitle {
             -webkit-animation: fadeIn 0.6s;
@@ -487,20 +550,18 @@ animation-direction: alternate;
             animation-fill-mode: forwards;
             -webkit-animation-delay: 3.2s;
             animation-delay: 3.2s;
-            }
-            &.titleAnimate {
-                
-            }
-            
         }
+           
+            
+            &.titleAnimate { }
+            
+          }
 
-
-    }
-
-
+    } // END lead content //
 
 
  }
+// END CONTENT HOLDER //
 
 
 
@@ -513,9 +574,13 @@ animation-direction: alternate;
 .feature-btn-holder {
     text-align:center;
     width:100%;
-    height:auto;
     position:relative;
+    height:auto;
     display:block;
+   /* width:auto;
+    position:absolute;
+    bottom:20%;
+    left: calc(50% - 140px);*/
     -webkit-transition: all 1s ease;
          -moz-transition: all 1s ease;
          -ms-transition: all 1s ease;
@@ -537,6 +602,9 @@ animation-direction: alternate;
             margin: 0 auto;
             overflow:hidden;
             cursor:pointer;
+            z-index:1;
+            @media only screen and (max-width:$breakpointMobilePortrait) {width:220px;}
+     
      
      &:before {
           content: '';
@@ -547,14 +615,15 @@ animation-direction: alternate;
           position:absolute;
         background-color: #f0fc35;
           display:block; 
+         z-index: -1;
          -webkit-transform: skewX(50deg);
         -moz-transform: skewX(50deg);
          -o-transform: skewX(50deg);
         transform: skewX(50deg);
-          -webkit-transition: all 1s ease;
-         -moz-transition: all 1s ease;
-         -ms-transition: all 1s ease;
-         transition: all 1s ease;
+          -webkit-transition: all 0.3s ease;
+         -moz-transition: all 0.3s ease;
+         -ms-transition: all 0.3s ease;
+         transition: all 0.3s ease;
         }
     
      &:hover:before {
@@ -693,6 +762,15 @@ animation-direction: alternate;
      100% {opacity:1;}
  }
 
+   @-webkit-keyframes fadeInSemi {
+     0% {opacity:0;}
+     100% {opacity:0.2;}
+ }
+ @keyframes fadeInSemi {
+     0% {opacity:0;}
+     100% {opacity:0.2;}
+ }
+
  @-webkit-keyframes upDown {
       0% {top:0px;}
       100% {top:10px;}
@@ -759,21 +837,21 @@ animation-direction: alternate;
  }
 
  @-webkit-keyframes textFadeIn {
-     0% {opacity:0; font-size:$font-size-h1;
+     0% {opacity:0; visibility:visible;
          -webkit-transform: translateY(100%);
         -moz-transform: translateY(100%);
         transform: translateY(100%); }
-     100% {opacity:1; font-size:$font-size-h1;
+     100% {opacity:1; visibility:visible;
          -webkit-transform: translateY(0%);
         -moz-transform: translateY(0%);
         transform: translateY(0%); }
  }
  @keyframes textFadeIn {
-       0% {opacity:0; font-size:$font-size-h1;
+       0% {opacity:0; visibility:visible;
            -webkit-transform: translateY(100%);
         -moz-transform: translateY(100%);
         transform: translateY(100%); }
-     100% {opacity:1; font-size:$font-size-h1;
+     100% {opacity:1; visibility:visible;
          -webkit-transform: translateY(0%);
         -moz-transform: translateY(0%);
         transform: translateY(0%); }
@@ -840,3 +918,11 @@ animation-direction: alternate;
      100% {height:100%;
           top:0%;}
  }
+
+
+
+
+
+
+
+
