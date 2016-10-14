@@ -1,6 +1,6 @@
 /* PRELOADER */
 $(window).load(function(){
-	$('#load').fadeOut('slow',function(){$(this).remove();});
+	$('#load').fadeOut('slow',function(){$(this).detach();});
 });
 
 
@@ -8,6 +8,7 @@ $(window).load(function(){
 /* VARIABLES */
 var windowHeight = $(window).height();
 var logoReveal = $('#shape');
+var loader = $('#load');
 
 
 
@@ -69,7 +70,7 @@ $(document).ready(function () {
         TweenMax.to('.titleAnimate', 0.8, {css:{opacity:0}});
         index = index + 1 < lyrics.length ? index + 1 : 0;
         
-        window.setTimeout(function () {
+        var introTimer = setTimeout(function () {
         $('.lyricAnimate').text(lyrics[index]);
         $('.titleAnimate').text(titles[index]);
         TweenMax.to('.lyricAnimate', 0.5, {css:{opacity:1, transform:'translateY(0px)'}});
@@ -82,6 +83,45 @@ $(document).ready(function () {
   $(function () {cycleLyrics();});
     
 });
+
+
+
+/* HOME BUTTON */
+$(document).ready(function () {
+    $('.feature-btn').on('click', function (event) {
+        
+        /* firefox issue with event needs investigated
+        added it in as a parameter above and seems to have fixed it*/
+      if (event.preventDefault) {
+           event.preventDefault();
+       } else {
+           event.returnValue = false; 
+        }
+        
+        $('span.breakdefault').removeClass('break');
+        $('span.breakdefault').addClass('hidebreak');
+         $('.bgmask').removeClass('show');
+        $('.bgmask').addClass('hide');
+        TweenMax.to('.lead-title', 0.8, {css:{opacity:0}});
+        $('.lead-content-holder h4').css({visibility:'hidden'});
+        $('.lead-photo').css({left:'-100%'});
+        $('.feature-btn').addClass('btnHide');
+        $("#discover").addClass('show');
+        
+        
+        var subpage = setTimeout(function () {
+        $("#discover").load("discover.html .discover-container", function() {
+            /*$('#load-alt').fadeOut(100,function(){$(this).detach();});*/
+            /*$('#load-alt').hide();*/
+        });
+        }, 2000);   
+        
+        
+       });
+
+    });
+    
+
 
 
 
