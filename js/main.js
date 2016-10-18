@@ -47,21 +47,21 @@ function cycleBackgrounds() {
         $imageEls.eq(index - 1).removeClass('show');
         }, 6000);
     };
-$(function () {cycleBackgrounds();});   
+$(function () {cycleBackgrounds();});
  });*/
 
 
 /* LYRICS */
 $(document).ready(function () {
   function cycleLyrics() {
-    
-    var lyrics = ["Lets lose ourselves in a Universal Sky", "In my heart you will live forever", "All I see is a Beautiful Render", "There's a glory in a distant town" ]; 
-    var titles = ["Universal Sky 2015", "Reunited 2014", "Beautiful Render 2012", "Warrior In The Night 2012" ]; 
+
+    var lyrics = ["Lets lose ourselves in a Universal Sky", "In my heart you will live forever", "All I see is a Beautiful Render", "There's a glory in a distant town" ];
+    var titles = ["Universal Sky 2015", "Reunited 2014", "Beautiful Render 2012", "Warrior In The Night 2012" ];
     var index = 0;
     $lyricEls = $('.introLyric');
-    $titleEls = $('.introTitle'); 
-    
-    setInterval(function () { 
+    $titleEls = $('.introTitle');
+
+    setInterval(function () {
         $lyricEls.removeClass('introLyric');
         $lyricEls.addClass('lyricAnimate');
         $titleEls.removeClass('introTitle');
@@ -69,19 +69,19 @@ $(document).ready(function () {
         TweenMax.to('.lyricAnimate', 0.8, {css:{opacity:0, transform:'translateY(200px)'}});
         TweenMax.to('.titleAnimate', 0.8, {css:{opacity:0}});
         index = index + 1 < lyrics.length ? index + 1 : 0;
-        
+
         var introTimer = setTimeout(function () {
         $('.lyricAnimate').text(lyrics[index]);
         $('.titleAnimate').text(titles[index]);
         TweenMax.to('.lyricAnimate', 0.5, {css:{opacity:1, transform:'translateY(0px)'}});
         TweenMax.to('.titleAnimate', 0.5, {css:{opacity:1}});
-        }, 700);       
-        
+        }, 700);
+
     }, 6000);
-        
+
   };
   $(function () {cycleLyrics();});
-    
+
 });
 
 
@@ -89,15 +89,15 @@ $(document).ready(function () {
 /* HOME BUTTON */
 $(document).ready(function () {
     $('.feature-btn').on('click', function (event) {
-        
+
         /* firefox issue with event needs investigated
         added it in as a parameter above and seems to have fixed it*/
       if (event.preventDefault) {
            event.preventDefault();
        } else {
-           event.returnValue = false; 
+           event.returnValue = false;
         }
-        
+
         $('span.breakdefault').removeClass('break');
         $('span.breakdefault').addClass('hidebreak');
          $('.bgmask').removeClass('show');
@@ -107,32 +107,17 @@ $(document).ready(function () {
         $('.lead-photo').css({left:'-100%'});
         $('.feature-btn').addClass('btnHide');
         $("#discover").addClass('show');
-        
-        
-        var subpage = setTimeout(function () {
-        $("#discover").load("discover.html .discover-container", function() {
-            /*$('#load-alt').fadeOut(100,function(){$(this).detach();});*/
-            /*$('#load-alt').hide();*/
-        });
-        }, 2000);   
-        
-        
+				$("#discoverLoad").addClass('show');
+
+
+
+        setTimeout(function () {
+        $("#discover").load("discover.html .discover-container", function(){
+					$('#load-alt').fadeOut('slow',function(){$('#discoverLoad').detach();});
+				});
+			}, 2000);
+
+
        });
 
     });
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

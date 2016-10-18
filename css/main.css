@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css?family=Montserrat|PT+Serif|Satisfy';
+@import 'https://fonts.googleapis.com/css?family=Montserrat|PT+Serif|Frank+Ruhl+Libre|Julius+Sans+One';
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +14,7 @@ body {
   background-color: #fff; }
 
 h1, h2 {
-  font-family: "PT Serif", Georgia, "Times New Roman", Times, serif; }
+  font-family: "Frank Ruhl Libre", "PT Serif", Georgia, "Times New Roman", Times, serif; }
 
 h3, h4 {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -708,7 +708,7 @@ h3, h4 {
     -webkit-animation-delay: 0s;
     animation-delay: 0s; }
 
-#discover {
+#discoverLoad {
   height: 100%;
   width: 100%;
   position: relative;
@@ -717,13 +717,30 @@ h3, h4 {
   overflow: hidden;
   top: 0;
   opacity: 0; }
-  #discover.show {
+  #discoverLoad.show {
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 1s;
     animation-delay: 1s; }
+
+#discover {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: block;
+  z-index: 0;
+  overflow: hidden;
+  top: 0;
+  opacity: 1; }
+  #discover.show {
+    /*-webkit-animation: fadeIn 1s;
+         animation: fadeIn 1s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;*/ }
   #discover .discover-container {
     position: absolute;
     top: 20%;

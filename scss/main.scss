@@ -1,6 +1,6 @@
 // Fonts
 // --------------------------------------------------------
-@import 'https://fonts.googleapis.com/css?family=Montserrat|PT+Serif|Satisfy';
+@import 'https://fonts.googleapis.com/css?family=Montserrat|PT+Serif|Frank+Ruhl+Libre|Julius+Sans+One';
 
 
 
@@ -9,7 +9,7 @@
 
 // Breakpoints
 $breakpointDesktopLarge: 1280px;
-$breakpointDesktopSmall: 1040px;  
+$breakpointDesktopSmall: 1040px;
 $breakpointMobileLandscape: 830px;
 $breakpointMobilePortrait: 630px;
 $breakpointMinHeight: 400px;
@@ -26,7 +26,7 @@ $white: #fff;
 
 // Typography
 $font-family-sans-serif:  "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-$font-family-serif:       "PT Serif", Georgia, "Times New Roman", Times, serif !default;
+$font-family-serif:       "Frank Ruhl Libre", "PT Serif", Georgia, "Times New Roman", Times, serif !default;
 $font-family-base:        $font-family-sans-serif !default;
 
 $font-size-base:          14px !default;
@@ -185,7 +185,7 @@ h3, h4 {
     p {
      @include defaultLoaderText;
     }
-       
+
 }
 
 
@@ -198,18 +198,18 @@ h3, h4 {
     }
 
     #loader-alt {
-     @include defaultLoader;       
+     @include defaultLoader;
      #pick {fill:#ffffff;}
-     #figure {fill:#191d1d;}       
+     #figure {fill:#191d1d;}
     }
-    
+
     p {@include defaultLoaderText;}
-       
+
 }
 
 // END PRELOADERS //
 
-   
+
 
 
 // SVG LOGO //
@@ -399,7 +399,7 @@ h3, h4 {
          -ms-transition: opacity 1s ease-in-out;
          transition: opacity 1s ease-in-out;
         -webkit-animation: wipeLeft 0.8s;
-         animation: wipeLeft 0.8s;    
+         animation: wipeLeft 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 0.5s;
@@ -414,8 +414,8 @@ h3, h4 {
         transform: skewX(5deg);
 
     }
-    
-    .first-image { 
+
+    .first-image {
         background: url('../img/img1.jpg');
         opacity:0;
         z-index: 1;
@@ -423,8 +423,8 @@ h3, h4 {
         background-size: cover;
         &.show {opacity:1;}
     }
-    
-     .second-image { 
+
+     .second-image {
         background: url('../img/img12.jpg');
         opacity:0;
         z-index: 2;
@@ -432,8 +432,8 @@ h3, h4 {
         background-size: cover;
         &.show {opacity:1;}
     }
-    
-    .third-image { 
+
+    .third-image {
         background: url('../img/img9.jpg');
         opacity:0;
         z-index: 3;
@@ -441,8 +441,8 @@ h3, h4 {
         background-size: cover;
         &.show {opacity:1;}
     }
-    
-    .fourth-image { 
+
+    .fourth-image {
         background: url('../img/img15.jpg');
         opacity:0;
         z-index: 4;
@@ -450,8 +450,8 @@ h3, h4 {
         background-size: cover;
         &.show {opacity:1;}
     }
-    
-    
+
+
 
  }
 // END PHOTO HOLDER //
@@ -476,7 +476,7 @@ h3, h4 {
    -moz-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
      -o-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
         animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165); /* custom */
-    
+
     .bgmask {
         width:100%;
         height:100%;
@@ -490,7 +490,7 @@ h3, h4 {
         background: url('../img/img12.jpg');
           background-position: 0 0;
         background-size: cover;
-        
+
         &.show {
         // fade in alt bg //
          @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
@@ -501,7 +501,7 @@ h3, h4 {
            -webkit-animation-fill-mode: forwards;
            animation-fill-mode: forwards;}
         }
-            
+
             &.hide {
         // fade out alt bg //
          @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
@@ -512,11 +512,11 @@ h3, h4 {
            -webkit-animation-fill-mode: forwards;
            animation-fill-mode: forwards;}
         }
-            
-         
+
+
     }
 
-    
+
     // lead content lyrics, titles //
     .lead-content-holder {
        width: 50%;
@@ -545,8 +545,8 @@ h3, h4 {
           h1 {
           color:$white;
           opacity:1;
-              
-              
+
+
               &.introLyric {
                   color:$white;
                   opacity:0;
@@ -558,24 +558,24 @@ h3, h4 {
           animation-fill-mode: forwards;
           -webkit-animation-delay: 2s;
           animation-delay: 2s;
-                  @media only screen and (max-width:$breakpointDesktopLarge) {font-size:$font-size-h1-md;} 
+                  @media only screen and (max-width:$breakpointDesktopLarge) {font-size:$font-size-h1-md;}
                    @media only screen and (max-width:$breakpointMobilePortrait) {font-size:$font-size-h1-sm;}
-                   @media only screen and (max-height:$breakpointMinHeight) {font-size:$font-size-h1-sm;} 
-                 
-              }
-              
-              &.lyricAnimate {
-                   font-size:$font-size-h1;
-                   @media only screen and (max-width:$breakpointDesktopLarge) {font-size:$font-size-h1-md;} 
-                   @media only screen and (max-width:$breakpointMobilePortrait) {font-size:$font-size-h1-sm;}
-                  @media only screen and (max-height:$breakpointMinHeight) {font-size:$font-size-h1-sm;} 
+                   @media only screen and (max-height:$breakpointMinHeight) {font-size:$font-size-h1-sm;}
 
               }
-              
+
+              &.lyricAnimate {
+                   font-size:$font-size-h1;
+                   @media only screen and (max-width:$breakpointDesktopLarge) {font-size:$font-size-h1-md;}
+                   @media only screen and (max-width:$breakpointMobilePortrait) {font-size:$font-size-h1-sm;}
+                  @media only screen and (max-height:$breakpointMinHeight) {font-size:$font-size-h1-sm;}
+
+              }
+
          }
 
         }
-        
+
         .breakdefault {
             background-color:#ffffff;
         opacity:1;
@@ -586,9 +586,9 @@ h3, h4 {
         position: relative;
         left: 50%;
         left: calc(50% - 25px);
-             @media only screen and (max-height:$breakpointMinHeight) {display:none;} 
+             @media only screen and (max-height:$breakpointMinHeight) {display:none;}
         }
-        
+
         .hidebreak {
             -webkit-animation: fadeOut 0.6s;
        animation: fadeOut 0.6s;
@@ -601,7 +601,7 @@ h3, h4 {
              -o-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
              animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165); /* custom */
         }
-        
+
          .break {
         opacity:0;
          -webkit-animation: fadeIn 0.6s;
@@ -613,11 +613,11 @@ h3, h4 {
              -webkit-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
              -moz-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
              -o-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
-             animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165); /* custom */          
+             animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165); /* custom */
         }
 
-        
-        
+
+
 
         h4 {
             opacity:0;
@@ -626,7 +626,7 @@ h3, h4 {
             color:$white;
             font-size:$font-size-h4;
              @media only screen and (max-height:$breakpointMinHeight) {display:none;}
-            
+
             &.introTitle {
             -webkit-animation: fadeIn 0.6s;
             animation: fadeIn 0.6s;
@@ -635,10 +635,10 @@ h3, h4 {
             -webkit-animation-delay: 3.2s;
             animation-delay: 3.2s;
         }
-           
-            
+
+
             &.titleAnimate { }
-            
+
           }
 
     } // END lead content //
@@ -697,8 +697,8 @@ h3, h4 {
             cursor:pointer;
             z-index:1;
             @media only screen and (max-width:$breakpointMobilePortrait) {width:220px;}
-     
-     
+
+
      &:before {
           content: '';
          width:280px;
@@ -707,7 +707,7 @@ h3, h4 {
          left:320px;
           position:absolute;
         background-color: #f0fc35;
-          display:block; 
+          display:block;
          z-index: -1;
          opacity: 0;
          -webkit-transform: skewX(50deg);
@@ -725,7 +725,7 @@ h3, h4 {
     -webkit-animation-delay: 3.6s;
     animation-delay: 3.6s;
         }
-    
+
      &:hover:before {
          /*-webkit-transform:translateX(0px);
           -moz-transform:translateX(0px);
@@ -737,8 +737,8 @@ h3, h4 {
          -o-transform: skewX(0deg);
         transform: skewX(0deg);
      }
-     
-    
+
+
 
 
 
@@ -817,20 +817,20 @@ h3, h4 {
     animation-delay: 3.8s;
      }
      &:hover .btn-text {color:$dark-grey;}
-     
-     
-     
-     
+
+
+
+
      // hide btn on click //
-     
+
       &.btnHide {
          cursor:default;
      }
-     
+
       &.btnHide:before {
          display:none;
      }
-     
+
      &.btnHide .btn-top {
           -webkit-animation: featureBtnTopHide 1s;
          animation: featureBtnTopHide 1s;
@@ -874,7 +874,7 @@ h3, h4 {
     -webkit-animation-delay: 0s;
     animation-delay: 0s;
      }
-      
+
 
         }
 
@@ -889,32 +889,51 @@ h3, h4 {
 
 // DISCOVER SECTION //
 // ---------------------------------------------------------
-
-#discover {
+#discoverLoad {
     height:100%;
     width:100%;
     position:relative;
     display:block;
     z-index:0;
-    overflow:hidden; 
+    overflow:hidden;
     top:0;
     opacity:0;
-    
+
     &.show {
         -webkit-animation: fadeIn 1s;
          animation: fadeIn 1s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 1s;
-    animation-delay: 1s; 
+    animation-delay: 1s;
     }
-    
+
+  }
+#discover {
+    height:100%;
+    width:100%;
+    position:relative;
+    display:block;
+    z-index:0;
+    overflow:hidden;
+    top:0;
+    opacity:1;
+
+    &.show {
+        /*-webkit-animation: fadeIn 1s;
+         animation: fadeIn 1s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;*/
+    }
+
     .discover-container {
         position:absolute;
         top:20%;
         width:100%;
         height:auto;
-        
+
         .stripe-one {
             width:100%;
             height:100%;
@@ -925,15 +944,15 @@ h3, h4 {
     animation-fill-mode: forwards;
     -webkit-animation-delay: 1s;
     animation-delay: 1s;
-            
+
             #stripeOne {
                 width:100%;
                 height:100%;
             }
         }
-        
+
     }
-    
+
 }
 
 
@@ -1203,11 +1222,3 @@ h3, h4 {
      100% {height:0%;
           top:-100%;}
  }
-
-
-
-
-
-
-
-
