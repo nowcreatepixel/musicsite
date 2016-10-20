@@ -559,6 +559,8 @@ h3, h4 {
   @media only screen and (max-width: 630px) {
     .feature-btn {
       width: 220px; } }
+  .feature-btn.back {
+    width: 160px; }
   .feature-btn:before {
     content: '';
     width: 280px;
@@ -728,7 +730,7 @@ h3, h4 {
 #discover {
   height: 100%;
   width: 100%;
-  position: relative;
+  /*position:absolute;*/
   display: block;
   z-index: 0;
   overflow: hidden;
@@ -742,23 +744,149 @@ h3, h4 {
     -webkit-animation-delay: 1s;
     animation-delay: 1s;*/ }
   #discover .discover-container {
-    position: absolute;
-    top: 20%;
     width: 100%;
-    height: auto; }
+    height: 100%;
+    display: block; }
     #discover .discover-container .stripe-one {
+      /*background-color:red;*/
+      display: block;
       width: 100%;
-      height: 100%;
-      opacity: 0;
-      -webkit-animation: fadeIn 1s;
-      animation: fadeIn 1s;
-      -webkit-animation-fill-mode: forwards;
-      animation-fill-mode: forwards;
-      -webkit-animation-delay: 1s;
-      animation-delay: 1s; }
+      position: absolute;
+      overflow: hidden;
+      opacity: 0; }
+      #discover .discover-container .stripe-one.show {
+        -webkit-animation: fadeIn 3s;
+        animation: fadeIn 3s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 1s;
+        animation-delay: 1s; }
+      #discover .discover-container .stripe-one.hide {
+        opacity: 1;
+        -webkit-animation: fadeOut 1s;
+        animation: fadeOut 1s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 0.3s;
+        animation-delay: 0.3s; }
       #discover .discover-container .stripe-one #stripeOne {
         width: 100%;
         height: 100%; }
+    #discover .discover-container .stripe-two {
+      /*background-color:white;*/
+      display: block;
+      width: 100%;
+      position: absolute;
+      overflow: hidden;
+      opacity: 0; }
+      #discover .discover-container .stripe-two.show {
+        -webkit-animation: fadeIn 3s;
+        animation: fadeIn 3s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 1s;
+        animation-delay: 1s; }
+      #discover .discover-container .stripe-two.hide {
+        opacity: 1;
+        -webkit-animation: fadeOut 1s;
+        animation: fadeOut 1s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 0.5s;
+        animation-delay: 0.5s; }
+      #discover .discover-container .stripe-two #stripeTwo {
+        width: 100%;
+        height: 100%; }
+    #discover .discover-container .stripe-three {
+      /*background-color:blue;*/
+      display: block;
+      width: 100%;
+      position: absolute;
+      overflow: hidden;
+      opacity: 0; }
+      #discover .discover-container .stripe-three.show {
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 1s;
+        animation-delay: 1s; }
+      #discover .discover-container .stripe-three.hide {
+        opacity: 1;
+        -webkit-animation: fadeOut 1s;
+        animation: fadeOut 1s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 0.6s;
+        animation-delay: 0.6s; }
+      #discover .discover-container .stripe-three #stripeThree {
+        width: 100%;
+        height: 100%; }
+    #discover .discover-container .cards-container {
+      position: absolute;
+      top: 30%;
+      left: 5%;
+      width: 90%; }
+      #discover .discover-container .cards-container .cards {
+        width: 30%;
+        height: auto;
+        background-color: #191d1d;
+        border: none;
+        display: inline-block;
+        overflow: hidden;
+        position: relative; }
+        #discover .discover-container .cards-container .cards.show {
+          /*top:-50px;*/
+          opacity: 0;
+          -webkit-animation: fadeSlideDown 0.3s;
+          animation: fadeSlideDown 0.3s;
+          -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+          -webkit-animation-delay: 1.3s;
+          animation-delay: 1.3s; }
+        #discover .discover-container .cards-container .cards:nth-of-type(2) {
+          margin: 0 4%;
+          -webkit-animation-delay: 1.4s;
+          animation-delay: 1.4s; }
+        #discover .discover-container .cards-container .cards:nth-of-type(3) {
+          -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s; }
+        #discover .discover-container .cards-container .cards img {
+          width: 100%;
+          display: block;
+          -webkit-transition: all 1s ease;
+          transition: all 1s ease;
+          -webkit-transform: scale(1);
+          transform: scale(1); }
+          #discover .discover-container .cards-container .cards img:hover {
+            cursor: pointer;
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2); }
+        #discover .discover-container .cards-container .cards h3 {
+          color: #fff;
+          font-size: 24px;
+          position: absolute;
+          bottom: 22%;
+          left: 10%;
+          width: 100%;
+          height: auto; }
+        #discover .discover-container .cards-container .cards.hide {
+          opacity: 1;
+          -webkit-animation: fadeOut 1s;
+          animation: fadeOut 1s;
+          -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+          -webkit-animation-delay: 0s;
+          animation-delay: 0s; }
+    #discover .discover-container .back {
+      display: block;
+      z-index: 999;
+      position: absolute;
+      bottom: 4%;
+      right: 3%;
+      width: auto;
+      height: auto;
+      /*&:hover {cursor: pointer;}*/ }
 
 @-webkit-keyframes toggleVisibility {
   0% {
@@ -879,6 +1007,22 @@ h3, h4 {
     -moz-transform: scale(1, 1);
     -ms-transform: scale(1, 1);
     transform: scale(1, 1); } }
+
+@-webkit-keyframes fadeSlideDown {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0; }
+  100% {
+    transform: translateY(0px);
+    opacity: 1; } }
+
+@keyframes fadeSlideDown {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0; }
+  100% {
+    transform: translateY(0px);
+    opacity: 1; } }
 
 @-webkit-keyframes slideDown {
   0% {
