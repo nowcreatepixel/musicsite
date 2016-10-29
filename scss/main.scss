@@ -22,6 +22,9 @@ $dark-grey: #191d1d;
 $dark-grey-darken: darken($dark-grey, 20%);
 $light-grey: #949494;
 $white: #fff;
+$teal: #0e2d36;
+$maroon: #4f101d;
+$yellow: #f0fc35;
 
 
 // Typography
@@ -88,9 +91,9 @@ h3, h4 {
     text-transform:uppercase;
 }
 
-.hide {
+/*.hide {
     opacity:0;
-}
+}*/
 
 
 
@@ -341,6 +344,22 @@ h3, h4 {
    /* font-size:0;*/ // fix for whitespace between divs //
     }
 
+.flash {
+    height:100%;
+    width:30%;
+    position:absolute;
+    z-index:-1;
+    background:red;
+        -webkit-animation: wipeRight 0.8s;
+    animation: wipeRight 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
+   -moz-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
+     -o-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
+        animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
+}
+
 
 
 // PHOTO HOLDER //
@@ -487,32 +506,31 @@ h3, h4 {
         right:0;
         bottom:0;
         left:0;
-        background: url('../img/img12.jpg');
+        background: url('../img/responsiveface.jpg');
           background-position: 0 0;
         background-size: cover;
 
         &.show {
         // fade in alt bg //
          @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
-           -webkit-animation: fadeInSemi 1s;
-           animation: fadeInSemi 1s;
+           -webkit-animation: fadeIn 1s;
+           animation: fadeIn 1s;
            -webkit-animation-delay: 1s;
             animation-delay: 1s;
            -webkit-animation-fill-mode: forwards;
            animation-fill-mode: forwards;}
         }
-
-            &.hide {
+        
+          &.hide {
         // fade out alt bg //
          @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
-           -webkit-animation: fadeOutSemi 1s;
-           animation: fadeOutSemi 1s;
+           -webkit-animation: fadeOut 1s;
+           animation: fadeOut 1s;
            -webkit-animation-delay: 0s;
             animation-delay: 0s;
            -webkit-animation-fill-mode: forwards;
            animation-fill-mode: forwards;}
         }
-
 
     }
 
@@ -615,6 +633,20 @@ h3, h4 {
              -o-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
              animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165); /* custom */
         }
+        
+        .breakNoDelay {
+        opacity:0;
+         -webkit-animation: fadeIn 0.6s;
+       animation: fadeIn 0.6s;
+       -webkit-animation-fill-mode: forwards;
+       animation-fill-mode: forwards;
+        -webkit-animation-delay: 0s;
+       animation-delay: 0s;
+             -webkit-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
+             -moz-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
+             -o-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
+             animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165); /* custom */
+        }
 
 
 
@@ -697,20 +729,22 @@ h3, h4 {
             cursor:pointer;
             z-index:1;
             @media only screen and (max-width:$breakpointMobilePortrait) {width:220px;}
+            @media only screen and (max-width:$breakpointDesktopSmall) and (max-height:$breakpointMinHeight) {width:180px;}
      
-     &.back {
+     &.smaller {
          width:160px;
      }
 
-
-     &:before {
-          content: '';
+     &.animate {
+         
+         &:before {
+        content: '';
          width:280px;
          height:54px;
          top:0;
          left:320px;
           position:absolute;
-        background-color: #f0fc35;
+        background-color: $white;
           display:block;
          z-index: -1;
          opacity: 0;
@@ -727,7 +761,7 @@ h3, h4 {
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 3.6s;
-    animation-delay: 3.6s;
+             animation-delay: 3.6s;      
         }
 
      &:hover:before {
@@ -741,6 +775,54 @@ h3, h4 {
          -o-transform: skewX(0deg);
         transform: skewX(0deg);
      }
+         
+     }
+     
+     
+      &.animate-no-delay {
+         
+         &:before {
+          content: '';
+         width:280px;
+         height:54px;
+         top:0;
+         left:320px;
+          position:absolute;
+        background-color: $white;
+          display:block;
+         z-index: -1;
+         opacity: 0;
+         -webkit-transform: skewX(50deg);
+        -moz-transform: skewX(50deg);
+         -o-transform: skewX(50deg);
+        transform: skewX(50deg);
+          -webkit-transition: all 0.3s ease;
+         -moz-transition: all 0.3s ease;
+         -ms-transition: all 0.3s ease;
+         transition: all 0.3s ease;
+         -webkit-animation: fadeIn 0.8s;
+         animation: fadeIn 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+             animation-delay: 0s;      
+        }
+
+     &:hover:before {
+         /*-webkit-transform:translateX(0px);
+          -moz-transform:translateX(0px);
+          -ms-transform:translateX(0px);
+          transform:translateX(0px);*/
+         left:0px;
+           -webkit-transform: skewX(0deg);
+        -moz-transform: skewX(0deg);
+         -o-transform: skewX(0deg);
+        transform: skewX(0deg);
+     }
+         
+     }
+
+     
 
 
 
@@ -754,12 +836,18 @@ h3, h4 {
         background-color: $white;
          display:block;
          position:absolute;
-        -webkit-animation: featureBtnTop 0.8s;
+        &.animate { -webkit-animation: featureBtnTop 0.8s;
          animation: featureBtnTop 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 3.6s;
-    animation-delay: 3.6s;
+            animation-delay: 3.6s;}
+        &.animate-no-delay { -webkit-animation: featureBtnTop 0.8s;
+         animation: featureBtnTop 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+            animation-delay: 0s;}
      }
      .btn-right {
          width:1px;
@@ -769,12 +857,18 @@ h3, h4 {
          background-color: $white;
          display:block;
          position:absolute;
-         -webkit-animation: featureBtnRight 0.8s;
+          &.animate { -webkit-animation: featureBtnRight 0.8s;
          animation: featureBtnRight 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 3.6s;
-    animation-delay: 3.6s;
+              animation-delay: 3.6s;}
+         &.animate-no-delay { -webkit-animation: featureBtnRight 0.8s;
+         animation: featureBtnRight 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+              animation-delay: 0s;}
      }
      .btn-bottom {
          width:0%;
@@ -784,12 +878,18 @@ h3, h4 {
          background-color: $white;
          display:block;
          position:absolute;
-         -webkit-animation: featureBtnBottom 0.8s;
+         &.animate { -webkit-animation: featureBtnBottom 0.8s;
          animation: featureBtnBottom 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 3.6s;
-    animation-delay: 3.6s;
+             animation-delay: 3.6s; }
+         &.animate-no-delay { -webkit-animation: featureBtnBottom 0.8s;
+         animation: featureBtnBottom 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+             animation-delay: 0s; }
      }
      .btn-left {
           width:1px;
@@ -799,12 +899,18 @@ h3, h4 {
          background-color: $white;
          display:block;
          position:absolute;
-         -webkit-animation: featureBtnLeft 0.8s;
+          &.animate { -webkit-animation: featureBtnLeft 0.8s;
          animation: featureBtnLeft 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 3.6s;
-    animation-delay: 3.6s;
+              animation-delay: 3.6s;}
+         &.animate-no-delay { -webkit-animation: featureBtnLeft 0.8s;
+         animation: featureBtnLeft 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+              animation-delay: 0s;}
      }
      .btn-text {
          color:$white;
@@ -813,12 +919,18 @@ h3, h4 {
             text-transform:uppercase;
             line-height: 54px;
             opacity:0;
-          -webkit-animation: fadeIn 0.8s;
+           &.animate { -webkit-animation: fadeIn 0.8s;
          animation: fadeIn 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 3.8s;
-    animation-delay: 3.8s;
+               animation-delay: 3.8s;}
+         &.animate-no-delay { -webkit-animation: fadeIn 0.8s;
+         animation: fadeIn 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+               animation-delay: 0s;}
      }
      &:hover .btn-text {color:$dark-grey;}
 
@@ -920,219 +1032,202 @@ h3, h4 {
 #discover {
     height:100%;
     width:100%;
-    /*position:absolute;*/
+    position:absolute;
     display:block;
     z-index:0;
     overflow:hidden;
-    top:0;
-    opacity:1;
 
-    &.show {
-        /*-webkit-animation: fadeIn 1s;
-         animation: fadeIn 1s;
+    &.show { 
+        top:100%;
+        -webkit-animation: wipeBottom 1s;
+         animation: wipeBottom 1s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
-    -webkit-animation-delay: 1s;
-    animation-delay: 1s;*/
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+           -webkit-animation-timing-function: cubic-bezier(0.960, 0.050, 0.910, 0.085); 
+   -moz-animation-timing-function: cubic-bezier(0.960, 0.050, 0.910, 0.085); 
+     -o-animation-timing-function: cubic-bezier(0.960, 0.050, 0.910, 0.085); 
+        animation-timing-function: cubic-bezier(0.960, 0.050, 0.910, 0.085); /* custom */    
+    }
+    
+    &.hide {
+        top:0%;
+        -webkit-animation: wipeTop 1s;
+         animation: wipeTop 1s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+           -webkit-animation-timing-function: cubic-bezier(0.960, 0.050, 0.910, 0.085); 
+   -moz-animation-timing-function: cubic-bezier(0.960, 0.050, 0.910, 0.085); 
+     -o-animation-timing-function: cubic-bezier(0.960, 0.050, 0.910, 0.085); 
+        animation-timing-function: cubic-bezier(0.960, 0.050, 0.910, 0.085); /* custom */ 
     }
 
     .discover-container {
         width:100%;
         height:100%;
         display:block;
+        font-size: 0; /*removes the whitespace between divs*/
         
-        
-        .stripe-one {
-            /*background-color:red;*/
-            display:block;
+        .slide-container {
+         overflow: hidden;
+         position: relative;
+         display: block;
+         width: 100%;
+         height: 100%;
+             /*overflow-x:scroll;*/ /* scrollbar */
+            
+             /* make it smooth on iOS */
+  -webkit-overflow-scrolling: touch;
+            
+        .slide-holder {
+             position: relative;
+         display: block;
+            left:0;
+            -webkit-transition: all 0.8s ease;
+         -moz-transition: all 0.8s ease;
+         -ms-transition: all 0.8s ease;
+         transition: all 0.8s ease;
+         /*width: 100%;*/
+         height: 100%; 
+            cursor:move;
+            cursor:grab;
+            cursor:-moz-grab;
+            cursor:-webkit-grab;
+            touch-action: pan-x;
+            -webkit-user-select: none;  /* Chrome all / Safari all */
+            -moz-user-select: none;     /* Firefox all */
+            -ms-user-select: none;      /* IE 10+ */
+            user-select: none; 
+            
+                     
+        .col {
+            position:relative;
+            vertical-align: top;
+            top:0;
+            width:33.333%;
+            width:33.333vw;
+            display:inline-block;
+            text-align:center;
+            @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
             width:100%;
-            position:absolute;
-            overflow:hidden;
-            opacity:0;
+            width:100vw;
+            }
+           /* @media only screen and (max-width:$breakpointMobilePortrait) {
+            width:100%;
+            width:100vw;
+            }*/
             
-            &.show {
-            -webkit-animation: fadeIn 3s;
-         animation: fadeIn 3s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-delay: 1s;
-                animation-delay: 1s;
+            
+            &.show {}
+            
+            &.hide {}
+            
+            &.col-one{
+                background-color:$dark-grey-darken;
+            }
+            &.col-two{
+                background-color:$teal;
+            }
+            &.col-three{
+                background-color:$maroon;
+            }
+            &.col-four{
+                background-color:$dark-grey-darken;
+            }
+            &.col-five{
+                background-color:$teal;
+            }
+            &.col-six{
+                background-color:$maroon;
             }
             
-            &.hide {
-              opacity:1;
-              -webkit-animation: fadeOut 1s;
-              animation: fadeOut 1s;
-              -webkit-animation-fill-mode: forwards;
-              animation-fill-mode: forwards;
-              -webkit-animation-delay: 0.3s;
-              animation-delay: 0.3s;             
-            }
-                      
-            #stripeOne {
+            .col-content {
+              position:absolute;
+                top:20%;
                 width:100%;
-                height:100%;
-            }
-        }
-        .stripe-two {
-            /*background-color:white;*/
-            display:block;
-            width:100%;
-            position:absolute;
-            overflow:hidden;
-            opacity:0;
-            
-            &.show {
-            -webkit-animation: fadeIn 3s;
-         animation: fadeIn 3s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-delay: 1s;
-                animation-delay: 1s;}
-            
-            &.hide {
-              opacity:1;
-              -webkit-animation: fadeOut 1s;
-              animation: fadeOut 1s;
-              -webkit-animation-fill-mode: forwards;
-              animation-fill-mode: forwards;
-              -webkit-animation-delay: 0.5s;
-              animation-delay: 0.5s;             
-            }
-            
-            #stripeTwo {
-               width:100%;
-                height:100%; 
-            }
-        }
-        .stripe-three {
-            /*background-color:blue;*/
-            display:block;
-            width:100%;
-            position:absolute;
-            overflow:hidden;
-            opacity:0;
-            
-            &.show {
-            -webkit-animation: fadeIn 1s;
-         animation: fadeIn 1s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-delay: 1s;
-                animation-delay: 1s;}
-            
-            &.hide {
-              opacity:1;
-              -webkit-animation: fadeOut 1s;
-              animation: fadeOut 1s;
-              -webkit-animation-fill-mode: forwards;
-              animation-fill-mode: forwards;
-              -webkit-animation-delay: 0.6s;
-              animation-delay: 0.6s;             
-            }
-            
-             #stripeThree {
-                width:100%;
-                height:100%;
-            }
-        }
-        
-        .cards-container {
-            position:absolute;
-            top:30%;
-            left:5%;
-            width:90%;
-            
-            .cards {
-                width:30%;
                 height:auto;
-                background-color:$dark-grey;
-                border: none;
-                display:inline-block;
-                overflow:hidden;
-                position:relative;
                 
-                &.show {
-                 /*top:-50px;*/
-                    opacity:0;
-                   -webkit-animation: fadeSlideDown 0.3s;
-                   animation: fadeSlideDown 0.3s;
-                   -webkit-animation-fill-mode: forwards;
-                   animation-fill-mode: forwards;
-                   -webkit-animation-delay: 1.3s;
-                   animation-delay: 1.3s;
-                    
+              h3 { 
+              color:$white;
+              font-size:$font-size-h3;
+                  padding:20px;
+                  margin:20px 0;
+                   @media only screen and (max-width:$breakpointDesktopSmall) and (max-height:$breakpointMinHeight){
+             display:none;
+            }
+              } 
+                
+              img {
+                  width:70%;
+                  margin: 0 auto;
+                  height:auto;
+                  display:block;
+                  border: 0;
+                   @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
+                    width:auto;
+                    height:40vh;
+                   }                
                 }
+             }
+           }
+                      
+        }  // end slide holder //
+            
+            
+            .slide-control {
+                font-family: 'FontAwesome';
+                width:50px;
+                height:50px;
+                position:absolute;
+                top:40%;
+                display:none;
+                color:#ffffff;
+                font-size:18px;
+                text-align:center;
+                padding-top:15px;
+                opacity:1;
+                -webkit-transition: opacity 0.8s ease;
+                -moz-transition: opacity 0.8s ease;
+                -ms-transition: opacity 0.8s ease;
+                transition: opacity 0.8s ease;
                 
-                  &:nth-of-type(2) {
-                    margin: 0 4%;
-                   -webkit-animation-delay: 1.4s;
-                   animation-delay: 1.4s;
-                }
-                
-                  &:nth-of-type(3) {
-                    -webkit-animation-delay: 1.5s;
-                   animation-delay: 1.5s;
-                }
-                
-                img {
-                    width:100%;
+                @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
                     display:block;
-                    -webkit-transition:all 1s ease;
-                        transition:all 1s ease;
-                     -webkit-transform:scale(1);
-                        transform:scale(1);
-                    
-                    &:hover {
-                        cursor: pointer;
-                        -webkit-transform:scale(1.2);
-                        transform:scale(1.2);
+                }
+                
+                
+                &.left {
+                 content: "\f053";
+                 left:3%;                   
+                 &:before {
+                 content: "\f053";  
+                 }
+                }
+                
+                &.right {              
+                    right:3%;                      
+                    &:before {
+                    content: "\f054";  
                     }
-                    
-                    
                 }
                 
-                h3 {
-                    color:$white;
-                    font-size:$font-size-h3;
-                    position:absolute;
-                    bottom:22%;
-                    left: 10%;
-                    width:100%;
-                    height:auto;
+                &.active {
+                  opacity:1; 
+                  &:hover {cursor:pointer;}
                 }
                 
-                
-                 &.hide {
-                    opacity:1;
-                   -webkit-animation: fadeOut 1s;
-                   animation: fadeOut 1s;
-                   -webkit-animation-fill-mode: forwards;
-                   animation-fill-mode: forwards;
-                   -webkit-animation-delay: 0s;
-                   animation-delay: 0s;             
+                &.unactive {
+                  opacity:0.3; 
+                  &:hover {cursor:default;}
                 }
-                               
-                
             }
             
-        }
+     } // end slide container //
         
-        .back {
-            display:block; 
-            z-index: 999;
-            position:absolute;
-            bottom:4%;
-            right: 3%;
-            width:auto;
-            height:auto;
-            
-             /*&:hover {cursor: pointer;}*/
-        }
-        
-
-    }
-
+    }  // end discover container //
 }
 
 
@@ -1170,6 +1265,24 @@ h3, h4 {
      100% {right:-12%;}
  }
 
+  @-webkit-keyframes wipeBottom {
+     0% {top:100%;}
+     100% {top:0%;}
+ }
+ @keyframes wipeBottom {
+     0% {top:100%;}
+     100% {top:0%;}
+ }
+
+  @-webkit-keyframes wipeTop {
+     0% {top:0%;}
+     100% {top:100%;}
+ }
+ @keyframes wipeTop {
+     0% {top:0%;}
+     100% {top:100%;}
+ }
+
 
   @-webkit-keyframes fadeOut {
      0% {opacity:1;}
@@ -1191,11 +1304,11 @@ h3, h4 {
 
    @-webkit-keyframes fadeInSemi {
      0% {opacity:0;}
-     100% {opacity:0.2;}
+     100% {opacity:0.1;}
  }
  @keyframes fadeInSemi {
      0% {opacity:0;}
-     100% {opacity:0.2;}
+     100% {opacity:0.1;}
  }
    @-webkit-keyframes fadeOutSemi {
      0% {opacity:0.2;}
@@ -1317,6 +1430,7 @@ h3, h4 {
      0% {height:0px;}
      100% {height:4px;}
  }
+
 
 // Feature Btn Animation
 @-webkit-keyframes featureBtnTop {

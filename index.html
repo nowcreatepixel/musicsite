@@ -4,6 +4,10 @@
   <head>
       <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" href="css/main.css">
+      <link rel="stylesheet" href="css/slick.css">
+      <link rel="stylesheet" href="css/owl.carousel.css">
+      <link rel="stylesheet" href="css/owl.theme.css">
+      <link rel="stylesheet" href="css/owl.transitions.css">
       <title>Craig Music Site</title>
 
 <script src="https://use.fontawesome.com/ede3789654.js"></script>
@@ -96,11 +100,12 @@
 
     <div class="lead-photo">
      <div class="photo-holder first-image"><span></span></div>
-     <div class="photo-holder second-image show"></div>
-     <div class="photo-holder third-image"></div>
+        <div class="photo-holder second-image"></div>
+     <div class="photo-holder third-image show"></div>
      <div class="photo-holder fourth-image"></div>
     </div>
-
+   
+      <div class="flash"></div>
    <div class="lead-content">
      <div class="bgmask show"></div>
        <div class="lead-content-holder">
@@ -110,12 +115,12 @@
            <span class="breakdefault break"></span>
            <h4 class="introTitle">Universal Sky 2015</h4>
             <div class="feature-btn-holder intro">
-           <a class="feature-btn">
-               <span class="btn-top"></span>
-               <span class="btn-right"></span>
-               <span class="btn-bottom"></span>
-               <span class="btn-left"></span>
-               <span class="btn-text">Discover</span></a>
+           <a class="feature-btn animate">
+               <span class="btn-top animate"></span>
+               <span class="btn-right animate"></span>
+               <span class="btn-bottom animate"></span>
+               <span class="btn-left animate"></span>
+               <span class="btn-text animate">Discover</span></a>
            </div>
        </div>
        <div id="discoverLoad">
@@ -157,9 +162,13 @@
 
 
 
-<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/slick.min.js"></script>
+    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
 <!--CDN link for GSAP TweenMax-->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/utils/Draggable.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 
   </body>

@@ -20,9 +20,9 @@ h3, h4 {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase; }
 
-.hide {
-  opacity: 0; }
-
+/*.hide {
+    opacity:0;
+}*/
 #load {
   width: 89px;
   height: 99px;
@@ -261,6 +261,21 @@ h3, h4 {
   width: 100%;
   /* font-size:0;*/ }
 
+.flash {
+  height: 100%;
+  width: 30%;
+  position: absolute;
+  z-index: -1;
+  background: red;
+  -webkit-animation: wipeRight 0.8s;
+  animation: wipeRight 0.8s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+  -moz-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+  -o-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+  animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165); }
+
 .lead-photo {
   height: 100%;
   width: 30%;
@@ -385,21 +400,21 @@ h3, h4 {
     right: 0;
     bottom: 0;
     left: 0;
-    background: url("../img/img12.jpg");
+    background: url("../img/responsiveface.jpg");
     background-position: 0 0;
     background-size: cover; }
     @media only screen and (max-width: 1040px) and (min-height: 400px) {
       .lead-content .bgmask.show {
-        -webkit-animation: fadeInSemi 1s;
-        animation: fadeInSemi 1s;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
         -webkit-animation-delay: 1s;
         animation-delay: 1s;
         -webkit-animation-fill-mode: forwards;
         animation-fill-mode: forwards; } }
     @media only screen and (max-width: 1040px) and (min-height: 400px) {
       .lead-content .bgmask.hide {
-        -webkit-animation: fadeOutSemi 1s;
-        animation: fadeOutSemi 1s;
+        -webkit-animation: fadeOut 1s;
+        animation: fadeOut 1s;
         -webkit-animation-delay: 0s;
         animation-delay: 0s;
         -webkit-animation-fill-mode: forwards;
@@ -501,6 +516,19 @@ h3, h4 {
       -o-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
       animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
       /* custom */ }
+    .lead-content .lead-content-holder .breakNoDelay {
+      opacity: 0;
+      -webkit-animation: fadeIn 0.6s;
+      animation: fadeIn 0.6s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      -webkit-animation-delay: 0s;
+      animation-delay: 0s;
+      -webkit-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+      -moz-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+      -o-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+      animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
+      /* custom */ }
     .lead-content .lead-content-holder h4 {
       opacity: 0;
       margin-bottom: 80px;
@@ -559,16 +587,19 @@ h3, h4 {
   @media only screen and (max-width: 630px) {
     .feature-btn {
       width: 220px; } }
-  .feature-btn.back {
+  @media only screen and (max-width: 1040px) and (max-height: 400px) {
+    .feature-btn {
+      width: 180px; } }
+  .feature-btn.smaller {
     width: 160px; }
-  .feature-btn:before {
+  .feature-btn.animate:before {
     content: '';
     width: 280px;
     height: 54px;
     top: 0;
     left: 320px;
     position: absolute;
-    background-color: #f0fc35;
+    background-color: #fff;
     display: block;
     z-index: -1;
     opacity: 0;
@@ -586,7 +617,42 @@ h3, h4 {
     animation-fill-mode: forwards;
     -webkit-animation-delay: 3.6s;
     animation-delay: 3.6s; }
-  .feature-btn:hover:before {
+  .feature-btn.animate:hover:before {
+    /*-webkit-transform:translateX(0px);
+          -moz-transform:translateX(0px);
+          -ms-transform:translateX(0px);
+          transform:translateX(0px);*/
+    left: 0px;
+    -webkit-transform: skewX(0deg);
+    -moz-transform: skewX(0deg);
+    -o-transform: skewX(0deg);
+    transform: skewX(0deg); }
+  .feature-btn.animate-no-delay:before {
+    content: '';
+    width: 280px;
+    height: 54px;
+    top: 0;
+    left: 320px;
+    position: absolute;
+    background-color: #fff;
+    display: block;
+    z-index: -1;
+    opacity: 0;
+    -webkit-transform: skewX(50deg);
+    -moz-transform: skewX(50deg);
+    -o-transform: skewX(50deg);
+    transform: skewX(50deg);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-animation: fadeIn 0.8s;
+    animation: fadeIn 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s; }
+  .feature-btn.animate-no-delay:hover:before {
     /*-webkit-transform:translateX(0px);
           -moz-transform:translateX(0px);
           -ms-transform:translateX(0px);
@@ -603,13 +669,21 @@ h3, h4 {
     left: 0;
     background-color: #fff;
     display: block;
-    position: absolute;
-    -webkit-animation: featureBtnTop 0.8s;
-    animation: featureBtnTop 0.8s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-delay: 3.6s;
-    animation-delay: 3.6s; }
+    position: absolute; }
+    .feature-btn .btn-top.animate {
+      -webkit-animation: featureBtnTop 0.8s;
+      animation: featureBtnTop 0.8s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      -webkit-animation-delay: 3.6s;
+      animation-delay: 3.6s; }
+    .feature-btn .btn-top.animate-no-delay {
+      -webkit-animation: featureBtnTop 0.8s;
+      animation: featureBtnTop 0.8s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      -webkit-animation-delay: 0s;
+      animation-delay: 0s; }
   .feature-btn .btn-right {
     width: 1px;
     height: 0%;
@@ -617,13 +691,21 @@ h3, h4 {
     right: 0;
     background-color: #fff;
     display: block;
-    position: absolute;
-    -webkit-animation: featureBtnRight 0.8s;
-    animation: featureBtnRight 0.8s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-delay: 3.6s;
-    animation-delay: 3.6s; }
+    position: absolute; }
+    .feature-btn .btn-right.animate {
+      -webkit-animation: featureBtnRight 0.8s;
+      animation: featureBtnRight 0.8s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      -webkit-animation-delay: 3.6s;
+      animation-delay: 3.6s; }
+    .feature-btn .btn-right.animate-no-delay {
+      -webkit-animation: featureBtnRight 0.8s;
+      animation: featureBtnRight 0.8s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      -webkit-animation-delay: 0s;
+      animation-delay: 0s; }
   .feature-btn .btn-bottom {
     width: 0%;
     height: 1px;
@@ -631,13 +713,21 @@ h3, h4 {
     left: 0;
     background-color: #fff;
     display: block;
-    position: absolute;
-    -webkit-animation: featureBtnBottom 0.8s;
-    animation: featureBtnBottom 0.8s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-delay: 3.6s;
-    animation-delay: 3.6s; }
+    position: absolute; }
+    .feature-btn .btn-bottom.animate {
+      -webkit-animation: featureBtnBottom 0.8s;
+      animation: featureBtnBottom 0.8s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      -webkit-animation-delay: 3.6s;
+      animation-delay: 3.6s; }
+    .feature-btn .btn-bottom.animate-no-delay {
+      -webkit-animation: featureBtnBottom 0.8s;
+      animation: featureBtnBottom 0.8s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      -webkit-animation-delay: 0s;
+      animation-delay: 0s; }
   .feature-btn .btn-left {
     width: 1px;
     height: 0%;
@@ -645,26 +735,42 @@ h3, h4 {
     left: 0;
     background-color: #fff;
     display: block;
-    position: absolute;
-    -webkit-animation: featureBtnLeft 0.8s;
-    animation: featureBtnLeft 0.8s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-delay: 3.6s;
-    animation-delay: 3.6s; }
+    position: absolute; }
+    .feature-btn .btn-left.animate {
+      -webkit-animation: featureBtnLeft 0.8s;
+      animation: featureBtnLeft 0.8s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      -webkit-animation-delay: 3.6s;
+      animation-delay: 3.6s; }
+    .feature-btn .btn-left.animate-no-delay {
+      -webkit-animation: featureBtnLeft 0.8s;
+      animation: featureBtnLeft 0.8s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      -webkit-animation-delay: 0s;
+      animation-delay: 0s; }
   .feature-btn .btn-text {
     color: #fff;
     font-size: 14.4px;
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-transform: uppercase;
     line-height: 54px;
-    opacity: 0;
-    -webkit-animation: fadeIn 0.8s;
-    animation: fadeIn 0.8s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-delay: 3.8s;
-    animation-delay: 3.8s; }
+    opacity: 0; }
+    .feature-btn .btn-text.animate {
+      -webkit-animation: fadeIn 0.8s;
+      animation: fadeIn 0.8s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      -webkit-animation-delay: 3.8s;
+      animation-delay: 3.8s; }
+    .feature-btn .btn-text.animate-no-delay {
+      -webkit-animation: fadeIn 0.8s;
+      animation: fadeIn 0.8s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      -webkit-animation-delay: 0s;
+      animation-delay: 0s; }
   .feature-btn:hover .btn-text {
     color: #191d1d; }
   .feature-btn.btnHide {
@@ -730,163 +836,161 @@ h3, h4 {
 #discover {
   height: 100%;
   width: 100%;
-  /*position:absolute;*/
+  position: absolute;
   display: block;
   z-index: 0;
-  overflow: hidden;
-  top: 0;
-  opacity: 1; }
+  overflow: hidden; }
   #discover.show {
-    /*-webkit-animation: fadeIn 1s;
-         animation: fadeIn 1s;
+    top: 100%;
+    -webkit-animation: wipeBottom 1s;
+    animation: wipeBottom 1s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
-    -webkit-animation-delay: 1s;
-    animation-delay: 1s;*/ }
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+    -webkit-animation-timing-function: cubic-bezier(0.96, 0.05, 0.91, 0.085);
+    -moz-animation-timing-function: cubic-bezier(0.96, 0.05, 0.91, 0.085);
+    -o-animation-timing-function: cubic-bezier(0.96, 0.05, 0.91, 0.085);
+    animation-timing-function: cubic-bezier(0.96, 0.05, 0.91, 0.085);
+    /* custom */ }
+  #discover.hide {
+    top: 0%;
+    -webkit-animation: wipeTop 1s;
+    animation: wipeTop 1s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+    -webkit-animation-timing-function: cubic-bezier(0.96, 0.05, 0.91, 0.085);
+    -moz-animation-timing-function: cubic-bezier(0.96, 0.05, 0.91, 0.085);
+    -o-animation-timing-function: cubic-bezier(0.96, 0.05, 0.91, 0.085);
+    animation-timing-function: cubic-bezier(0.96, 0.05, 0.91, 0.085);
+    /* custom */ }
   #discover .discover-container {
     width: 100%;
     height: 100%;
-    display: block; }
-    #discover .discover-container .stripe-one {
-      /*background-color:red;*/
+    display: block;
+    font-size: 0;
+    /*removes the whitespace between divs*/ }
+    #discover .discover-container .slide-container {
+      overflow: hidden;
+      position: relative;
       display: block;
       width: 100%;
-      position: absolute;
-      overflow: hidden;
-      opacity: 0; }
-      #discover .discover-container .stripe-one.show {
-        -webkit-animation: fadeIn 3s;
-        animation: fadeIn 3s;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
-        -webkit-animation-delay: 1s;
-        animation-delay: 1s; }
-      #discover .discover-container .stripe-one.hide {
+      height: 100%;
+      /*overflow-x:scroll;*/
+      /* scrollbar */
+      /* make it smooth on iOS */
+      -webkit-overflow-scrolling: touch; }
+      #discover .discover-container .slide-container .slide-holder {
+        position: relative;
+        display: block;
+        left: 0;
+        -webkit-transition: all 0.8s ease;
+        -moz-transition: all 0.8s ease;
+        -ms-transition: all 0.8s ease;
+        transition: all 0.8s ease;
+        /*width: 100%;*/
+        height: 100%;
+        cursor: move;
+        cursor: grab;
+        cursor: -moz-grab;
+        cursor: -webkit-grab;
+        touch-action: pan-x;
+        -webkit-user-select: none;
+        /* Chrome all / Safari all */
+        -moz-user-select: none;
+        /* Firefox all */
+        -ms-user-select: none;
+        /* IE 10+ */
+        user-select: none; }
+        #discover .discover-container .slide-container .slide-holder .col {
+          position: relative;
+          vertical-align: top;
+          top: 0;
+          width: 33.333%;
+          width: 33.333vw;
+          display: inline-block;
+          text-align: center;
+          /* @media only screen and (max-width:$breakpointMobilePortrait) {
+            width:100%;
+            width:100vw;
+            }*/ }
+          @media only screen and (max-width: 1040px) and (min-height: 400px) {
+            #discover .discover-container .slide-container .slide-holder .col {
+              width: 100%;
+              width: 100vw; } }
+          #discover .discover-container .slide-container .slide-holder .col.col-one {
+            background-color: black; }
+          #discover .discover-container .slide-container .slide-holder .col.col-two {
+            background-color: #0e2d36; }
+          #discover .discover-container .slide-container .slide-holder .col.col-three {
+            background-color: #4f101d; }
+          #discover .discover-container .slide-container .slide-holder .col.col-four {
+            background-color: black; }
+          #discover .discover-container .slide-container .slide-holder .col.col-five {
+            background-color: #0e2d36; }
+          #discover .discover-container .slide-container .slide-holder .col.col-six {
+            background-color: #4f101d; }
+          #discover .discover-container .slide-container .slide-holder .col .col-content {
+            position: absolute;
+            top: 20%;
+            width: 100%;
+            height: auto; }
+            #discover .discover-container .slide-container .slide-holder .col .col-content h3 {
+              color: #fff;
+              font-size: 24px;
+              padding: 20px;
+              margin: 20px 0; }
+              @media only screen and (max-width: 1040px) and (max-height: 400px) {
+                #discover .discover-container .slide-container .slide-holder .col .col-content h3 {
+                  display: none; } }
+            #discover .discover-container .slide-container .slide-holder .col .col-content img {
+              width: 70%;
+              margin: 0 auto;
+              height: auto;
+              display: block;
+              border: 0; }
+              @media only screen and (max-width: 1040px) and (min-height: 400px) {
+                #discover .discover-container .slide-container .slide-holder .col .col-content img {
+                  width: auto;
+                  height: 40vh; } }
+      #discover .discover-container .slide-container .slide-control {
+        font-family: 'FontAwesome';
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 40%;
+        display: none;
+        color: #ffffff;
+        font-size: 18px;
+        text-align: center;
+        padding-top: 15px;
         opacity: 1;
-        -webkit-animation: fadeOut 1s;
-        animation: fadeOut 1s;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
-        -webkit-animation-delay: 0.3s;
-        animation-delay: 0.3s; }
-      #discover .discover-container .stripe-one #stripeOne {
-        width: 100%;
-        height: 100%; }
-    #discover .discover-container .stripe-two {
-      /*background-color:white;*/
-      display: block;
-      width: 100%;
-      position: absolute;
-      overflow: hidden;
-      opacity: 0; }
-      #discover .discover-container .stripe-two.show {
-        -webkit-animation: fadeIn 3s;
-        animation: fadeIn 3s;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
-        -webkit-animation-delay: 1s;
-        animation-delay: 1s; }
-      #discover .discover-container .stripe-two.hide {
-        opacity: 1;
-        -webkit-animation: fadeOut 1s;
-        animation: fadeOut 1s;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
-        -webkit-animation-delay: 0.5s;
-        animation-delay: 0.5s; }
-      #discover .discover-container .stripe-two #stripeTwo {
-        width: 100%;
-        height: 100%; }
-    #discover .discover-container .stripe-three {
-      /*background-color:blue;*/
-      display: block;
-      width: 100%;
-      position: absolute;
-      overflow: hidden;
-      opacity: 0; }
-      #discover .discover-container .stripe-three.show {
-        -webkit-animation: fadeIn 1s;
-        animation: fadeIn 1s;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
-        -webkit-animation-delay: 1s;
-        animation-delay: 1s; }
-      #discover .discover-container .stripe-three.hide {
-        opacity: 1;
-        -webkit-animation: fadeOut 1s;
-        animation: fadeOut 1s;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
-        -webkit-animation-delay: 0.6s;
-        animation-delay: 0.6s; }
-      #discover .discover-container .stripe-three #stripeThree {
-        width: 100%;
-        height: 100%; }
-    #discover .discover-container .cards-container {
-      position: absolute;
-      top: 30%;
-      left: 5%;
-      width: 90%; }
-      #discover .discover-container .cards-container .cards {
-        width: 30%;
-        height: auto;
-        background-color: #191d1d;
-        border: none;
-        display: inline-block;
-        overflow: hidden;
-        position: relative; }
-        #discover .discover-container .cards-container .cards.show {
-          /*top:-50px;*/
-          opacity: 0;
-          -webkit-animation: fadeSlideDown 0.3s;
-          animation: fadeSlideDown 0.3s;
-          -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-          -webkit-animation-delay: 1.3s;
-          animation-delay: 1.3s; }
-        #discover .discover-container .cards-container .cards:nth-of-type(2) {
-          margin: 0 4%;
-          -webkit-animation-delay: 1.4s;
-          animation-delay: 1.4s; }
-        #discover .discover-container .cards-container .cards:nth-of-type(3) {
-          -webkit-animation-delay: 1.5s;
-          animation-delay: 1.5s; }
-        #discover .discover-container .cards-container .cards img {
-          width: 100%;
-          display: block;
-          -webkit-transition: all 1s ease;
-          transition: all 1s ease;
-          -webkit-transform: scale(1);
-          transform: scale(1); }
-          #discover .discover-container .cards-container .cards img:hover {
-            cursor: pointer;
-            -webkit-transform: scale(1.2);
-            transform: scale(1.2); }
-        #discover .discover-container .cards-container .cards h3 {
-          color: #fff;
-          font-size: 24px;
-          position: absolute;
-          bottom: 22%;
-          left: 10%;
-          width: 100%;
-          height: auto; }
-        #discover .discover-container .cards-container .cards.hide {
-          opacity: 1;
-          -webkit-animation: fadeOut 1s;
-          animation: fadeOut 1s;
-          -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-          -webkit-animation-delay: 0s;
-          animation-delay: 0s; }
-    #discover .discover-container .back {
-      display: block;
-      z-index: 999;
-      position: absolute;
-      bottom: 4%;
-      right: 3%;
-      width: auto;
-      height: auto;
-      /*&:hover {cursor: pointer;}*/ }
+        -webkit-transition: opacity 0.8s ease;
+        -moz-transition: opacity 0.8s ease;
+        -ms-transition: opacity 0.8s ease;
+        transition: opacity 0.8s ease; }
+        @media only screen and (max-width: 1040px) and (min-height: 400px) {
+          #discover .discover-container .slide-container .slide-control {
+            display: block; } }
+        #discover .discover-container .slide-container .slide-control.left {
+          content: "\f053";
+          left: 3%; }
+          #discover .discover-container .slide-container .slide-control.left:before {
+            content: "\f053"; }
+        #discover .discover-container .slide-container .slide-control.right {
+          right: 3%; }
+          #discover .discover-container .slide-container .slide-control.right:before {
+            content: "\f054"; }
+        #discover .discover-container .slide-container .slide-control.active {
+          opacity: 1; }
+          #discover .discover-container .slide-container .slide-control.active:hover {
+            cursor: pointer; }
+        #discover .discover-container .slide-container .slide-control.unactive {
+          opacity: 0.3; }
+          #discover .discover-container .slide-container .slide-control.unactive:hover {
+            cursor: default; }
 
 @-webkit-keyframes toggleVisibility {
   0% {
@@ -924,6 +1028,30 @@ h3, h4 {
   100% {
     right: -12%; } }
 
+@-webkit-keyframes wipeBottom {
+  0% {
+    top: 100%; }
+  100% {
+    top: 0%; } }
+
+@keyframes wipeBottom {
+  0% {
+    top: 100%; }
+  100% {
+    top: 0%; } }
+
+@-webkit-keyframes wipeTop {
+  0% {
+    top: 0%; }
+  100% {
+    top: 100%; } }
+
+@keyframes wipeTop {
+  0% {
+    top: 0%; }
+  100% {
+    top: 100%; } }
+
 @-webkit-keyframes fadeOut {
   0% {
     opacity: 1; }
@@ -952,13 +1080,13 @@ h3, h4 {
   0% {
     opacity: 0; }
   100% {
-    opacity: 0.2; } }
+    opacity: 0.1; } }
 
 @keyframes fadeInSemi {
   0% {
     opacity: 0; }
   100% {
-    opacity: 0.2; } }
+    opacity: 0.1; } }
 
 @-webkit-keyframes fadeOutSemi {
   0% {
