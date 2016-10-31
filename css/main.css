@@ -293,7 +293,15 @@ h3, h4 {
   -webkit-transform: skewX(-5deg);
   -moz-transform: skewX(-5deg);
   -o-transform: skewX(-5deg);
-  transform: skewX(-5deg); }
+  transform: skewX(-5deg);
+  /*.fourth-image {
+        background: url('../img/img15.jpg');
+        opacity:0;
+        z-index: 4;
+        background-position: 0 0;
+        background-size: cover;
+        &.show {opacity:1;}
+    }*/ }
   @media only screen and (max-width: 1040px) and (min-height: 400px) {
     .lead-photo {
       display: none; } }
@@ -357,20 +365,12 @@ h3, h4 {
     .lead-photo .second-image.show {
       opacity: 1; }
   .lead-photo .third-image {
-    background: url("../img/img9.jpg");
+    background: url("../img/img12.jpg");
     opacity: 0;
     z-index: 3;
     background-position: 0 0;
     background-size: cover; }
     .lead-photo .third-image.show {
-      opacity: 1; }
-  .lead-photo .fourth-image {
-    background: url("../img/img15.jpg");
-    opacity: 0;
-    z-index: 4;
-    background-position: 0 0;
-    background-size: cover; }
-    .lead-photo .fourth-image.show {
       opacity: 1; }
 
 .lead-content {
@@ -991,6 +991,26 @@ h3, h4 {
           opacity: 0.3; }
           #discover .discover-container .slide-container .slide-control.unactive:hover {
             cursor: default; }
+      #discover .discover-container .slide-container .indicator-holder {
+        width: 100%;
+        height: 10px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: none; }
+        @media only screen and (max-width: 1040px) and (min-height: 400px) {
+          #discover .discover-container .slide-container .indicator-holder {
+            display: block; } }
+        #discover .discover-container .slide-container .indicator-holder .indicator {
+          height: 100%;
+          display: inline-block;
+          background-color: #fff; }
+          #discover .discover-container .slide-container .indicator-holder .indicator.active {
+            background-color: #f0fc35; }
+        #discover .discover-container .slide-container .indicator-holder .indicator-spacer {
+          width: 1px;
+          height: 100%;
+          display: inline-block; }
 
 @-webkit-keyframes toggleVisibility {
   0% {
