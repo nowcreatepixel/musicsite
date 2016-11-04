@@ -18,7 +18,9 @@ $breakpointMinHeight: 400px;
 $mint: #75f2df;
 $mint-darken: darken($mint, 30%);
 $mint-lighten: lighten($mint, 20%);
-$dark-grey: #191d1d;
+/*$dark-grey: #191d1d;*/
+$dark-grey: #020e1a;
+$red: #a41029;
 $dark-grey-darken: darken($dark-grey, 20%);
 $light-grey: #949494;
 $white: #fff;
@@ -79,6 +81,7 @@ body {
     margin:0;
     padding:0;
     background-color:$white;
+    overflow:hidden;
     //font family?//
 }
 
@@ -203,7 +206,7 @@ h3, h4 {
     #loader-alt {
      @include defaultLoader;
      #pick {fill:#ffffff;}
-     #figure {fill:#191d1d;}
+     #figure {fill:$dark-grey;}
     }
 
     p {@include defaultLoaderText;}
@@ -250,6 +253,15 @@ h3, h4 {
             #shape {
             fill: $white;
            }
+            
+         #first {
+            fill:$white;
+            }
+            
+        #second {
+            fill:$dark-grey;
+            }
+            
         #first, #second {
             opacity:0;
             -webkit-animation: fadeIn 0.8s;
@@ -259,6 +271,29 @@ h3, h4 {
            -webkit-animation-delay: 2.3s;
            animation-delay: 2.3s;
           }
+        }
+        
+        &.active {
+            
+             #logo {
+             
+            #shape {
+                 @media only screen and (max-width:$breakpointMobilePortrait) {
+                     fill: $dark-grey;}
+           }
+                 #first {
+                     @media only screen and (max-width:$breakpointMobilePortrait) {
+                         fill:$dark-grey;}
+            }
+            #second {
+                 @media only screen and (max-width:$breakpointMobilePortrait) {
+                     fill:$white;}
+            }
+          }
+        }
+        
+        &:hover {
+            cursor: pointer;
         }
     }
     // END SVG LOGO //
@@ -273,6 +308,11 @@ h3, h4 {
     cursor: pointer;
     overflow:hidden;
     opacity:1;
+        -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
          -webkit-transform:translateY(-100px);
         -moz-transform:translateY(-100px);
         transform:translateY(-100px);
@@ -291,6 +331,7 @@ h3, h4 {
          -moz-transition: all .35s ease;
          -o-transition: all .35s ease;
          transition: all .35s ease;
+         
 
         &:nth-of-type(2) {
             top:14px;
@@ -325,12 +366,57 @@ h3, h4 {
     }
 
      &:hover {opacity: 1;}
+        
+        &.active {
+            right:340px;
+            
+            span {
+            @media only screen and (max-width:$breakpointMobilePortrait) {
+            background-color:$dark-grey;}  
+            }
+            
+            @media only screen and (max-width:$breakpointMobilePortrait) {
+            right:40px;
+            }
+        }
 
 
 
 }
     // END NAV //
     }
+
+#nav-menu-holder {
+    width:300px;
+    height:100%;
+    position:absolute;
+    display:block;
+    z-index: 100;
+    background-color:$white;
+    right:-300px;
+    top:0;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+     @media only screen and (max-width:$breakpointMobilePortrait) {
+         top:100%;
+         right:0px;
+         width:100%;
+    }
+    
+    &.show {
+       right:0px; 
+       @media only screen and (max-width:$breakpointMobilePortrait) {
+         top:0%;
+    }
+    }
+    
+    .nav-menu-content {
+        padding-top:100px;
+    }
+}
 
 
 
@@ -476,6 +562,102 @@ h3, h4 {
 // END PHOTO HOLDER //
 
 
+// LEAD PHOTO ALTERNATIVE //
+.lead-photo-alt {
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    height:100%;
+    width:50%;
+    z-index:1;
+    margin-left:-3%;
+    opacity:1;
+     -webkit-transition: opacity 2s ease-out;
+    -moz-transition: opacity 2s ease-out;
+    -ms-transition: opacity 2s ease-out;
+    -o-transition: opacity 2s ease-out;
+    transition: opacity 2s ease-out;
+    @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
+        width:90%;
+        margin-left:5%;
+        opacity:0.6;
+    }
+    
+    .lead-photo-bg {
+       
+    }
+    .lead-photo-fg {
+        position:relative;
+        left:0;
+        bottom:0;
+        width:100%;
+        height:100%;
+        
+        & img.feature-bg {
+            width:auto;
+            height:auto;
+            max-height:95%;
+            position:absolute;
+            left:0;
+            bottom:0;
+            z-index:0;   
+            &.show {
+              opacity:0;
+         -webkit-animation: fadeIn 1.5s;
+         animation: fadeIn 1.5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;  
+            }
+            &.hide {
+              opacity:1;
+         -webkit-animation: fadeOut 1.5s;
+         animation: fadeOut 1.5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;  
+            }
+        }
+        
+        & img.feature-fg {
+            width:auto;
+            height:auto;
+            max-height:95%;
+            position:absolute;
+            left:0;
+            bottom:0;
+            z-index:1;
+             &.show {
+              opacity:0;
+         -webkit-animation: fadeIn 2s;
+         animation: fadeIn 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s;  
+            }
+            &.hide {
+              opacity:1;
+         -webkit-animation: fadeOut 1.5s;
+         animation: fadeOut 1.5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;  
+            }
+        }
+    }
+    
+}
+
+
+
+// END LEAD PHOTO ALTERNATIVE //
+
+
 
 // LEAD CONTENT HOLDER //
 // ---------------------------------------------------------
@@ -513,12 +695,12 @@ h3, h4 {
         &.show {
         // fade in alt bg //
          @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
-           -webkit-animation: fadeIn 1s;
+         /*  -webkit-animation: fadeIn 1s;
            animation: fadeIn 1s;
            -webkit-animation-delay: 1s;
             animation-delay: 1s;
            -webkit-animation-fill-mode: forwards;
-           animation-fill-mode: forwards;}
+             animation-fill-mode: forwards;*/}
         }
 
           &.hide {
@@ -545,6 +727,7 @@ h3, h4 {
        bottom:0;
        text-align:center;
         overflow:hidden;
+        z-index: 2;
         @media only screen and (max-width: $breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
             width: 70%;
             right: 15%;}
@@ -574,8 +757,10 @@ h3, h4 {
           animation: textFadeIn 1s;
           -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
-          -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+          /*-webkit-animation-delay: 2s;
+          animation-delay: 2s;*/
+          -webkit-animation-delay: 3s;
+          animation-delay: 3s;
                   @media only screen and (max-width:$breakpointDesktopLarge) {font-size:$font-size-h1-md;}
                    @media only screen and (max-width:$breakpointMobilePortrait) {font-size:$font-size-h1-sm;}
                    @media only screen and (max-height:$breakpointMinHeight) {font-size:$font-size-h1-sm;}
@@ -595,9 +780,9 @@ h3, h4 {
         }
 
         .breakdefault {
-            background-color:#ffffff;
+            background-color:$red;
         opacity:1;
-        height:5px;
+        height:2px;
         width:50px;
         margin-bottom:40px;
         display:block;
@@ -626,8 +811,8 @@ h3, h4 {
        animation: fadeIn 0.6s;
        -webkit-animation-fill-mode: forwards;
        animation-fill-mode: forwards;
-        -webkit-animation-delay: 2.5s;
-       animation-delay: 2.5s;
+        -webkit-animation-delay: 3.5s;
+       animation-delay: 3.5s;
              -webkit-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
              -moz-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
              -o-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
@@ -664,8 +849,8 @@ h3, h4 {
             animation: fadeIn 0.6s;
             -webkit-animation-fill-mode: forwards;
             animation-fill-mode: forwards;
-            -webkit-animation-delay: 3.2s;
-            animation-delay: 3.2s;
+            -webkit-animation-delay: 4.2s;
+            animation-delay: 4.2s;
         }
 
 
@@ -1008,16 +1193,17 @@ h3, h4 {
 
 // alt loader //
 #discoverLoad {
-    height:100%;
+    height:0;
     width:100%;
     position:relative;
     display:block;
-    z-index:0;
+    z-index:4;
     overflow:hidden;
     top:0;
     opacity:0;
 
     &.show {
+        height:100%;
         -webkit-animation: fadeIn 1s;
          animation: fadeIn 1s;
     -webkit-animation-fill-mode: forwards;
@@ -1030,14 +1216,15 @@ h3, h4 {
 
 // content //
 #discover {
-    height:100%;
+    height:0;
     width:100%;
     position:absolute;
     display:block;
-    z-index:0;
+    z-index:5;
     overflow:hidden;
 
     &.show {
+        height:100%;
         top:100%;
         -webkit-animation: wipeBottom 1s;
          animation: wipeBottom 1s;
@@ -1052,6 +1239,7 @@ h3, h4 {
     }
 
     &.hide {
+        height:100%;
         top:0%;
         -webkit-animation: wipeTop 1s;
          animation: wipeTop 1s;
@@ -1240,9 +1428,19 @@ h3, h4 {
                 height:100%;
                 display:inline-block;
                 background-color: $white;
+                  border-right: 3px solid $dark-grey;
+                  opacity:1;
+                  
+                  &:last-child {border-right:none;}
+                  
 
                 &.active {
-                  background-color: $yellow;
+                    opacity:1;
+                  background-color: $red;
+                 -webkit-transition: opacity 2s ease;
+                 -moz-transition: opacity 2s ease;
+                 -ms-transition: opacity 2s ease;
+                  transition: opacity 2s ease;
                 }
               }
 
