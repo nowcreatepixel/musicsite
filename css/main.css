@@ -1,4 +1,5 @@
 @import 'https://fonts.googleapis.com/css?family=Montserrat|PT+Serif|Frank+Ruhl+Libre|Julius+Sans+One';
+/*$dark-grey: #191d1d;*/
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +12,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #fff; }
+  background-color: #fff;
+  overflow: hidden; }
 
 h1, h2 {
   font-family: "Frank Ruhl Libre", "PT Serif", Georgia, "Times New Roman", Times, serif; }
@@ -146,7 +148,7 @@ h3, h4 {
     #load-alt #loader-alt #pick {
       fill: #ffffff; }
     #load-alt #loader-alt #figure {
-      fill: #191d1d; }
+      fill: #020e1a; }
   #load-alt p {
     font-size: 11px;
     text-transform: uppercase;
@@ -189,6 +191,10 @@ h3, h4 {
       height: 30px; }
       #top-nav-logo .mainlogo #logo #shape {
         fill: #fff; }
+      #top-nav-logo .mainlogo #logo #first {
+        fill: #fff; }
+      #top-nav-logo .mainlogo #logo #second {
+        fill: #020e1a; }
       #top-nav-logo .mainlogo #logo #first, #top-nav-logo .mainlogo #logo #second {
         opacity: 0;
         -webkit-animation: fadeIn 0.8s;
@@ -197,6 +203,17 @@ h3, h4 {
         animation-fill-mode: forwards;
         -webkit-animation-delay: 2.3s;
         animation-delay: 2.3s; }
+    @media only screen and (max-width: 630px) {
+      #top-nav-logo .mainlogo.active #logo #shape {
+        fill: #020e1a; } }
+    @media only screen and (max-width: 630px) {
+      #top-nav-logo .mainlogo.active #logo #first {
+        fill: #020e1a; } }
+    @media only screen and (max-width: 630px) {
+      #top-nav-logo .mainlogo.active #logo #second {
+        fill: #fff; } }
+    #top-nav-logo .mainlogo:hover {
+      cursor: pointer; }
   #top-nav-logo #navtoggle {
     position: absolute;
     width: 20px;
@@ -208,6 +225,11 @@ h3, h4 {
     cursor: pointer;
     overflow: hidden;
     opacity: 1;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
     -webkit-transform: translateY(-100px);
     -moz-transform: translateY(-100px);
     transform: translateY(-100px);
@@ -256,6 +278,41 @@ h3, h4 {
         animation-delay: 2.3s; }
     #top-nav-logo #navtoggle:hover {
       opacity: 1; }
+    #top-nav-logo #navtoggle.active {
+      right: 340px; }
+      @media only screen and (max-width: 630px) {
+        #top-nav-logo #navtoggle.active span {
+          background-color: #020e1a; } }
+      @media only screen and (max-width: 630px) {
+        #top-nav-logo #navtoggle.active {
+          right: 40px; } }
+
+#nav-menu-holder {
+  width: 300px;
+  height: 100%;
+  position: absolute;
+  display: block;
+  z-index: 100;
+  background-color: #fff;
+  right: -300px;
+  top: 0;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out; }
+  @media only screen and (max-width: 630px) {
+    #nav-menu-holder {
+      top: 100%;
+      right: 0px;
+      width: 100%; } }
+  #nav-menu-holder.show {
+    right: 0px; }
+    @media only screen and (max-width: 630px) {
+      #nav-menu-holder.show {
+        top: 0%; } }
+  #nav-menu-holder .nav-menu-content {
+    padding-top: 100px; }
 
 #content-wrapper {
   width: 100%;
@@ -373,6 +430,81 @@ h3, h4 {
     .lead-photo .third-image.show {
       opacity: 1; }
 
+.lead-photo-alt {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 50%;
+  z-index: 1;
+  margin-left: -3%;
+  opacity: 1;
+  -webkit-transition: opacity 2s ease-out;
+  -moz-transition: opacity 2s ease-out;
+  -ms-transition: opacity 2s ease-out;
+  -o-transition: opacity 2s ease-out;
+  transition: opacity 2s ease-out; }
+  @media only screen and (max-width: 1040px) and (min-height: 400px) {
+    .lead-photo-alt {
+      width: 90%;
+      margin-left: 5%;
+      opacity: 0.6; } }
+  .lead-photo-alt .lead-photo-fg {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%; }
+    .lead-photo-alt .lead-photo-fg img.feature-bg {
+      width: auto;
+      height: auto;
+      max-height: 95%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 0; }
+      .lead-photo-alt .lead-photo-fg img.feature-bg.show {
+        opacity: 0;
+        -webkit-animation: fadeIn 1.5s;
+        animation: fadeIn 1.5s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 1s;
+        animation-delay: 1s; }
+      .lead-photo-alt .lead-photo-fg img.feature-bg.hide {
+        opacity: 1;
+        -webkit-animation: fadeOut 1.5s;
+        animation: fadeOut 1.5s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 0s;
+        animation-delay: 0s; }
+    .lead-photo-alt .lead-photo-fg img.feature-fg {
+      width: auto;
+      height: auto;
+      max-height: 95%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 1; }
+      .lead-photo-alt .lead-photo-fg img.feature-fg.show {
+        opacity: 0;
+        -webkit-animation: fadeIn 2s;
+        animation: fadeIn 2s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 3s;
+        animation-delay: 3s; }
+      .lead-photo-alt .lead-photo-fg img.feature-fg.hide {
+        opacity: 1;
+        -webkit-animation: fadeOut 1.5s;
+        animation: fadeOut 1.5s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 0s;
+        animation-delay: 0s; }
+
 .lead-content {
   height: 100%;
   width: 100%;
@@ -380,7 +512,7 @@ h3, h4 {
   display: block;
   z-index: 0;
   overflow: hidden;
-  background-color: #191d1d;
+  background-color: #020e1a;
   -webkit-animation: wipeRight 1s;
   animation: wipeRight 1s;
   -webkit-animation-fill-mode: forwards;
@@ -405,12 +537,12 @@ h3, h4 {
     background-size: cover; }
     @media only screen and (max-width: 1040px) and (min-height: 400px) {
       .lead-content .bgmask.show {
-        -webkit-animation: fadeIn 1s;
-        animation: fadeIn 1s;
-        -webkit-animation-delay: 1s;
-        animation-delay: 1s;
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards; } }
+        /*  -webkit-animation: fadeIn 1s;
+           animation: fadeIn 1s;
+           -webkit-animation-delay: 1s;
+            animation-delay: 1s;
+           -webkit-animation-fill-mode: forwards;
+             animation-fill-mode: forwards;*/ } }
     @media only screen and (max-width: 1040px) and (min-height: 400px) {
       .lead-content .bgmask.hide {
         -webkit-animation: fadeOut 1s;
@@ -427,7 +559,8 @@ h3, h4 {
     right: 10%;
     bottom: 0;
     text-align: center;
-    overflow: hidden; }
+    overflow: hidden;
+    z-index: 2; }
     @media only screen and (max-width: 1040px) and (min-height: 400px) {
       .lead-content .lead-content-holder {
         width: 70%;
@@ -456,8 +589,10 @@ h3, h4 {
           animation: textFadeIn 1s;
           -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
-          -webkit-animation-delay: 2s;
-          animation-delay: 2s; }
+          /*-webkit-animation-delay: 2s;
+          animation-delay: 2s;*/
+          -webkit-animation-delay: 3s;
+          animation-delay: 3s; }
           @media only screen and (max-width: 1280px) {
             .lead-content .lead-content-holder .lead-title h1.introLyric {
               font-size: 49px; } }
@@ -479,9 +614,9 @@ h3, h4 {
             .lead-content .lead-content-holder .lead-title h1.lyricAnimate {
               font-size: 42px; } }
     .lead-content .lead-content-holder .breakdefault {
-      background-color: #ffffff;
+      background-color: #a41029;
       opacity: 1;
-      height: 5px;
+      height: 2px;
       width: 50px;
       margin-bottom: 40px;
       display: block;
@@ -509,8 +644,8 @@ h3, h4 {
       animation: fadeIn 0.6s;
       -webkit-animation-fill-mode: forwards;
       animation-fill-mode: forwards;
-      -webkit-animation-delay: 2.5s;
-      animation-delay: 2.5s;
+      -webkit-animation-delay: 3.5s;
+      animation-delay: 3.5s;
       -webkit-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
       -moz-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
       -o-animation-timing-function: cubic-bezier(0.935, 0.07, 0.905, 0.165);
@@ -543,8 +678,8 @@ h3, h4 {
         animation: fadeIn 0.6s;
         -webkit-animation-fill-mode: forwards;
         animation-fill-mode: forwards;
-        -webkit-animation-delay: 3.2s;
-        animation-delay: 3.2s; }
+        -webkit-animation-delay: 4.2s;
+        animation-delay: 4.2s; }
 
 .feature-btn-holder {
   text-align: center;
@@ -772,7 +907,7 @@ h3, h4 {
       -webkit-animation-delay: 0s;
       animation-delay: 0s; }
   .feature-btn:hover .btn-text {
-    color: #191d1d; }
+    color: #020e1a; }
   .feature-btn.btnHide {
     cursor: default; }
   .feature-btn.btnHide:before {
@@ -817,15 +952,16 @@ h3, h4 {
     animation-delay: 0s; }
 
 #discoverLoad {
-  height: 100%;
+  height: 0;
   width: 100%;
   position: relative;
   display: block;
-  z-index: 0;
+  z-index: 4;
   overflow: hidden;
   top: 0;
   opacity: 0; }
   #discoverLoad.show {
+    height: 100%;
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s;
     -webkit-animation-fill-mode: forwards;
@@ -834,13 +970,14 @@ h3, h4 {
     animation-delay: 1s; }
 
 #discover {
-  height: 100%;
+  height: 0;
   width: 100%;
   position: absolute;
   display: block;
-  z-index: 0;
+  z-index: 5;
   overflow: hidden; }
   #discover.show {
+    height: 100%;
     top: 100%;
     -webkit-animation: wipeBottom 1s;
     animation: wipeBottom 1s;
@@ -854,6 +991,7 @@ h3, h4 {
     animation-timing-function: cubic-bezier(0.96, 0.05, 0.91, 0.085);
     /* custom */ }
   #discover.hide {
+    height: 100%;
     top: 0%;
     -webkit-animation: wipeTop 1s;
     animation: wipeTop 1s;
@@ -1004,9 +1142,18 @@ h3, h4 {
         #discover .discover-container .slide-container .indicator-holder .indicator {
           height: 100%;
           display: inline-block;
-          background-color: #fff; }
+          background-color: #fff;
+          border-right: 3px solid #020e1a;
+          opacity: 1; }
+          #discover .discover-container .slide-container .indicator-holder .indicator:last-child {
+            border-right: none; }
           #discover .discover-container .slide-container .indicator-holder .indicator.active {
-            background-color: #f0fc35; }
+            opacity: 1;
+            background-color: #a41029;
+            -webkit-transition: opacity 2s ease;
+            -moz-transition: opacity 2s ease;
+            -ms-transition: opacity 2s ease;
+            transition: opacity 2s ease; }
         #discover .discover-container .slide-container .indicator-holder .indicator-spacer {
           width: 1px;
           height: 100%;

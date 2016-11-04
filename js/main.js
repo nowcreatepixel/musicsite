@@ -32,6 +32,19 @@ $(document).ready(function () {
    });
 
 
+/* NAVIGATION */
+$(document).ready(function(){
+$('#navtoggle').on('click', function (e) {
+    e.stopPropagation();
+      $(this).toggleClass('active');
+    $('#nav-menu-holder').toggleClass('show');
+    $('.mainlogo').toggleClass('active');
+
+
+  });
+});
+
+
 
 
 /* ROTATING BACKGROUND IMAGE */
@@ -104,11 +117,12 @@ $(document).ready(function () {
         $('span.breakdefault').removeClass('break');
         $('span.breakdefault').removeClass('breakNoDelay');
         $('span.breakdefault').addClass('hidebreak');
-         $('.bgmask').removeClass('show');
-        $('.bgmask').addClass('hide');
+         /*$('.bgmask').removeClass('show');
+        $('.bgmask').addClass('hide');*/
         TweenMax.to('.lead-title', 0.8, {css:{opacity:0}});
         $('.lead-content-holder h4').css({visibility:'hidden'});
         $('.lead-photo').css({left:'-100%'});
+        $('.lead-photo-alt').css({opacity:0});
         $('.feature-btn').addClass('btnHide');
         $("#discover").removeClass('hide');
         $("#discover").addClass('show');
@@ -117,9 +131,9 @@ $(document).ready(function () {
 
         setTimeout(function () {
         $("#discover").load("discovertwo.html .discover-container", function(){
-					$('#load-alt').fadeOut('slow',function(){$('#discoverLoad');});
-           $('.col').css({height:windowHeight});
 
+            $('#load-alt').fadeOut('slow',function(){$('#discoverLoad');});
+            $('.col').css({height:windowHeight});
             var colItem = document.getElementsByClassName('col');
             var colNumber = $('.col').length;
             var colWidth = $(colItem)[0].getBoundingClientRect().width;
@@ -136,8 +150,50 @@ $(document).ready(function () {
 						$('.indicator').css({width:indicatorWidth});
 
 
+
+
+            /* Slide Indicator */
+
+
+            /* uncomment if using manual spacer divs direct in mark up
+			var indicatorWidth = (windowWidth - indicatorSpacerAmount) / colNumber;*/
+            /* spacers as borders on the elements in css */
+
+
             var currentIndex = 0;
             var moveValue = 0;
+            var indicatorArray = [];
+
+
+            $('.slide-holder').css({width:totalWidth});
+			$('.indicator').css({width:indicatorWidth});
+
+            function move(newIndex) {
+
+                if (newIndex > currentIndex) {
+                var moveCalc = newIndex + '00';
+                var arrowAnimate = '-' + newIndex + '00%';
+                $('.slide-holder').css({left: arrowAnimate});
+                currentIndex = newIndex;
+                moveValue = moveValue - moveCalc;
+                console.log(newIndex);
+                console.log(moveValue);
+                } else if (newIndex < currentIndex) {
+                    var moveCalc = newIndex + '00';
+                var arrowAnimate = '-' + newIndex + '00%';
+                $('.slide-holder').css({left: arrowAnimate});
+                currentIndex = newIndex;
+                moveValue = moveValue - moveCalc;
+                console.log(newIndex);
+                console.log(moveValue);
+                    console.log('fuck');
+                } else if (newIndex === currentIndex) {
+                    currentIndex = newIndex;
+                console.log(newIndex);
+                    return;
+                }
+                }
+
 
 						function move (newIndex) {
 							var indicatorAnimate = parseInt('-' + newIndex + '00');
@@ -168,18 +224,22 @@ $(document).ready(function () {
                    arrowNav(currentIndex + 1, moveValue - 100);
                     $('.left').removeClass('unactive');
                     $('.left').addClass('active');
-										indicatorArray[currentIndex].addClass('active');
-										indicatorArray[currentIndex - 1].removeClass('active');
+
+                    indicatorArray[currentIndex].addClass('active');
+                    indicatorArray[currentIndex - 1].removeClass('active');
+                      console.log(moveValue);
                 } else if (currentIndex >= 1 && currentIndex < colNumber - 2) {
                     arrowNav(currentIndex + 1, moveValue - 100);
-										indicatorArray[currentIndex].addClass('active');
-										indicatorArray[currentIndex - 1].removeClass('active');
+                    indicatorArray[currentIndex].addClass('active');
+                    indicatorArray[currentIndex - 1].removeClass('active');
                 } else if (currentIndex == colNumber - 2) {
                     arrowNav(currentIndex + 1, moveValue - 100);
                     $(this).removeClass('active');
                     $(this).addClass('unactive');
-										indicatorArray[currentIndex].addClass('active');
-										indicatorArray[currentIndex - 1].removeClass('active');
+
+                    indicatorArray[currentIndex].addClass('active');
+                    indicatorArray[currentIndex - 1].removeClass('active');
+
                 } else if (currentIndex == colNumber - 1) {
                     return false;
                 }
@@ -195,26 +255,31 @@ $(document).ready(function () {
                    arrowNav(currentIndex - 1, moveValue + 100);
                      $('.right').removeClass('unactive');
                     $('.right').addClass('active');
+
 										indicatorArray[currentIndex].addClass('active');
 										indicatorArray[currentIndex + 1].removeClass('active');
                 } else if (currentIndex < colNumber - 1 && currentIndex > 1) {
                     arrowNav(currentIndex - 1, moveValue + 100);
 										indicatorArray[currentIndex].addClass('active');
 										indicatorArray[currentIndex + 1].removeClass('active');
+                     indicatorArray[currentIndex].addClass('active');
+                    indicatorArray[currentIndex + 1].removeClass('active');
+
                 } else if (currentIndex == 1) {
                     arrowNav(currentIndex - 1, moveValue + 100);
                     $(this).removeClass('active');
                     $(this).addClass('unactive');
+
 										indicatorArray[currentIndex].addClass('active');
 										indicatorArray[currentIndex + 1].removeClass('active');
+
                 } else if (currentIndex == 0) {
                     return;
                 }
             });
 
 
-
-						$.each(colItem, function(index) {
+            $.each(colItem, function(index) {
 					    // Create a button element for the button
 					    var $indicator = $('<div class="indicator"></div>');
 							var indicatorWidth = (windowWidth - indicatorSpacerAmount) / colNumber;
@@ -227,6 +292,7 @@ $(document).ready(function () {
 					      move(index);                   // It calls the move() function
 					    }).appendTo(indicatorHolder);   // Add to the buttons holder
 					    indicatorArray.push($indicator);      // Add it to the button array
+
 
 							$('.indicator').css({width:indicatorWidth});
 					  });
@@ -245,11 +311,12 @@ $(document).ready(function () {
              $("#discover").addClass('hide');
              $('span.breakdefault').removeClass('hidebreak');
              $('span.breakdefault').addClass('breakNoDelay');
-             $('.bgmask').removeClass('hide');
-             $('.bgmask').addClass('show');
+             /*$('.bgmask').removeClass('hide');
+             $('.bgmask').addClass('show');*/
                   TweenMax.to('.lead-title', 0.8, {css:{opacity:1}});
                  $('.lead-content-holder h4').css({visibility:'visible'});
                  $('.lead-photo').css({left:'0'});
+                $('.lead-photo-alt').css({opacity:1});
                  $('.feature-btn').removeClass('btnHide');
                  $("#discoverLoad").removeClass('show');
                  $("#load-alt").css({display:'block'});
@@ -258,18 +325,22 @@ $(document).ready(function () {
 
             $(window).resize(function() {
             windowHeight = $(window).height();
-						windowWidth = $(window).width();
+			windowWidth = $(window).width();
             $('.col').css({height:windowHeight});
             var colItem = document.getElementsByClassName('col');
             var colNumber = $('.col').length;
             var colWidth = $(colItem)[0].getBoundingClientRect().width;
             var totalWidth = colWidth * colNumber;
-						var indicatorSpacerAmount = colNumber - 1;
-						var indicatorWidth = (windowWidth - indicatorSpacerAmount) / colNumber;
-						console.log(windowWidth);
-            console.log(colWidth.width);
+			var indicatorSpacerAmount = colNumber - 1;
+
+            /* uncomment if using manual spacer divs direct in mark up
+			var indicatorWidth = (windowWidth - indicatorSpacerAmount) / colNumber;*/
+
+            /* spacers as borders on the elements in css */
+            var indicatorWidth = windowWidth / colNumber;
+
             $('.slide-holder').css({width:totalWidth});
-						$('.indicator').css({width:indicatorWidth});
+			$('.indicator').css({width:indicatorWidth});
 
             if ($(window).width() > 1040 || $(window).height() < 400) {
              $('.slide-holder').css({left:'0px'});
