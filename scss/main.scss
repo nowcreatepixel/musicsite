@@ -1,6 +1,6 @@
 // Fonts
 // --------------------------------------------------------
-@import 'https://fonts.googleapis.com/css?family=Montserrat|PT+Serif|Frank+Ruhl+Libre|Julius+Sans+One';
+@import 'https://fonts.googleapis.com/css?family=Montserrat:400,700|PT+Serif|Frank+Ruhl+Libre|Julius+Sans+One';
 
 
 
@@ -13,6 +13,7 @@ $breakpointDesktopSmall: 1040px;
 $breakpointMobileLandscape: 830px;
 $breakpointMobilePortrait: 630px;
 $breakpointMinHeight: 400px;
+$breakpointMidHeight: 720px;
 
 // Colors
 $mint: #75f2df;
@@ -40,11 +41,12 @@ $font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
 
 $font-size-h1:            floor(($font-size-base * 4.6)) !default; // ~64px
 $font-size-h1-md:         floor(($font-size-base * 3.5)) !default; // ~49px
-$font-size-h1-sm:         floor(($font-size-base * 3)) !default; // ~42px
+$font-size-h1-sm:         floor(($font-size-base * 2.75)) !default; // ~38px
 $font-size-h1-xsm:         floor(($font-size-base * 2)) !default; // ~28px
 
 $font-size-h2:            floor(($font-size-base * 2.15)) !default; // ~30px
 $font-size-h3:            ceil(($font-size-base * 1.7)) !default; // ~24px
+$font-size-h3-md:         ceil(($font-size-base * 1.4)) !default; // ~20px
 $font-size-h4:            ceil(($font-size-base * 0.85)) !default; // ~12px
 // not used //
 $font-size-h5:            $font-size-base !default;
@@ -82,16 +84,22 @@ body {
     padding:0;
     background-color:$white;
     overflow:hidden;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    tap-highlight-color: rgba(0, 0, 0, 0);
     //font family?//
 }
 
 h1, h2 {
     font-family: $font-family-serif;
+    letter-spacing: 0.05em;
 }
 
 h3, h4 {
     font-family: $font-family-sans-serif;
     text-transform:uppercase;
+    letter-spacing: 0.2em;
 }
 
 /*.hide {
@@ -114,13 +122,13 @@ h3, h4 {
     top:40%;
     top: calc(50% - 99px);
     left:46%;
-    left: calc(50% - 59px);
+    left: calc(50% - 44px);
     z-index:999;
     text-align: center;
-    -webkit-animation: slideDown 1s;
+    /*-webkit-animation: slideDown 1s;
          animation: slideDown  1s;
     -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
+    animation-fill-mode: forwards;*/
 }
 @mixin defaultLoaderShadow {
     content: "";
@@ -228,13 +236,21 @@ h3, h4 {
     top:0;
     left:0;
     z-index:999;
+     &.hideUntilLoaded {
+        display:none;
+    }
 
     .mainlogo {
         width: 136px;
         position:relative;
         top:30px;
         left:30px;
-        -webkit-transform:translateY(-100px);
+        @media only screen and (max-width:$breakpointMobilePortrait) {
+        top:25px;
+        left:18px;}
+        
+        &.introAnimate {
+            -webkit-transform:translateY(-100px);
         -moz-transform:translateY(-100px);
         transform:translateY(-100px);
         -webkit-animation: slideDown 0.6s;
@@ -246,10 +262,24 @@ h3, h4 {
     -webkit-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
    -moz-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
         animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165); /* custom */
+        }
+        
+        &.hide {
+           -webkit-transition:top 0.3s ease;
+           -moz-transition:top 0.3s ease;
+           -ms-transition:top 0.3s ease;
+           transition:top 0.3s ease;
+           top:-35px; 
+        }
+        
+    
 
         #logo {
             width:136px;
             height:30px;
+            @media only screen and (max-width:$breakpointMobilePortrait) {
+            width:130px;
+            height:24px;}
             #shape {
             fill: $white;
            }
@@ -301,12 +331,13 @@ h3, h4 {
 
     // NAV //
     #navtoggle {position:absolute;
-    width:20px; height:25px;
+    width:25px; height:25px;
     top:30px; right:40px;
     /*@include black;*/
     z-index:999;
     cursor: pointer;
-    overflow:hidden;
+    overflow-x:visible;
+        overflow-y:hidden;
     opacity:1;
         -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
@@ -322,39 +353,50 @@ h3, h4 {
     animation-fill-mode: forwards;
     -webkit-animation-delay: 1.8s;
     animation-delay: 1.8s;
+        @media only screen and (max-width:$breakpointMobilePortrait) {
+            top:27px;}
+        
+        span {
+        background-color:#ffffff;
+        height:3px;
+        width:100%;
+        position:absolute;
+        top:16px;
+        left:0;
+        -webkit-transition: all .35s ease;
+        -moz-transition: all .35s ease;
+        -o-transition: all .35s ease;
+        transition: all .35s ease;
+            
+           &:nth-of-type(2) {
+           top:8px;
+           /*left:-50%;*/
+           }
 
+           &:nth-of-type(3) {
+            top:0px;   
+           }
+        }
+        
+        &:hover {opacity: 1;}
+        
+        &.introAnimation {
 
-     span {background-color:#ffffff;
-    height:3px; width:100%; position:absolute;
-    top:14px; left:0;
-         -webkit-transition: all .35s ease;
-         -moz-transition: all .35s ease;
-         -o-transition: all .35s ease;
-         transition: all .35s ease;
+        span {
          
-
         &:nth-of-type(2) {
-            top:14px;
-            left:-50%;
+            top:16px;
+            /*left:-50%;*/
            -webkit-animation: navRevealSecond 0.8s;
          animation: navRevealSecond 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 2.3s;
     animation-delay: 2.3s;}
+
 
         &:nth-of-type(3) {
-            top:14px;
-            left:50%;
-           -webkit-animation: navRevealSecond 0.8s;
-         animation: navRevealSecond 0.8s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-delay: 2.3s;
-    animation-delay: 2.3s;}
-
-        &:nth-of-type(4) {
-            top:14px;
+            top:16px;
             -webkit-animation: navRevealFirst 0.8s;
          animation: navRevealFirst 0.8s;
     -webkit-animation-fill-mode: forwards;
@@ -363,22 +405,121 @@ h3, h4 {
     animation-delay: 2.3s;
          }
 
-    }
-
-     &:hover {opacity: 1;}
+        }  
+        } // end of introAnimation class
         
-        &.active {
-            right:340px;
+      &.active {
+      right:340px;
+      @media only screen and (max-width:$breakpointMobilePortrait) {right:40px;}
             
-            span {
-            @media only screen and (max-width:$breakpointMobilePortrait) {
-            background-color:$dark-grey;}  
-            }
+        span {
+        background-color:#ffffff;
+        height:3px;
+        width:100%;
+        position:absolute;
+        top:16px;
+        left:0;  
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+        @media only screen and (max-width:$breakpointMobilePortrait) {
+        background-color:$dark-grey;} 
             
-            @media only screen and (max-width:$breakpointMobilePortrait) {
-            right:40px;
-            }
+                       
+           &:nth-of-type(1) {
+            top:16px;
+         -webkit-animation: navBottom 0.4s;
+         animation: navBottom 0.4s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 0.3s;
+        animation-delay: 0.3s;           
         }
+                
+                
+           &:nth-of-type(2) {
+            top:8px;
+           -webkit-animation: fadeOut 0.2s;
+           animation: fadeOut 0.2s;
+           -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+           }
+
+
+        &:nth-of-type(3) {
+            top:0px;
+             -webkit-animation: navTop 0.4s;
+         animation: navTop 0.4s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 0.3s;
+        animation-delay: 0.3s; 
+         }
+
+         }    
+               
+        } // end of active class
+        
+        
+        
+        
+        
+        &.activeAlt {
+      right:40px;
+            
+        span {
+        background-color:#ffffff;
+        height:3px;
+        width:100%;
+        position:absolute;
+        top:16px;
+        left:0;  
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+        @media only screen and (max-width:$breakpointMobilePortrait) {
+        background-color:$white;} 
+            
+                       
+           &:nth-of-type(1) {
+            top:16px;
+         -webkit-animation: navBottom 0.4s;
+         animation: navBottom 0.4s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 0.3s;
+        animation-delay: 0.3s;           
+        }
+                
+                
+           &:nth-of-type(2) {
+            top:8px;
+           -webkit-animation: fadeOut 0.2s;
+           animation: fadeOut 0.2s;
+           -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+           }
+
+
+        &:nth-of-type(3) {
+            top:0px;
+             -webkit-animation: navTop 0.4s;
+         animation: navTop 0.4s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 0.3s;
+        animation-delay: 0.3s; 
+         }
+
+         }    
+               
+        } // end of activeAlt class
 
 
 
@@ -395,6 +536,8 @@ h3, h4 {
     background-color:$white;
     right:-300px;
     top:0;
+    border-top:8px solid $red;
+    overflow-y:auto;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -ms-transition: all 0.3s ease-out;
@@ -404,6 +547,8 @@ h3, h4 {
          top:100%;
          right:0px;
          width:100%;
+         
+        
     }
     
     &.show {
@@ -414,7 +559,108 @@ h3, h4 {
     }
     
     .nav-menu-content {
-        padding-top:100px;
+        padding:20px 40px 0px;
+        text-align:right;
+        font-family: $font-family-sans-serif;
+        @media only screen and (max-width:$breakpointMobilePortrait) {
+         margin-top:60px;
+        }
+        
+        .nav-title {
+            font-family: $font-family-sans-serif;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 40px;
+            @media only screen and (max-width:$breakpointMobilePortrait) {
+        display:none;}
+        }
+        
+        .nav-items {
+            margin: 0 0 60px 0;
+            display:block;
+            width:100%;
+            height:auto;
+            clear:both;
+            
+            &:after {
+                content:"";
+                background-color:$red;
+        opacity:1;
+        height:1px;
+        width:30px;
+        margin:0 0 60px 0;
+        display:block;
+            float:right;
+             position:relative;
+             right:0;
+            }
+            
+            a {
+                font-weight:700;
+                display:block;
+                width:100%;
+                margin:0 0 40px;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                text-decoration:none;
+                color:$dark-grey;
+                
+                &:hover, &:focus {
+                    color:$red;
+                }
+                
+                &:active, &:visited {
+                    color:$dark-grey;
+                }
+            }
+        }
+        
+        
+        .nav-social {
+            display:block;
+            width:100%;
+            height:auto;
+            clear:both;
+            margin-bottom: 40px;
+            
+            
+            li {
+                display:inline-block;
+                list-style: none;
+                margin-left:40px;
+                font-size:34px;
+                
+                &:nth-of-type(1) {
+                   margin-left:0px; 
+                }
+            }
+        }
+        
+        .nav-credits {
+            font-size:12px;
+            line-height: 22px;
+            display:block;
+            width:100%;
+            height:auto;
+            clear:both;
+        }
+        
+        
+        
+        /* .breakdefault {
+            background-color:$red;
+        opacity:1;
+        height:1px;
+        width:30px;
+        margin:0 0 60px 0;
+        display:block;
+            float:right;
+             position:relative;
+             right:0;
+        
+        }*/
+      
     }
 }
 
@@ -425,9 +671,15 @@ h3, h4 {
 
 // CONTENT CONTAINER //
 // ---------------------------------------------------------
+
 #content-wrapper {
     width:100%;
+     overflow:hidden;
+    position:relative;
    /* font-size:0;*/ // fix for whitespace between divs //
+    &.hideUntilLoaded {
+        display:none;
+    }
     }
 
 .flash {
@@ -435,7 +687,7 @@ h3, h4 {
     width:30%;
     position:absolute;
     z-index:-1;
-    background:red;
+    background:$red;
         -webkit-animation: wipeRight 0.8s;
     animation: wipeRight 0.8s;
     -webkit-animation-fill-mode: forwards;
@@ -581,7 +833,16 @@ h3, h4 {
     @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
         width:90%;
         margin-left:5%;
-        opacity:0.6;
+       /* opacity:1;
+        -webkit-animation: panLeft 5s;
+        animation: panLeft 5s;
+        -webkit-animation-delay: 4s;
+         animation-delay: 4s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;*/
+    }
+    @media only screen and (max-width:$breakpointMobilePortrait) and (min-height:$breakpointMinHeight){
+        margin-left:-50%;
     }
     
     .lead-photo-bg {
@@ -606,19 +867,38 @@ h3, h4 {
               opacity:0;
          -webkit-animation: fadeIn 1.5s;
          animation: fadeIn 1.5s;
-    -webkit-animation-fill-mode: forwards;
+          -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 1s;
-    animation-delay: 1s;  
+    animation-delay: 1s;
+               @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
+              -webkit-animation: fadeInSemi 1.5s;
+              animation: fadeInSemi 1.5s;
+              -webkit-animation-fill-mode: forwards;
+              animation-fill-mode: forwards;
+              -webkit-animation-delay: 1s;
+              animation-delay: 1s;
+                   
+               }
+     
             }
             &.hide {
-              opacity:1;
+              opacity:0.6;
          -webkit-animation: fadeOut 1.5s;
          animation: fadeOut 1.5s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+            @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
+              -webkit-animation: fadeOutSemi 1.5s;
+         animation: fadeOutSemi 1.5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
     animation-delay: 0s;  
+                
+            }
             }
         }
         
@@ -637,16 +917,34 @@ h3, h4 {
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 3s;
-    animation-delay: 3s;  
+    animation-delay: 3s; 
+                 @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
+                 -webkit-animation: fadeInSemi 2s;
+         animation: fadeInSemi 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 3s;
+    animation-delay: 3s; 
+                 }
+                 /*@media only screen and (max-width:$breakpointMobilePortrait) and (min-height:$breakpointMinHeight){display:none;}*/
             }
             &.hide {
-              opacity:1;
+              opacity:0.6;
          -webkit-animation: fadeOut 1.5s;
          animation: fadeOut 1.5s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 0s;
-    animation-delay: 0s;  
+    animation-delay: 0s; 
+                 @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
+                     -webkit-animation: fadeOutSemi 1.5s;
+         animation: fadeOutSemi 1.5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s; 
+                }
+                @media only screen and (max-width:$breakpointMobilePortrait) and (min-height:$breakpointMinHeight){display:none;}
             }
         }
     }
@@ -720,18 +1018,144 @@ h3, h4 {
     // lead content lyrics, titles //
     .lead-content-holder {
        width: 50%;
-       height: auto;
+       /*height: auto;*/
+       height:100%;
        position:absolute;
-       top: 25%;
+       top: 0%;
        right: 10%;
-       bottom:0;
+       /*bottom:0;*/
        text-align:center;
         overflow:hidden;
         z-index: 2;
+        background-image:url('../img/linebg.png');
+        background-repeat: repeat;
         @media only screen and (max-width: $breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
-            width: 70%;
-            right: 15%;}
-         @media only screen and (max-height:$breakpointMinHeight){top: 20%;}
+            /*top:22%;*/
+            top:0%;
+            width: 100%;
+            right: 0%;
+            background-image:none;}
+        @media only screen and (max-width: $breakpointMobilePortrait) and (min-height:$breakpointMinHeight){
+            top:0%;
+            background-image:none;
+        }
+         @media only screen and (max-height:$breakpointMinHeight){top: 0%;}
+        
+        &.animateIntro {
+            top:-100%;
+            opacity:0;
+             -webkit-animation: leadReveal 2s;
+    animation: leadReveal 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+            -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;  
+    -webkit-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
+   -moz-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
+     -o-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
+        animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165); /* custom */
+        }
+        
+        &.hide {
+            -webkit-animation: fadeOut 2s;
+    animation: fadeOut 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards; 
+        }
+        
+        .lead-art {
+            display:block;
+            position:relative;
+            margin-top:20%;
+            margin-top:20vh;
+            margin-bottom:40px;
+            margin-bottom:6%;
+            width:100%;
+            margin-left:auto;
+            margin-right:auto;
+             padding-top:40%;
+            opacity:1;
+           /* width:360px;
+            height:auto;*/
+            -webkit-transition: opacity 0.3s ease;
+            -moz-transition: opacity 0.3s ease;
+            -ms-transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease;
+            @media only screen and (max-width: $breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
+                margin-bottom:3%;
+              padding-top:20%;  
+            }
+            @media only screen and (max-width: $breakpointDesktopSmall) and (min-height:$breakpointMidHeight){
+                margin-top: 34%;
+                margin-top: 25vh; 
+                margin-bottom:4%;
+              padding-top:30%;  
+            }
+            @media only screen and (max-width: $breakpointMobilePortrait) and (min-height:$breakpointMinHeight){
+                margin-top: 36%;
+                margin-top: 24vh; 
+                margin-bottom:5%;
+              padding-top:40%;  
+            }
+        
+        #fifteenyears {
+            /*width:360px;
+            height:312px;*/
+            height:100%;
+            width:100%;
+            position: absolute;
+            top:0;
+            left:27%;
+            display:block;
+              @media only screen and (max-width: $breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
+                width:23%;
+                left:38%;
+            }
+             @media only screen and (max-width: $breakpointDesktopSmall) and (min-height:$breakpointMidHeight){
+                width:46%;
+                left:32%;
+            }
+            @media only screen and (max-width: $breakpointMobilePortrait) and (min-height:$breakpointMinHeight){
+               width: 43%;
+               left: 27%;  
+            }
+            
+            
+            #fifteen {
+               /* position:relative;
+                top:0;
+                left:0;
+                width:100%;
+                height:auto;*/
+            }
+            
+            #year {
+                /*position:absolute;
+                top:0;
+                left:0;
+                width:100%;
+                height:auto;*/
+            }
+            }
+           
+            
+            &.animateIntro {
+                opacity:0;
+                 -webkit-animation: fadeIn 1s;
+          animation: fadeIn 1s;
+          -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+            -webkit-animation-delay: 4s;
+          animation-delay: 4s;    
+            }
+            
+            &.hide {
+                 -webkit-animation: fadeOut 2s;
+    animation: fadeOut 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+            }
+        }
 
         .lead-title {
           height:auto;
@@ -759,8 +1183,8 @@ h3, h4 {
           animation-fill-mode: forwards;
           /*-webkit-animation-delay: 2s;
           animation-delay: 2s;*/
-          -webkit-animation-delay: 3s;
-          animation-delay: 3s;
+            -webkit-animation-delay: 3s;
+          animation-delay: 3s;    
                   @media only screen and (max-width:$breakpointDesktopLarge) {font-size:$font-size-h1-md;}
                    @media only screen and (max-width:$breakpointMobilePortrait) {font-size:$font-size-h1-sm;}
                    @media only screen and (max-height:$breakpointMinHeight) {font-size:$font-size-h1-sm;}
@@ -784,12 +1208,19 @@ h3, h4 {
         opacity:1;
         height:2px;
         width:50px;
-        margin-bottom:40px;
+        margin-bottom:6%;
         display:block;
         position: relative;
         left: 50%;
         left: calc(50% - 25px);
-             @media only screen and (max-height:$breakpointMinHeight) {display:none;}
+            @media only screen and (max-height:$breakpointMinHeight) {display:none;}
+            @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight) {margin-bottom:3%;}
+            @media only screen and (max-width: $breakpointDesktopSmall) and (min-height:$breakpointMidHeight){
+                margin-bottom:6%; 
+            }
+            @media only screen and (max-width: $breakpointMobilePortrait) and (min-height:$breakpointMinHeight){
+                margin-bottom:8%;  
+            }
         }
 
         .hidebreak {
@@ -839,10 +1270,17 @@ h3, h4 {
         h4 {
             opacity:0;
             margin-bottom:80px;
-            margin-bottom:12%;
+            margin-bottom:6%;
             color:$white;
             font-size:$font-size-h4;
              @media only screen and (max-height:$breakpointMinHeight) {display:none;}
+             @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight) {margin-bottom:3%;}
+            @media only screen and (max-width: $breakpointDesktopSmall) and (min-height:$breakpointMidHeight){
+                margin-bottom:6%; 
+            }
+             @media only screen and (max-width: $breakpointMobilePortrait) and (min-height:$breakpointMinHeight){
+                margin-bottom:8%;  
+            }
 
             &.introTitle {
             -webkit-animation: fadeIn 0.6s;
@@ -913,16 +1351,19 @@ h3, h4 {
             overflow:hidden;
             cursor:pointer;
             z-index:1;
+            -webkit-appearance: none;
+            -moz-appearance:    none;
+            -webkit-user-select: none;
+            user-select: none;
             @media only screen and (max-width:$breakpointMobilePortrait) {width:220px;}
             @media only screen and (max-width:$breakpointDesktopSmall) and (max-height:$breakpointMinHeight) {width:180px;}
 
      &.smaller {
          width:160px;
      }
-
-     &.animate {
-
-         &:before {
+     
+     
+        &:before {
         content: '';
          width:280px;
          height:54px;
@@ -932,7 +1373,7 @@ h3, h4 {
         background-color: $white;
           display:block;
          z-index: -1;
-         opacity: 0;
+         opacity: 1;
          -webkit-transform: skewX(50deg);
         -moz-transform: skewX(50deg);
          -o-transform: skewX(50deg);
@@ -941,6 +1382,21 @@ h3, h4 {
          -moz-transition: all 0.3s ease;
          -ms-transition: all 0.3s ease;
          transition: all 0.3s ease;
+    
+        }
+
+     &:hover:before {
+         left:0px;
+           -webkit-transform: skewX(0deg);
+        -moz-transform: skewX(0deg);
+         -o-transform: skewX(0deg);
+        transform: skewX(0deg);
+     }
+
+     &.animate {
+
+         &:before {
+             opacity: 0;
          -webkit-animation: fadeIn 0.8s;
          animation: fadeIn 0.8s;
     -webkit-animation-fill-mode: forwards;
@@ -950,10 +1406,6 @@ h3, h4 {
         }
 
      &:hover:before {
-         /*-webkit-transform:translateX(0px);
-          -moz-transform:translateX(0px);
-          -ms-transform:translateX(0px);
-          transform:translateX(0px);*/
          left:0px;
            -webkit-transform: skewX(0deg);
         -moz-transform: skewX(0deg);
@@ -967,37 +1419,17 @@ h3, h4 {
       &.animate-no-delay {
 
          &:before {
-          content: '';
-         width:280px;
-         height:54px;
-         top:0;
-         left:320px;
-          position:absolute;
-        background-color: $white;
-          display:block;
-         z-index: -1;
-         opacity: 0;
-         -webkit-transform: skewX(50deg);
-        -moz-transform: skewX(50deg);
-         -o-transform: skewX(50deg);
-        transform: skewX(50deg);
-          -webkit-transition: all 0.3s ease;
-         -moz-transition: all 0.3s ease;
-         -ms-transition: all 0.3s ease;
-         transition: all 0.3s ease;
+             opacity: 0;
          -webkit-animation: fadeIn 0.8s;
          animation: fadeIn 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 0s;
              animation-delay: 0s;
+             -webkit-transform-style: preserve-3d;
         }
 
      &:hover:before {
-         /*-webkit-transform:translateX(0px);
-          -moz-transform:translateX(0px);
-          -ms-transform:translateX(0px);
-          transform:translateX(0px);*/
          left:0px;
            -webkit-transform: skewX(0deg);
         -moz-transform: skewX(0deg);
@@ -1014,88 +1446,116 @@ h3, h4 {
 
 
     .btn-top {
-         width:0%;
+         width:100%;
          height:1px;
          top:0;
          left:0;
         background-color: $white;
          display:block;
          position:absolute;
-        &.animate { -webkit-animation: featureBtnTop 0.8s;
+        -webkit-transform-style: preserve-3d;
+        &.animate { 
+            width:0%;
+            -webkit-animation: featureBtnTop 0.8s;
          animation: featureBtnTop 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 3.6s;
-            animation-delay: 3.6s;}
-        &.animate-no-delay { -webkit-animation: featureBtnTop 0.8s;
+            animation-delay: 3.6s;
+        -webkit-transform-style: preserve-3d;}
+       &.animate-no-delay { 
+            width:0%;
+           -webkit-animation: featureBtnTop 0.8s;
          animation: featureBtnTop 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 0s;
-            animation-delay: 0s;}
+            animation-delay: 0s;
+        -webkit-transform-style: preserve-3d;}
      }
      .btn-right {
          width:1px;
-         height:0%;
+         height:100%;
          top:0;
          right:0;
          background-color: $white;
          display:block;
          position:absolute;
-          &.animate { -webkit-animation: featureBtnRight 0.8s;
+         -webkit-transform-style: preserve-3d;
+          &.animate { 
+               height:0%;
+              -webkit-animation: featureBtnRight 0.8s;
          animation: featureBtnRight 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 3.6s;
-              animation-delay: 3.6s;}
-         &.animate-no-delay { -webkit-animation: featureBtnRight 0.8s;
+              animation-delay: 3.6s;
+         -webkit-transform-style: preserve-3d;}
+         &.animate-no-delay { 
+             height:0%;
+             -webkit-animation: featureBtnRight 0.8s;
          animation: featureBtnRight 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 0s;
-              animation-delay: 0s;}
+              animation-delay: 0s;
+         -webkit-transform-style: preserve-3d;}
      }
      .btn-bottom {
-         width:0%;
+         width:100%;
          height:1px;
          bottom: 0;
          left: 0;
          background-color: $white;
          display:block;
          position:absolute;
-         &.animate { -webkit-animation: featureBtnBottom 0.8s;
+         -webkit-transform-style: preserve-3d;
+         &.animate { 
+             width:0%;
+             -webkit-animation: featureBtnBottom 0.8s;
          animation: featureBtnBottom 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 3.6s;
-             animation-delay: 3.6s; }
-         &.animate-no-delay { -webkit-animation: featureBtnBottom 0.8s;
+             animation-delay: 3.6s;
+         -webkit-transform-style: preserve-3d;}
+        &.animate-no-delay {
+             width:0%;
+            -webkit-animation: featureBtnBottom 0.8s;
          animation: featureBtnBottom 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 0s;
-             animation-delay: 0s; }
+             animation-delay: 0s;
+         -webkit-transform-style: preserve-3d;}
      }
      .btn-left {
           width:1px;
-         height:0%;
+         height:100%;
          top:0;
          left:0;
          background-color: $white;
          display:block;
          position:absolute;
-          &.animate { -webkit-animation: featureBtnLeft 0.8s;
+         -webkit-transform-style: preserve-3d;
+          &.animate { 
+               height:0%;
+              -webkit-animation: featureBtnLeft 0.8s;
          animation: featureBtnLeft 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 3.6s;
-              animation-delay: 3.6s;}
-         &.animate-no-delay { -webkit-animation: featureBtnLeft 0.8s;
+              animation-delay: 3.6s;
+         -webkit-transform-style: preserve-3d;}
+         &.animate-no-delay {
+              height:0%;
+             -webkit-animation: featureBtnLeft 0.8s;
          animation: featureBtnLeft 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 0s;
-              animation-delay: 0s;}
+              animation-delay: 0s;
+         -webkit-transform-style: preserve-3d;}
      }
      .btn-text {
          color:$white;
@@ -1103,19 +1563,27 @@ h3, h4 {
             font-family: $font-family-sans-serif;
             text-transform:uppercase;
             line-height: 54px;
-            opacity:0;
-           &.animate { -webkit-animation: fadeIn 0.8s;
+         letter-spacing:0.2em;
+            opacity:1;
+         -webkit-transform-style: preserve-3d;
+           &.animate { 
+               opacity:0;
+               -webkit-animation: fadeIn 0.8s;
          animation: fadeIn 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 3.8s;
-               animation-delay: 3.8s;}
-         &.animate-no-delay { -webkit-animation: fadeIn 0.8s;
+               animation-delay: 3.8s;
+         -webkit-transform-style: preserve-3d;}
+         &.animate-no-delay {
+             opacity:0;
+             -webkit-animation: fadeIn 0.8s;
          animation: fadeIn 0.8s;
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 0s;
-               animation-delay: 0s;}
+               animation-delay: 0s;
+         -webkit-transform-style: preserve-3d;}
      }
      &:hover .btn-text {color:$dark-grey;}
 
@@ -1224,8 +1692,11 @@ h3, h4 {
     overflow:hidden;
 
     &.show {
+        /*background-color:#890017;*/
+        background-color:$red;
+        display:block;
         height:100%;
-        top:100%;
+        top:100%; 
         -webkit-animation: wipeBottom 1s;
          animation: wipeBottom 1s;
     -webkit-animation-fill-mode: forwards;
@@ -1258,6 +1729,20 @@ h3, h4 {
         height:100%;
         display:block;
         font-size: 0; /*removes the whitespace between divs*/
+        position:absolute;
+        
+        
+       /* &.active {
+            opacity:0.6;
+            -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+            -ms-transition: all 1s ease;
+            transition: all 1s ease;
+            -webkit-transform:scale(0.9, 0.9);
+            -moz-transform:scale(0.9, 0.9);
+            -ms-transform:scale(0.9, 0.9);
+            transform:scale(0.9, 0.9);
+        }*/
 
         .slide-container {
          overflow: hidden;
@@ -1265,13 +1750,49 @@ h3, h4 {
          display: block;
          width: 100%;
          height: 100%;
-             /*overflow-x:scroll;*/ /* scrollbar */
-
-             /* make it smooth on iOS */
-  -webkit-overflow-scrolling: touch;
+         z-index:1;
+         /*overflow-x:scroll;*/ /* scrollbar */
+         /* make it smooth on iOS */
+         -webkit-overflow-scrolling: touch;
+             opacity:1;
+        -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+            -ms-transition: all 1s ease;
+            transition: all 1s ease;
+            
+            &.scale {
+                opacity:1;
+                 -webkit-transform:scale(1, 1);
+            -moz-transform:scale(1, 1);
+            -ms-transform:scale(1, 1);
+            transform:scale(1, 1);
+        -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+            -ms-transition: all 1s ease;
+            transition: all 1s ease;
+                
+                &.active {
+            opacity:0.6;
+            -webkit-transition: all 1s ease;
+            -moz-transition: all 1s ease;
+            -ms-transition: all 1s ease;
+            transition: all 1s ease;
+            -webkit-transform:scale(0.9, 0.9);
+            -moz-transform:scale(0.9, 0.9);
+            -ms-transform:scale(0.9, 0.9);
+            transform:scale(0.9, 0.9);
+            }
+                
+            }
+            
+            // fix for col width issue on browser resize when scale is used //
+            &.active-fix {
+            opacity:1; 
+        }
 
         .slide-holder {
-             position: relative;
+             /*position: relative;*/
+            position:absolute;
          display: block;
             left:0;
             -webkit-transition: all 0.8s ease;
@@ -1280,15 +1801,15 @@ h3, h4 {
          transition: all 0.8s ease;
          /*width: 100%;*/
          height: 100%;
-            cursor:move;
+            /*cursor:move;
             cursor:grab;
             cursor:-moz-grab;
             cursor:-webkit-grab;
             touch-action: pan-x;
-            -webkit-user-select: none;  /* Chrome all / Safari all */
-            -moz-user-select: none;     /* Firefox all */
-            -ms-user-select: none;      /* IE 10+ */
-            user-select: none;
+            -webkit-user-select: none;  
+            -moz-user-select: none;     
+            -ms-user-select: none;      
+            user-select: none;*/
 
 
         .col {
@@ -1299,6 +1820,7 @@ h3, h4 {
             width:33.333vw;
             display:inline-block;
             text-align:center;
+            overflow:hidden;
             @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
             width:100%;
             width:100vw;
@@ -1312,15 +1834,94 @@ h3, h4 {
             &.show {}
 
             &.hide {}
+            
+            @mixin col-bg-img {
+                position:absolute;
+                 top:0;
+                 left:0;
+                 width:100%;
+                 height:100%;
+                 display: block;
+            }
+            
+              @mixin col-img-animate {
+                opacity:0;
+                    -webkit-animation: fadeIn 1s;
+                    animation: fadeIn 1s;
+                   -webkit-animation-fill-mode: forwards;
+                    animation-fill-mode: forwards;
+                   -webkit-animation-delay: 1s;
+                    animation-delay: 1s;
+            }
 
             &.col-one{
-                background-color:$dark-grey-darken;
+                background-color:#890017;
+               /* background-image: url('../img/discover-bg-1v2.png');*/
+                background-image: none;
+                background-size:cover;
+                // IE 10 AND 11 HACK TO FIX COL WIDTH ISSUE //
+                @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
+                margin-left:-1px;
+                } // END OF HACK //
+                @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
+                     /*background-image: url('../img/discover-bg-1v2mobile.png');*/
+                }
+                
+                .col-img {
+                    @include col-bg-img;
+                    
+                    &.animate {
+                    @include col-img-animate;
+                    }
+                    
+                    img {
+                     width:100%;
+                     height:auto;
+                     min-height: 100%;
+                    }
+                }
+                
             }
             &.col-two{
-                background-color:$teal;
+                background-color:#6f0214;
+                /*background-image: url('../img/discover-bg-2v2.png');*/
+                background-size:cover;
+                @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
+                     /*background-image: url('../img/discover-bg-2v2mobile.png');*/
+                }
+                .col-img {
+                        @include col-bg-img; 
+                    
+                    &.animate {
+                    @include col-img-animate;
+                    }
+                        img {
+                            width:100%;
+                            height:auto;
+                            min-height: 100%;
+                        }
+                    }
             }
             &.col-three{
-                background-color:$maroon;
+                background-color:#890017;
+                /*background-image: url('../img/discover-bg-3v2.png');*/
+                background-size:cover;
+                @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
+                     /*background-image: url('../img/discover-bg-3v2mobile.png');*/
+                }
+                .col-img {
+                        @include col-bg-img; 
+                    
+                    &.animate {
+                    @include col-img-animate;
+                    }
+                    
+                        img {
+                            width:100%;
+                            height:auto;
+                            min-height: 100%;
+                        }
+                    }
             }
             &.col-four{
                 background-color:$dark-grey-darken;
@@ -1334,18 +1935,22 @@ h3, h4 {
 
             .col-content {
               position:absolute;
-                top:20%;
+                /*top:20%;*/
+                top:35%;
                 width:100%;
                 height:auto;
+                @media only screen and (max-width:$breakpointMobilePortrait) {
+                top:45%; 
+                }
 
               h3 {
               color:$white;
               font-size:$font-size-h3;
                   padding:20px;
                   margin:20px 0;
-                   @media only screen and (max-width:$breakpointDesktopSmall) and (max-height:$breakpointMinHeight){
-             display:none;
-            }
+                  @media only screen and (max-width:$breakpointDesktopLarge) and (min-width:$breakpointDesktopSmall) {font-size:$font-size-h3-md;}                 
+                   @media only screen and (max-width:$breakpointDesktopSmall) and (max-height:$breakpointMinHeight){display:none;}
+                  @media only screen and (max-width:$breakpointMobilePortrait) {font-size:$font-size-h3;} 
               }
 
               img {
@@ -1452,12 +2057,160 @@ h3, h4 {
             }
 
      } // end slide container //
+        
+        .music-container {
+            display:block;
+            position:absolute;
+            width:100%;
+            height:100%;
+            background-color:$dark-grey;
+            top:100%;
+            left:0;
+            z-index:2;
+            overflow-x:hidden;
+            overflow-y:auto;
+            -webkit-transition:all 1s ease;
+                -moz-transition:all 1s ease;
+                -ms-transition:all 1s ease;
+                transition:all 1s ease;
+            
+            &.active {
+                top:0%;
+                -webkit-transition:all 1s ease;
+                -moz-transition:all 1s ease;
+                -ms-transition:all 1s ease;
+                transition:all 1s ease;
+                
+            }
+            
+            /*.slick-slider {
+              height:60%;
+                
+                .slick-list {
+                    height:100%;
+                    
+                    .slick-track {
+                        height:100%;
+                    }
+                }
+            }*/
+            
+            .video-holder {
+                margin-top:10vh;
+                
+                 .slick-prev {
+                  left: 5%;
+                  z-index: 1;
+                  }
+                
+                .slick-next {
+                  right: 5%;
+                  z-index: 1;
+                  }
+                
+                .slick-dots li button:before {
+                    color:$white
+                }
+                
+                .slick-dots li.slick-active button:before {
+                color:$white;
+                 }
+               
+                
+                .slicktest {
+                    width:200px;
+                    margin:20px;
+                    height:auto;
+                    display:block;
+                    opacity:0.3;
+                    
+                    .video-title {
+                        width:100%;
+                        height:auto;
+                        display:block;
+                        text-align:center;
+                        opacity:0;
+                        -webkit-transition:all 1s ease;
+                        -moz-transition:all 1s ease;
+                        -ms-transition:all 1s ease;
+                        transition:all 1s ease;
+                        
+                        
+                        h3 {
+                            color:$white;
+                            font-size: 18px;
+                            line-height:24px;
+                            text-transform: none;
+                           margin-bottom:4%; 
+                        }
+                        
+                      .redline {
+                              background-color:$red;
+                              opacity:1;
+                              height:2px;
+                              width:50px;
+                             display:block;
+                          position:relative;
+                          left:50%;
+                          left: calc(50% - 50px);
+                          margin-bottom:4%;
+                             
+                           /* @media only screen and (max-height:$breakpointMinHeight) {display:none;}
+                           @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight) {margin-bottom:3%;}
+                             @media only screen and (max-width: $breakpointDesktopSmall) and (min-height:$breakpointMidHeight){
+                             margin-bottom:6%; 
+                                }
+                               @media only screen and (max-width: $breakpointMobilePortrait) and (min-height:$breakpointMinHeight){
+                                 margin-bottom:8%;  
+                                }*/
+                        }
+                    }
+                   
+                  
+                    &.slick-center {
+                        opacity:1;
+                        
+                        .video-title {opacity:1;}
+                     
+                    }
+                   
+                }
+               
+               /* display:block;
+                width:50%;
+                height:auto;
+                position:relative;
+                margin-top:10vh;
+                margin-bottom:10vh;
+                margin-left:auto;
+                margin-right:auto;
+                  @media only screen and (max-width:$breakpointDesktopSmall) and (min-height:$breakpointMinHeight){
+                 width:70%; 
+              }
+                @media only screen and (max-width:$breakpointMobilePortrait) and (min-height:$breakpointMinHeight){
+                 width:80%; 
+              }*/
+                  
+                
+               
+            }
+        }
 
     }  // end discover container //
 }
 
 
 // END OF DISCOVER SECTION //
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1530,18 +2283,18 @@ h3, h4 {
 
    @-webkit-keyframes fadeInSemi {
      0% {opacity:0;}
-     100% {opacity:0.1;}
+     100% {opacity:0.6;}
  }
  @keyframes fadeInSemi {
      0% {opacity:0;}
-     100% {opacity:0.1;}
+     100% {opacity:0.6;}
  }
    @-webkit-keyframes fadeOutSemi {
-     0% {opacity:0.2;}
+     0% {opacity:0.6;}
      100% {opacity:0;}
  }
  @keyframes fadeOutSemi {
-     0% {opacity:0.2;}
+     0% {opacity:0.6;}
      100% {opacity:0;}
  }
 
@@ -1601,31 +2354,104 @@ h3, h4 {
  }
 
 @-webkit-keyframes slideDown {
-     0% {transform:translateY(-100px);}
-     100% {transform:translateY(0px);}
+     0% {-webkit-transform:translateY(-100px);
+         -moz-transform:translateY(-100px);
+         -ms-transform:translateY(-100px);
+         transform:translateY(-100px);}
+     100% {-webkit-transform:translateY(0px);
+         -moz-transform:translateY(0px);
+         -ms-transform:translateY(0px);
+         transform:translateY(0px);}
  }
  @keyframes slideDown {
-     0% {transform:translateY(-100px);}
-     100% {transform:translateY(0px);}
+     0% {-webkit-transform:translateY(-100px);
+         -moz-transform:translateY(-100px);
+         -ms-transform:translateY(-100px);
+         transform:translateY(-100px);}
+     100% {-webkit-transform:translateY(0px);
+         -moz-transform:translateY(0px);
+         -ms-transform:translateY(0px);
+         transform:translateY(0px);}
  }
 
+// Nav Icon //
 @-webkit-keyframes navRevealFirst {
-     0% {top:14px;}
+     0% {top:16px;}
      100% {top:0;}
  }
  @keyframes navRevealFirst {
-     0% {top:14px;}
+     0% {top:16px;}
      100% {top:0;}
  }
 
 @-webkit-keyframes navRevealSecond {
-     0% {top:14px;}
-     100% {top:7px;}
+     0% {top:16px;}
+     100% {top:8px;}
  }
  @keyframes navRevealSecond {
-     0% {top:14px;}
-     100% {top:7px;}
+     0% {top:16px;}
+     100% {top:8px;}
  }
+
+@-webkit-keyframes navBottom {
+     0% {top:16px;
+         -webkit-transform:rotate(0deg);
+         -moz-transform:rotate(0deg);
+         -ms-transform:rotate(0deg);
+         transform:rotate(0deg);
+    }
+     100% {top:8px;
+         -webkit-transform:rotate(-320deg);
+         -moz-transform:rotate(-320deg);
+         -ms-transform:rotate(-320deg);
+         transform:rotate(-320deg);
+    }
+ }
+ @keyframes navBottom {
+       0% {top:16px;
+         -webkit-transform:rotate(0deg);
+         -moz-transform:rotate(0deg);
+         -ms-transform:rotate(0deg);
+         transform:rotate(0deg);
+    }
+     100% {top:8px;
+         -webkit-transform:rotate(-320deg);
+         -moz-transform:rotate(-320deg);
+         -ms-transform:rotate(-320deg);
+         transform:rotate(-320deg);
+    }
+ }
+
+@-webkit-keyframes navTop {
+     0% {top:0px;
+         -webkit-transform:rotate(0deg);
+         -moz-transform:rotate(0deg);
+         -ms-transform:rotate(0deg);
+         transform:rotate(0deg);
+    }
+     100% {top:8px;
+    -webkit-transform:rotate(320deg);
+         -moz-transform:rotate(320deg);
+         -ms-transform:rotate(320deg);
+         transform:rotate(320deg);
+    }
+ }
+ @keyframes navTop {
+      0% {top:0px;
+         -webkit-transform:rotate(0deg);
+         -moz-transform:rotate(0deg);
+         -ms-transform:rotate(0deg);
+         transform:rotate(0deg);
+    }
+     100% {top:8px;
+    -webkit-transform:rotate(320deg);
+         -moz-transform:rotate(320deg);
+         -ms-transform:rotate(320deg);
+         transform:rotate(320deg);
+    }
+ }
+
+// End Nav Icon //
 
  @-webkit-keyframes textFadeIn {
      0% {opacity:0; visibility:visible;
@@ -1656,6 +2482,28 @@ h3, h4 {
      0% {height:0px;}
      100% {height:4px;}
  }
+
+
+// lead content panel //
+@-webkit-keyframes leadReveal {
+    0% {top:-100%; opacity:0;}
+    100% {top:0%; opacity:1;}
+}
+@keyframes leadReveal {
+    0% {top:-100%; opacity:0;}
+    100% {top:0%; opacity:1;}
+}
+
+
+// lead photo movement //
+@-webkit-keyframes panLeft {
+    0% {margin-left:5%;}
+    100% {margin-left:-50%;}
+}
+@keyframes panLeft {
+    0% {margin-left:5%;}
+    100% {margin-left:-50%;}
+}
 
 
 // Feature Btn Animation
