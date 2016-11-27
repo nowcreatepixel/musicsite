@@ -3,7 +3,11 @@
 
   <head>
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="theme-color" content="#010a12" />
      <link rel="stylesheet" href="css/main.css">
+       <link rel="stylesheet" href="css/embed.min.css">
+      <link rel="stylesheet" href="slick/slick.css">
+      <link rel="stylesheet" href="slick/slick-theme.css">
       <title>Craig Music Site</title>
 
 <script src="https://use.fontawesome.com/ede3789654.js"></script>
@@ -42,8 +46,8 @@
           <p>One moment..</p>
       </div>
 
-  <div id="top-nav-logo">
-      <div class="mainlogo">
+  <div id="top-nav-logo" class="hideUntilLoaded">
+      <div class="mainlogo introAnimate">
         <svg version="1.1" id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
          viewBox="164.778 212.14 134.917 29">
 <polygon id="shape" fill="#FFFFFF" points="228.969,212.265 228.969,241.265 224.969,241.14 224.969,212.14">
@@ -84,33 +88,40 @@
 </svg>
 
       </div>
-           <div id="navtoggle">
+           <div id="navtoggle" class="introAnimation">
           <span class="ham-top"></span>
           <span class="ham-mid-1"></span>
-          <span class="ham-mid-2"></span>
           <span class="ham-bottom"></span>
           </div>
     </div>
       
-      <div id="nav-menu-holder">
+
+  <section id="content-wrapper" class="hideUntilLoaded">
+      
+        <div id="nav-menu-holder">
           <div class="nav-menu-content">
               <div class="nav-title">
                   <p>Menu</p>
               </div>
+              <span class="breakdefault break"></span>
               <div class="nav-items">
-                  <a href="#discover">Discover</a>
+                  <a href="#discover" class="nav-discover">Discover</a>
                   <a href="#">About</a>
                   <a href="#">Contact</a>
               </div>
-              <div class="nav-social"></div>
+              <span class="breakdefault break"></span>
+              <div class="nav-social">
+                  <li><i class="fa fa-soundcloud"></i></li>
+                  <li><i class="fa fa-facebook"></i></li>
+                  <li><i class="fa fa-twitter"></i></li>
+              </div>
+              <span class="breakdefault break"></span>
               <div class="nav-credits">
-                  <p>All music copyright Craig Fagan.
+                  <p>All music copyright Craig Fagan.<br/>
                   Photography by Jim Armstrong</p>
               </div>
           </div>
       </div>
-
-  <section id="content-wrapper">
 
     <!--<div class="lead-photo">
      <div class="photo-holder first-image"><span></span></div>
@@ -139,12 +150,54 @@
           </div>
       </div>
        
-       <div class="lead-content-holder">
-          <div class="lead-title">
-          <h1 class="introLyric hide">Let's lose ourselves in a Universal Sky</h1>
+       <div class="lead-content-holder animateIntro">
+         <!-- <div class="lead-title">
+          <h1 class="introLyric hide">Lose ourselves in a Universal Sky</h1>
+           </div>-->
+           
+           
+           <div class="lead-art animateIntro">
+           <svg version="1.1" id="fifteenyears" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 360 312" preserveAspectRatio="xMinYMin meet">
+<g id="fifteen">
+	<path fill="#CC0808" d="M0,48.078C20.919,37.802,37.434,31.93,64.226,0h65.327v207.725h34.131v48.812H16.882v-48.812h36.701V71.566
+		L16.882,88.815L0,48.078z"/>
+	<path fill="#CC0808" d="M160.01,218.899l40.003-41.472c14.313,14.681,30.095,27.159,51.381,27.159
+		c24.589,0,40.37-15.415,40.37-36.701c0-19.451-16.515-35.599-37.434-35.599c-16.883,0-26.792,8.808-34.499,16.882l-46.977-20.919
+		L195.243,2h145.333v54.684h-98.724l-6.239,35.6c7.34-4.771,21.653-8.808,39.637-8.808c42.939,0,85.512,30.094,85.512,86.98
+		c0,61.657-56.519,92.853-109.734,92.853C213.959,263.308,175.057,241.654,160.01,218.899z"/>
+</g>
+<g id="years">
+	<path fill="#FFFFFF" d="M37.781,312.06H26.342V291.82L8.596,260.802h12.393l11.073,19.065l11.073-19.065h12.393L37.781,291.82
+		V312.06z"/>
+	<path fill="#FFFFFF" d="M122.651,260.802v10.192H97.132v10.56h22.952v9.753H97.132v10.634h26.326v10.119H85.692v-51.258H122.651z"
+		/>
+	<path fill="#FFFFFF" d="M195.833,312.06l-4.766-11.073h-21.486l-4.767,11.073h-12.173l22.146-51.258h11.073l22.146,51.258H195.833z
+		 M180.361,276.055l-6.453,14.886h12.833L180.361,276.055z"/>
+	<path fill="#FFFFFF" d="M280.19,277.814c0,8.213-3.252,13.518-9.753,15.912l12.979,18.333h-14.079l-11.366-16.353h-7.92v16.353
+		h-11.439v-51.258h19.433c7.968,0,13.65,1.345,17.049,4.033C278.491,267.524,280.19,271.851,280.19,277.814z M266.404,283.9
+		c1.417-1.271,2.127-3.287,2.127-6.05c0-2.761-0.733-4.656-2.2-5.683s-4.033-1.54-7.7-1.54h-8.579v15.18h8.359
+		C262.322,285.808,264.985,285.173,266.404,283.9z"/>
+	<path fill="#FFFFFF" d="M328.578,271.031c-1.1,0.905-1.649,2.103-1.649,3.593c0,1.492,0.671,2.677,2.016,3.557
+		s4.448,1.92,9.313,3.117c4.864,1.198,8.641,2.995,11.329,5.39c2.688,2.396,4.033,5.892,4.033,10.486
+		c0,4.596-1.723,8.322-5.169,11.183c-3.447,2.859-7.982,4.29-13.604,4.29c-8.115,0-15.425-3.007-21.926-9.02l6.82-8.36
+		c5.523,4.84,10.633,7.26,15.326,7.26c2.101,0,3.751-0.451,4.949-1.356c1.197-0.904,1.797-2.127,1.797-3.666
+		c0-1.54-0.636-2.762-1.907-3.667c-1.271-0.904-3.789-1.82-7.553-2.75c-5.965-1.417-10.328-3.263-13.089-5.536
+		c-2.763-2.273-4.144-5.842-4.144-10.706s1.747-8.616,5.243-11.257c3.494-2.64,7.857-3.96,13.09-3.96
+		c3.421,0,6.844,0.587,10.266,1.761c3.422,1.173,6.404,2.835,8.946,4.986l-5.793,8.359c-4.449-3.373-9.045-5.06-13.786-5.06
+		C331.181,269.675,329.677,270.127,328.578,271.031z"/>
+</g>
+
+</svg>
+           
+           
+           
            </div>
-           <span class="breakdefault break"></span>
+           
+           
+           
+           
            <h4 class="introTitle">Universal Sky 2015</h4>
+           <span class="breakdefault break"></span>
             <div class="feature-btn-holder intro">
            <a class="feature-btn animate">
                <span class="btn-top animate"></span>
@@ -196,6 +249,8 @@
 <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
 <!--CDN link for GSAP TweenMax-->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+<script type="text/javascript" src="js/embed.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/utils/Draggable.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 
