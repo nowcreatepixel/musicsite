@@ -1,6 +1,6 @@
 // Fonts
 // --------------------------------------------------------
-@import 'https://fonts.googleapis.com/css?family=Montserrat|PT+Serif|Frank+Ruhl+Libre|Julius+Sans+One';
+@import 'https://fonts.googleapis.com/css?family=Montserrat|PT+Serif|Frank+Ruhl+Libre|Julius+Sans+One|Trirong';
 
 
 
@@ -19,11 +19,11 @@ $mint: #75f2df;
 $mint-darken: darken($mint, 30%);
 $mint-lighten: lighten($mint, 20%);
 /*$dark-grey: #191d1d;*/
-$dark-grey: #020e1a;
+$dark-grey: /*#020e1a*/#051128;
 $red: #a41029;
 $dark-grey-darken: darken($dark-grey, 20%);
 $light-grey: #949494;
-$white: #fff;
+$white: #ffffff;
 $teal: #0e2d36;
 $maroon: #4f101d;
 $yellow: #f0fc35;
@@ -31,7 +31,7 @@ $yellow: #f0fc35;
 
 // Typography
 $font-family-sans-serif:  "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-$font-family-serif:       "Frank Ruhl Libre", "PT Serif", Georgia, "Times New Roman", Times, serif !default;
+$font-family-serif:       "Trirong", "Frank Ruhl Libre", "PT Serif", Georgia, "Times New Roman", Times, serif !default;
 $font-family-base:        $font-family-sans-serif !default;
 
 $font-size-base:          14px !default;
@@ -253,15 +253,15 @@ h3, h4 {
             #shape {
             fill: $white;
            }
-            
+
          #first {
             fill:$white;
             }
-            
+
         #second {
             fill:$dark-grey;
             }
-            
+
         #first, #second {
             opacity:0;
             -webkit-animation: fadeIn 0.8s;
@@ -272,11 +272,11 @@ h3, h4 {
            animation-delay: 2.3s;
           }
         }
-        
+
         &.active {
-            
+
              #logo {
-             
+
             #shape {
                  @media only screen and (max-width:$breakpointMobilePortrait) {
                      fill: $dark-grey;}
@@ -291,7 +291,7 @@ h3, h4 {
             }
           }
         }
-        
+
         &:hover {
             cursor: pointer;
         }
@@ -331,7 +331,7 @@ h3, h4 {
          -moz-transition: all .35s ease;
          -o-transition: all .35s ease;
          transition: all .35s ease;
-         
+
 
         &:nth-of-type(2) {
             top:14px;
@@ -366,15 +366,15 @@ h3, h4 {
     }
 
      &:hover {opacity: 1;}
-        
+
         &.active {
             right:340px;
-            
+
             span {
             @media only screen and (max-width:$breakpointMobilePortrait) {
-            background-color:$dark-grey;}  
+            background-color:$dark-grey;}
             }
-            
+
             @media only screen and (max-width:$breakpointMobilePortrait) {
             right:40px;
             }
@@ -405,14 +405,14 @@ h3, h4 {
          right:0px;
          width:100%;
     }
-    
+
     &.show {
-       right:0px; 
+       right:0px;
        @media only screen and (max-width:$breakpointMobilePortrait) {
          top:0%;
     }
     }
-    
+
     .nav-menu-content {
         padding-top:100px;
     }
@@ -583,9 +583,9 @@ h3, h4 {
         margin-left:5%;
         opacity:0.6;
     }
-    
+
     .lead-photo-bg {
-       
+
     }
     .lead-photo-fg {
         position:relative;
@@ -593,7 +593,7 @@ h3, h4 {
         bottom:0;
         width:100%;
         height:100%;
-        
+
         & img.feature-bg {
             width:auto;
             height:auto;
@@ -601,7 +601,7 @@ h3, h4 {
             position:absolute;
             left:0;
             bottom:0;
-            z-index:0;   
+            z-index:0;
             &.show {
               opacity:0;
          -webkit-animation: fadeIn 1.5s;
@@ -609,7 +609,7 @@ h3, h4 {
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 1s;
-    animation-delay: 1s;  
+    animation-delay: 1s;
             }
             &.hide {
               opacity:1;
@@ -618,10 +618,10 @@ h3, h4 {
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 0s;
-    animation-delay: 0s;  
+    animation-delay: 0s;
             }
         }
-        
+
         & img.feature-fg {
             width:auto;
             height:auto;
@@ -637,7 +637,7 @@ h3, h4 {
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 3s;
-    animation-delay: 3s;  
+    animation-delay: 3s;
             }
             &.hide {
               opacity:1;
@@ -646,11 +646,11 @@ h3, h4 {
     -webkit-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
     -webkit-animation-delay: 0s;
-    animation-delay: 0s;  
+    animation-delay: 0s;
             }
         }
     }
-    
+
 }
 
 
@@ -746,13 +746,14 @@ h3, h4 {
           h1 {
           color:$white;
           opacity:1;
+          /*text-transform: uppercase;*/
 
 
               &.introLyric {
                   color:$white;
                   opacity:0;
                   visibility:hidden;
-                  font-size:$font-size-h1;
+                  font-size:/*$font-size-h1*/ 39px;
           -webkit-animation: textFadeIn 1s;
           animation: textFadeIn 1s;
           -webkit-animation-fill-mode: forwards;
@@ -761,15 +762,15 @@ h3, h4 {
           animation-delay: 2s;*/
           -webkit-animation-delay: 3s;
           animation-delay: 3s;
-                  @media only screen and (max-width:$breakpointDesktopLarge) {font-size:$font-size-h1-md;}
+                  @media only screen and (max-width:$breakpointDesktopLarge) {font-size:/*$font-size-h1-md;*/39px;}
                    @media only screen and (max-width:$breakpointMobilePortrait) {font-size:$font-size-h1-sm;}
                    @media only screen and (max-height:$breakpointMinHeight) {font-size:$font-size-h1-sm;}
 
               }
 
               &.lyricAnimate {
-                   font-size:$font-size-h1;
-                   @media only screen and (max-width:$breakpointDesktopLarge) {font-size:$font-size-h1-md;}
+                   font-size:/*$font-size-h1*/ 39px;
+                   @media only screen and (max-width:$breakpointDesktopLarge) {font-size:/*$font-size-h1-md;*/39px;}
                    @media only screen and (max-width:$breakpointMobilePortrait) {font-size:$font-size-h1-sm;}
                   @media only screen and (max-height:$breakpointMinHeight) {font-size:$font-size-h1-sm;}
 
@@ -905,8 +906,8 @@ h3, h4 {
             border-color: $white;
             border-image: none;
             position:relative;
-            width:280px;
-            height:54px;
+            width:/*280px*/230px;
+            height:/*54px*/50px;
             text-align:center;
             display:block;
             margin: 0 auto;
@@ -924,8 +925,8 @@ h3, h4 {
 
          &:before {
         content: '';
-         width:280px;
-         height:54px;
+         width:/*280px*/250px;
+         height:/*54px*/50px;
          top:0;
          left:320px;
           position:absolute;
@@ -968,8 +969,8 @@ h3, h4 {
 
          &:before {
           content: '';
-         width:280px;
-         height:54px;
+         width:/*280px*/230px;
+         height:/*54px*/50px;
          top:0;
          left:320px;
           position:absolute;
@@ -1102,7 +1103,7 @@ h3, h4 {
             font-size:$font-size-h4 * 1.2;
             font-family: $font-family-sans-serif;
             text-transform:uppercase;
-            line-height: 54px;
+            line-height: /*54px*/50px;
             opacity:0;
            &.animate { -webkit-animation: fadeIn 0.8s;
          animation: fadeIn 0.8s;
@@ -1430,9 +1431,9 @@ h3, h4 {
                 background-color: $white;
                   border-right: 3px solid $dark-grey;
                   opacity:1;
-                  
+
                   &:last-child {border-right:none;}
-                  
+
 
                 &.active {
                     opacity:1;
