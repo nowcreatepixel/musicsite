@@ -1,0 +1,441 @@
+// SVG LOGO //
+// ---------------------------------------------------------
+#top-nav-logo {
+    height:50px;
+    width:100%;
+    position: absolute;
+    display:block;
+    top:0;
+    left:0;
+    z-index:999;
+     &.hideUntilLoaded {
+        display:none;
+    }
+
+    .mainlogo {
+        width: 136px;
+        position:relative;
+        top:30px;
+        left:30px;
+        @media only screen and (max-width:$breakpointMobilePortrait) {
+        top:25px;
+        left:18px;}
+        
+        &.introAnimate {
+            -webkit-transform:translateY(-100px);
+        -moz-transform:translateY(-100px);
+        transform:translateY(-100px);
+        -webkit-animation: slideDown 0.6s;
+         animation: slideDown  0.6s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 1.5s;
+    animation-delay: 1.5s;     
+    -webkit-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
+   -moz-animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165);
+        animation-timing-function: cubic-bezier(0.935, 0.070, 0.905, 0.165); /* custom */
+        }
+        
+        &.hide {
+           -webkit-transition:top 0.3s ease;
+           -moz-transition:top 0.3s ease;
+           -ms-transition:top 0.3s ease;
+           transition:top 0.3s ease;
+           top:-35px; 
+        }
+        
+    
+
+        #logo {
+            width:136px;
+            height:30px;
+            @media only screen and (max-width:$breakpointMobilePortrait) {
+            width:130px;
+            height:24px;}
+            #shape {
+            fill: $white;
+           }
+            
+         #first {
+            fill:$white;
+            }
+            
+        #second {
+            fill:$dark-grey;
+            }
+            
+        #first, #second {
+            opacity:0;
+            -webkit-animation: fadeIn 0.8s;
+            animation: fadeIn  0.8s;
+           -webkit-animation-fill-mode: forwards;
+           animation-fill-mode: forwards;
+           -webkit-animation-delay: 2.3s;
+           animation-delay: 2.3s;
+          }
+        }
+        
+        &.active {
+            
+             #logo {
+             
+            #shape {
+                 @media only screen and (max-width:$breakpointMobilePortrait) {
+                     fill: $dark-grey;}
+           }
+                 #first {
+                     @media only screen and (max-width:$breakpointMobilePortrait) {
+                         fill:$dark-grey;}
+            }
+            #second {
+                 @media only screen and (max-width:$breakpointMobilePortrait) {
+                     fill:$white;}
+            }
+          }
+        }
+        
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    // END SVG LOGO //
+
+
+    // NAV //
+    #navtoggle {position:absolute;
+    width:25px; height:25px;
+    top:30px; right:40px;
+    /*@include black;*/
+    z-index:999;
+    cursor: pointer;
+    overflow-x:visible;
+        overflow-y:hidden;
+    opacity:1;
+        -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+         -webkit-transform:translateY(-100px);
+        -moz-transform:translateY(-100px);
+        transform:translateY(-100px);
+        -webkit-animation: slideDown 0.6s;
+         animation: slideDown  0.6s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 1.8s;
+    animation-delay: 1.8s;
+        @media only screen and (max-width:$breakpointMobilePortrait) {
+            top:27px;}
+        
+        span {
+        background-color:#ffffff;
+        height:3px;
+        width:100%;
+        position:absolute;
+        top:16px;
+        left:0;
+        -webkit-transition: all .35s ease;
+        -moz-transition: all .35s ease;
+        -o-transition: all .35s ease;
+        transition: all .35s ease;
+            
+           &:nth-of-type(2) {
+           top:8px;
+           /*left:-50%;*/
+           }
+
+           &:nth-of-type(3) {
+            top:0px;   
+           }
+        }
+        
+        &:hover {opacity: 1;}
+        
+        &.introAnimation {
+
+        span {
+         
+        &:nth-of-type(2) {
+            top:16px;
+            /*left:-50%;*/
+           -webkit-animation: navRevealSecond 0.8s;
+         animation: navRevealSecond 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 2.3s;
+    animation-delay: 2.3s;}
+
+
+        &:nth-of-type(3) {
+            top:16px;
+            -webkit-animation: navRevealFirst 0.8s;
+         animation: navRevealFirst 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 2.3s;
+    animation-delay: 2.3s;
+         }
+
+        }  
+        } // end of introAnimation class
+        
+      &.active {
+      right:340px;
+      @media only screen and (max-width:$breakpointMobilePortrait) {right:40px;}
+            
+        span {
+        background-color:#ffffff;
+        height:3px;
+        width:100%;
+        position:absolute;
+        top:16px;
+        left:0;  
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+        @media only screen and (max-width:$breakpointMobilePortrait) {
+        background-color:$dark-grey;} 
+            
+                       
+           &:nth-of-type(1) {
+            top:16px;
+         -webkit-animation: navBottom 0.4s;
+         animation: navBottom 0.4s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 0.3s;
+        animation-delay: 0.3s;           
+        }
+                
+                
+           &:nth-of-type(2) {
+            top:8px;
+           -webkit-animation: fadeOut 0.2s;
+           animation: fadeOut 0.2s;
+           -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+           }
+
+
+        &:nth-of-type(3) {
+            top:0px;
+             -webkit-animation: navTop 0.4s;
+         animation: navTop 0.4s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 0.3s;
+        animation-delay: 0.3s; 
+         }
+
+         }    
+               
+        } // end of active class
+        
+        
+        
+        
+        
+        &.activeAlt {
+      right:40px;
+            
+        span {
+        background-color:#ffffff;
+        height:3px;
+        width:100%;
+        position:absolute;
+        top:16px;
+        left:0;  
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+        @media only screen and (max-width:$breakpointMobilePortrait) {
+        background-color:$white;} 
+            
+                       
+           &:nth-of-type(1) {
+            top:16px;
+         -webkit-animation: navBottom 0.4s;
+         animation: navBottom 0.4s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 0.3s;
+        animation-delay: 0.3s;           
+        }
+                
+                
+           &:nth-of-type(2) {
+            top:8px;
+           -webkit-animation: fadeOut 0.2s;
+           animation: fadeOut 0.2s;
+           -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+           }
+
+
+        &:nth-of-type(3) {
+            top:0px;
+             -webkit-animation: navTop 0.4s;
+         animation: navTop 0.4s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-delay: 0.3s;
+        animation-delay: 0.3s; 
+         }
+
+         }    
+               
+        } // end of activeAlt class
+        
+        &.dark {
+           span {background-color:$dark-grey;}
+        } // for use on light backgrounds //
+
+
+
+}
+    // END NAV //
+    }
+
+#nav-menu-holder {
+    width:300px;
+    height:100%;
+    position:absolute;
+    display:block;
+    z-index: 100;
+    background-color:$white;
+    right:-300px;
+    top:0;
+    border-top:8px solid $red;
+    overflow-y:auto;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+     @media only screen and (max-width:$breakpointMobilePortrait) {
+         top:100%;
+         right:0px;
+         width:100%;
+         
+        
+    }
+    
+    &.show {
+       right:0px; 
+       @media only screen and (max-width:$breakpointMobilePortrait) {
+         top:0%;
+    }
+    }
+    
+    .nav-menu-content {
+        padding:20px 40px 0px;
+        text-align:right;
+        font-family: $font-family-sans-serif;
+        @media only screen and (max-width:$breakpointMobilePortrait) {
+         margin-top:60px;
+        }
+        
+        .nav-title {
+            font-family: $font-family-sans-serif;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 40px;
+            @media only screen and (max-width:$breakpointMobilePortrait) {
+        display:none;}
+        }
+        
+        .nav-items {
+            margin: 0 0 60px 0;
+            display:block;
+            width:100%;
+            height:auto;
+            clear:both;
+            
+            &:after {
+                content:"";
+                background-color:$red;
+        opacity:1;
+        height:1px;
+        width:30px;
+        margin:0 0 60px 0;
+        display:block;
+            float:right;
+             position:relative;
+             right:0;
+            }
+            
+            a {
+                font-weight:700;
+                display:block;
+                width:100%;
+                margin:0 0 40px;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                text-decoration:none;
+                color:$dark-grey;
+                
+                &:hover, &:focus {
+                    color:$red;
+                }
+                
+                &:active, &:visited {
+                    color:$dark-grey;
+                }
+            }
+        }
+        
+        
+        .nav-social {
+            display:block;
+            width:100%;
+            height:auto;
+            clear:both;
+            margin-bottom: 40px;
+            
+            
+            li {
+                display:inline-block;
+                list-style: none;
+                margin-left:40px;
+                font-size:34px;
+                
+                &:nth-of-type(1) {
+                   margin-left:0px; 
+                }
+            }
+        }
+        
+        .nav-credits {
+            font-size:12px;
+            line-height: 22px;
+            display:block;
+            width:100%;
+            height:auto;
+            clear:both;
+        }
+        
+        
+        
+        /* .breakdefault {
+            background-color:$red;
+        opacity:1;
+        height:1px;
+        width:30px;
+        margin:0 0 60px 0;
+        display:block;
+            float:right;
+             position:relative;
+             right:0;
+        
+        }*/
+      
+    }
+}

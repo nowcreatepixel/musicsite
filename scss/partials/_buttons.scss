@@ -1,0 +1,343 @@
+// Feature Button
+// ---------------------------------------------------------
+
+.feature-btn-holder {
+    text-align:center;
+    width:100%;
+    position:relative;
+    height:auto;
+    display:block;
+    visibility:hidden;
+   /* width:auto;
+    position:absolute;
+    bottom:20%;
+    left: calc(50% - 140px);*/
+    -webkit-transition: all 1s ease;
+         -moz-transition: all 1s ease;
+         -ms-transition: all 1s ease;
+         transition: all 1s ease;
+    -webkit-animation: toggleVisibility 0s;
+         animation: toggleVisibility 0s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 3.4s;
+    animation-delay: 3.4s;
+}
+
+
+
+ .feature-btn {
+            background-color: transparent;
+            padding: 0 50px;
+            border-width: 0;
+            border-style:solid;
+            border-color: $white;
+            border-image: none;
+            position:relative;
+            width:280px;
+            height:54px;
+            text-align:center;
+            display:block;
+            margin: 0 auto;
+            overflow:hidden;
+            cursor:pointer;
+            z-index:1;
+            -webkit-appearance: none;
+            -moz-appearance:    none;
+            -webkit-user-select: none;
+            user-select: none;
+            @media only screen and (max-width:$breakpointMobilePortrait) {width:220px;}
+            @media only screen and (max-width:$breakpointDesktopSmall) and (max-height:$breakpointMinHeight) {width:180px;}
+
+     &.smaller {
+         width:160px;
+     }
+     
+     
+        &:before {
+        content: '';
+         width:280px;
+         height:54px;
+         top:0;
+         left:320px;
+          position:absolute;
+        background-color: $white;
+          display:block;
+         z-index: -1;
+         opacity: 1;
+         -webkit-transform: skewX(50deg);
+        -moz-transform: skewX(50deg);
+         -o-transform: skewX(50deg);
+        transform: skewX(50deg);
+          -webkit-transition: all 0.3s ease;
+         -moz-transition: all 0.3s ease;
+         -ms-transition: all 0.3s ease;
+         transition: all 0.3s ease;
+    
+        }
+
+     &:hover:before {
+         left:0px;
+           -webkit-transform: skewX(0deg);
+        -moz-transform: skewX(0deg);
+         -o-transform: skewX(0deg);
+        transform: skewX(0deg);
+     }
+
+     &.animate {
+
+         &:before {
+             /*opacity: 0;
+         -webkit-animation: fadeIn 0.8s;
+         animation: fadeIn 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 3.6s;
+             animation-delay: 3.6s;*/
+        }
+
+     &:hover:before {
+         left:0px;
+           -webkit-transform: skewX(0deg);
+        -moz-transform: skewX(0deg);
+         -o-transform: skewX(0deg);
+        transform: skewX(0deg);
+     }
+
+     }
+
+
+      &.animate-no-delay {
+
+         &:before {
+             opacity: 0;
+         -webkit-animation: fadeIn 0.8s;
+         animation: fadeIn 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+             animation-delay: 0s;
+             -webkit-transform-style: preserve-3d;
+        }
+
+     &:hover:before {
+         left:0px;
+           -webkit-transform: skewX(0deg);
+        -moz-transform: skewX(0deg);
+         -o-transform: skewX(0deg);
+        transform: skewX(0deg);
+     }
+
+     }
+
+
+
+
+
+
+
+    .btn-top {
+         width:100%;
+         height:1px;
+         top:0;
+         left:0;
+        background-color: $white;
+         display:block;
+         position:absolute;
+        -webkit-transform-style: preserve-3d;
+        &.animate { 
+            width:0%;
+            -webkit-animation: featureBtnTop 0.8s;
+         animation: featureBtnTop 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 3.6s;
+            animation-delay: 3.6s;
+        -webkit-transform-style: preserve-3d;}
+       &.animate-no-delay { 
+            width:0%;
+           -webkit-animation: featureBtnTop 0.8s;
+         animation: featureBtnTop 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+        -webkit-transform-style: preserve-3d;}
+     }
+     .btn-right {
+         width:1px;
+         height:100%;
+         top:0;
+         right:0;
+         background-color: $white;
+         display:block;
+         position:absolute;
+         -webkit-transform-style: preserve-3d;
+          &.animate { 
+               height:0%;
+              -webkit-animation: featureBtnRight 0.8s;
+         animation: featureBtnRight 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 3.6s;
+              animation-delay: 3.6s;
+         -webkit-transform-style: preserve-3d;}
+         &.animate-no-delay { 
+             height:0%;
+             -webkit-animation: featureBtnRight 0.8s;
+         animation: featureBtnRight 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+              animation-delay: 0s;
+         -webkit-transform-style: preserve-3d;}
+     }
+     .btn-bottom {
+         width:100%;
+         height:1px;
+         bottom: 0;
+         left: 0;
+         background-color: $white;
+         display:block;
+         position:absolute;
+         -webkit-transform-style: preserve-3d;
+         &.animate { 
+             width:0%;
+             -webkit-animation: featureBtnBottom 0.8s;
+         animation: featureBtnBottom 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 3.6s;
+             animation-delay: 3.6s;
+         -webkit-transform-style: preserve-3d;}
+        &.animate-no-delay {
+             width:0%;
+            -webkit-animation: featureBtnBottom 0.8s;
+         animation: featureBtnBottom 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+             animation-delay: 0s;
+         -webkit-transform-style: preserve-3d;}
+     }
+     .btn-left {
+          width:1px;
+         height:100%;
+         top:0;
+         left:0;
+         background-color: $white;
+         display:block;
+         position:absolute;
+         -webkit-transform-style: preserve-3d;
+          &.animate { 
+               height:0%;
+              -webkit-animation: featureBtnLeft 0.8s;
+         animation: featureBtnLeft 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 3.6s;
+              animation-delay: 3.6s;
+         -webkit-transform-style: preserve-3d;}
+         &.animate-no-delay {
+              height:0%;
+             -webkit-animation: featureBtnLeft 0.8s;
+         animation: featureBtnLeft 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+              animation-delay: 0s;
+         -webkit-transform-style: preserve-3d;}
+     }
+     .btn-text {
+         color:$white;
+            font-size:$font-size-h4 * 1.2;
+            font-family: $font-family-sans-serif;
+            text-transform:uppercase;
+            line-height: 54px;
+         letter-spacing:0.2em;
+            opacity:1;
+         -webkit-transform-style: preserve-3d;
+           &.animate { 
+               opacity:0;
+               -webkit-animation: fadeIn 0.8s;
+         animation: fadeIn 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 3.8s;
+               animation-delay: 3.8s;
+         -webkit-transform-style: preserve-3d;}
+         &.animate-no-delay {
+             opacity:0;
+             -webkit-animation: fadeIn 0.8s;
+         animation: fadeIn 0.8s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+               animation-delay: 0s;
+         -webkit-transform-style: preserve-3d;}
+     }
+     &:hover .btn-text {color:$dark-grey;}
+
+
+
+
+     // hide btn on click //
+
+      &.btnHide {
+         cursor:default;
+     }
+
+      &.btnHide:before {
+         display:none;
+     }
+
+     &.btnHide .btn-top {
+          -webkit-animation: featureBtnTopHide 1s;
+         animation: featureBtnTopHide 1s;
+    -webkit-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+     }
+       &.btnHide .btn-right {
+          -webkit-animation: featureBtnRightHide 1s;
+         animation: featureBtnRightHide 1s;
+    -webkit-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+     }
+       &.btnHide .btn-bottom {
+          -webkit-animation: featureBtnBottomHide 1s;
+         animation: featureBtnBottomHide 1s;
+    -webkit-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+     }
+       &.btnHide .btn-left {
+          -webkit-animation: featureBtnLeftHide 1s;
+         animation: featureBtnLeftHide 1s;
+    -webkit-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+     }
+     &.btnHide .btn-text {
+          opacity:1;
+         -webkit-animation:none;
+         animation:none;
+          -webkit-animation: fadeOut 0.2s;
+         animation: fadeOut 0.2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+     }
+
+
+        }
+
+
+// END FEATURE BTN //
+// ---------------------------------------------------------

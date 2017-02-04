@@ -1,0 +1,109 @@
+// Preloader Mixins //
+
+@mixin defaultLoaderContainer {
+    width:89px;
+    height:99px;
+    position: absolute;
+    top:40%;
+    top: calc(50% - 99px);
+    left:46%;
+    left: calc(50% - 44px);
+    z-index:999;
+    text-align: center;
+    /*-webkit-animation: slideDown 1s;
+         animation: slideDown  1s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;*/
+}
+@mixin defaultLoaderShadow {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    height: 15px;
+    width: 40px;
+    left:24px;
+    -webkit-transform: scale(0.5, 0.5);
+    -moz-transform: scale(0.5, 0.5);
+    -ms-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
+    -webkit-filter: blur(5px); /* Chrome, Safari, Opera */
+    filter: blur(5px);
+    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='5'); /* IE lte 9 */
+    display: block;
+    background-color: #ddd;
+    border-radius: 50%;
+    -webkit-animation: pulse 0.8s;
+    animation: pulse 0.8s;
+   -webkit-animation-delay: 0s;
+   animation-delay: 0s;
+   -webkit-animation-iteration-count: infinite;
+   animation-iteration-count: infinite;
+   -webkit-animation-direction: alternate;
+   animation-direction: alternate;
+}
+@mixin defaultLoader {
+     width:59px;
+        height:69px;
+        position:relative;
+        top:0;
+        -webkit-animation: upDown 0.8s;
+       animation: upDown 0.8s;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+@mixin defaultLoaderText {
+    font-size:$font-size-extrasmall;
+        text-transform:uppercase;
+        font-family: $font-family-sans-serif;
+        color: $light-grey;
+        margin-top: 30px;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn  1s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+}
+
+
+// Preloaders //
+
+#load {
+    @include defaultLoaderContainer;
+
+    &:before {
+    @include defaultLoaderShadow;
+    }
+
+    #loader {
+    @include defaultLoader;
+    }
+
+    p {
+     @include defaultLoaderText;
+    }
+
+}
+
+
+#load-alt {
+    @include defaultLoaderContainer;
+
+    &:before {
+    @include defaultLoaderShadow;
+    background-color: #000;
+    }
+
+    #loader-alt {
+     @include defaultLoader;
+     #pick {fill:#ffffff;}
+     #figure {fill:$dark-grey;}
+    }
+
+    p {@include defaultLoaderText;}
+
+}
+
+// END PRELOADERS //

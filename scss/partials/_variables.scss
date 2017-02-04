@@ -1,0 +1,59 @@
+// Variables
+// --------------------------------------------------------
+
+// Breakpoints
+$breakpointDesktopLarge: 1280px;
+$breakpointDesktopSmall: 1040px;
+$breakpointMobileLandscape: 830px;
+$breakpointMobilePortrait: 630px;
+$breakpointMobileSmall: 300px;
+$breakpointMinHeight: 400px;
+$breakpointMidHeight: 720px;
+
+// Colors
+$mint: #75f2df;
+$mint-darken: darken($mint, 30%);
+$mint-lighten: lighten($mint, 20%);
+/*$dark-grey: #191d1d;*/
+$dark-grey: #020e1a;
+$red: #a41029;
+$dark-grey-darken: darken($dark-grey, 20%);
+$light-grey: #949494;
+$white: #fff;
+$teal: #0e2d36;
+$maroon: #4f101d;
+$yellow: #f0fc35;
+
+
+// Typography
+$font-family-sans-serif:  "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-serif:       "Frank Ruhl Libre", "PT Serif", Georgia, "Times New Roman", Times, serif !default;
+$font-family-base:        $font-family-sans-serif !default;
+
+$font-size-base:          14px !default;
+$font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
+$font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
+
+$font-size-h1:            floor(($font-size-base * 4.6)) !default; // ~64px
+$font-size-h1-md:         floor(($font-size-base * 3.5)) !default; // ~49px
+$font-size-h1-sm:         floor(($font-size-base * 2.75)) !default; // ~38px
+$font-size-h1-xsm:         floor(($font-size-base * 2)) !default; // ~28px
+
+$font-size-h2:            floor(($font-size-base * 2.15)) !default; // ~30px
+$font-size-h3:            ceil(($font-size-base * 1.7)) !default; // ~24px
+$font-size-h3-md:         ceil(($font-size-base * 1.4)) !default; // ~20px
+$font-size-h4:            ceil(($font-size-base * 0.85)) !default; // ~12px
+// not used //
+$font-size-h5:            $font-size-base !default;
+$font-size-extrasmall:    ceil(($font-size-base * 0.75)) !default; // ~11px
+
+
+// Buttons
+$btn-font-weight: normal !default;
+$btn-default-color: $white;
+$btn-default-bg: $dark-grey;
+$btn-default-border: $white;
+
+
+// --------------------------------------------------------
+// END of Variables

@@ -1,0 +1,45 @@
+// Base styles
+// --------------------------------------------------------
+
+* {
+    margin:0;
+    padding:0;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    box-sizing:border-box;
+     font-weight:normal;
+}
+
+
+body {
+    margin:0;
+    padding:0;
+    background-color:$white;
+    overflow:hidden;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    tap-highlight-color: rgba(0, 0, 0, 0);
+    //font family?//
+}
+
+h1, h2 {
+    font-family: $font-family-serif;
+    letter-spacing: 0.05em;
+}
+
+h3, h4 {
+    font-family: $font-family-sans-serif;
+    text-transform:uppercase;
+    letter-spacing: 0.2em;
+}
+
+p {
+  font-family: $font-family-sans-serif; 
+  line-height: 1.4em;
+}
+
+/*.hide {
+    opacity:0;
+}*/
