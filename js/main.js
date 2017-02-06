@@ -57,61 +57,6 @@ $(document).ready(function () {
    });
 
 
-/* NAVIGATION */
-$(document).ready(function(){
-
-  /*var navigationMenu = function navMenu () { */
-
-/*$('#navtoggle').on('click', function (e) {
-    e.stopPropagation();
-      $(this).toggleClass('active');
-    $(this).removeClass('introAnimation');
-    $('#nav-menu-holder').toggleClass('show');
-    $('.mainlogo').toggleClass('active');
-  }); */
-
-    /*
-    };
-    navMenu();*/
-
-    /*console.log(navigationMenu);*/
-   /* navigationMenu();*/
-
-/*    function navBehaviour () {
-
-    var navigationMenu = function (e) {
-        e.preventDefault();
-        $('#navtoggle').toggleClass('active');
-    $('#navtoggle').removeClass('introAnimation');
-    $('#nav-menu-holder').toggleClass('show');
-    $('.mainlogo').toggleClass('active');
-        alert('default what the fuck');
-    };
-
-     var navigationMenuAlt = function (e) {
-        e.preventDefault();
-         alert('alt what the fuck');
-        $('.music-container').removeClass('active');
-        $('.slide-container').removeClass('active');
-    };
-
-
-       if ($('#navtoggle').hasClass('default')) {
-           /* $('#navtoggle').on('click', navigationMenu);*/
-/*           console.log('default');
-        }
-        else {
-            /*$('#navtoggle').off('click', navigationMenu);*/
-/*            console.log('alternative');
-        }
-
-
-    /*$('.default').on('click', navigationMenu);*/
-
-/*    }
-    navBehaviour();*/
-
-});
 
 
 
@@ -123,50 +68,8 @@ $(document).ready(function(){
 
 
 
-/* ROTATING BACKGROUND IMAGE */
-/*$(document).ready(function () {
-function cycleBackgrounds() {
-    var index = 0;
-    $imageEls = $('.photo-holder'); // Get the images to be cycled.
-    setInterval(function () {
-        // Get the next index.  If at end, restart to the beginning.
-        index = index + 1 < $imageEls.length ? index + 1 : 0;
-        // Show the next image.
-        $imageEls.eq(index).addClass('show');
-        // Hide the previous image.
-        $imageEls.eq(index - 1).removeClass('show');
-        }, 6000);
-    };
-$(function () {cycleBackgrounds();});
- });*/
 
 
-/* LYRICS */
-/*$(document).ready(function () {
-  function cycleLyrics() {
-    var lyrics = ["Lets lose ourselves in a Universal Sky", "In my heart you will live forever", "All I see is a Beautiful Render", "There's a glory in a distant town" ];
-    var titles = ["Universal Sky 2015", "Reunited 2014", "Beautiful Render 2012", "Warrior In The Night 2012" ];
-    var index = 0;
-    $lyricEls = $('.introLyric');
-    $titleEls = $('.introTitle');
-    setInterval(function () {
-        $lyricEls.removeClass('introLyric');
-        $lyricEls.addClass('lyricAnimate');
-        $titleEls.removeClass('introTitle');
-        $titleEls.addClass('titleAnimate');
-        TweenMax.to('.lyricAnimate', 0.8, {css:{opacity:0, transform:'translateY(200px)'}});
-        TweenMax.to('.titleAnimate', 0.8, {css:{opacity:0}});
-        index = index + 1 < lyrics.length ? index + 1 : 0;
-        var introTimer = setTimeout(function () {
-        $('.lyricAnimate').text(lyrics[index]);
-        $('.titleAnimate').text(titles[index]);
-        TweenMax.to('.lyricAnimate', 0.5, {css:{opacity:1, transform:'translateY(0px)'}});
-        TweenMax.to('.titleAnimate', 0.5, {css:{opacity:1}});
-        }, 700);
-    }, 6000);
-  };
-  $(function () {cycleLyrics();});
-});*/
 
 
 /* ONCE LOADED */
@@ -210,9 +113,7 @@ $(window).load(function(){
   };
   $(function () {cycleLyrics();});
 
-
     }, 2000);
-
 
 });
 
@@ -224,10 +125,8 @@ $(window).load(function(){
 /* SECTIONS FUNCTION */
 $(document).ready(function () {
 
-
     // back button function //
      window.onpopstate = function(event) {
-
     $('.back').removeClass('back');
              $("#discover").removeClass('show');
              $("#discover").addClass('hide');
@@ -257,14 +156,12 @@ $(document).ready(function () {
               $('.music-container .ui.embed').embed('reset');
               $('.soundcloud-container .ui.embed').embed('reset');
 
-
 }; // END back button //
 
 
     // Navigation variables //
     var normal = [];
     var alternative = [];
-
     // Navigation //
       function navBehaviour (status) {
 
@@ -312,9 +209,7 @@ $(document).ready(function () {
               $('.soundcloud-container .ui.embed').embed('reset');
               $('.alt-year-select-container.animated').removeClass('active');
               $('.playlist-strip').css({left:'0'});
-
               $('.gallery-container').removeClass('active');
-
               $('.gallery-container .bg-img > img').removeClass('fade');
               setTimeout(function () {
                 var galleryIndex = 0;
@@ -322,7 +217,6 @@ $(document).ready(function () {
               $('.first img').css({transform:'translateX(100%)'});
               $('#gallery-indicator-holder').removeClass('active');
               $('.gallery-holder').slick('slickGoTo', 0); }, 600);
-
 
 
 
@@ -402,7 +296,6 @@ $(document).ready(function () {
 
             // first load col images before doing rest of function //
           $('.col-img img').load(function () {
-
 
 
             $('#load-alt').fadeOut('slow',function(){$('#discoverLoad');});
@@ -610,7 +503,6 @@ $(document).ready(function () {
 
 
 
-
             // VIDEO SECTION /////////////////////////////////////////////////////////
             //////////////////////////////////////////////////////////////////////////
 
@@ -620,16 +512,13 @@ $(document).ready(function () {
              }
              videoSlider();
 
-
             // music section //
             function musicSection () {
 
                 navBehaviour(alternative);
 
-
                 stateObj = { state: "watch" };
         history.pushState(stateObj, "page 3", "#watch");
-
 
              $('.mainlogo').removeClass('introAnimate');
              $('.mainlogo').addClass('hide');
@@ -637,9 +526,7 @@ $(document).ready(function () {
              $('#navtoggle').removeClass('introAnimation');
              $('.slide-container.scale').addClass('active');
              $('.music-container').addClass('active');
-
                 console.log(totalWidth);
-
 
                 // New responsive method of applying slick slider //
               var vidSlider = $('.video-holder');
@@ -647,11 +534,9 @@ $(document).ready(function () {
                   centerMode: true,
               centerPadding: '20%',
               slidesToShow: 1,
-
                  dots:true
                 }
                 $(vidSlider).not('.slick-initialized').slick(slickSettings);
-
 
                 if ($(window).width() < 880) {
                vidSlider.slick('unslick');
@@ -659,9 +544,7 @@ $(document).ready(function () {
                }
 
 
-
               // Old method of applying slick slider //
-
             /* $('.video-holder').slick({
                centerMode: true,
               centerPadding: '20%',
@@ -686,7 +569,6 @@ $(document).ready(function () {
                  }
                  }
                 ]
-
              }); */
 
                 $('.slick-arrow, ul.slick-dots').on('click', function (e) {
@@ -694,7 +576,6 @@ $(document).ready(function () {
                  $('.music-container .ui.embed').embed('reset');
 
                 });
-
 
 
             $(window).resize(function() {
@@ -708,12 +589,10 @@ $(document).ready(function () {
 			var indicatorSpacerAmount = colNumber - 1;
             $('.slide-holder').css({width:totalWidth});
 
-
             // unslicking and slicking the slider //
             if ($(window).width() < 880) {
 
                  $('.music-container .ui.embed').embed('reset');
-
 
                 if (vidSlider.hasClass('slick-initialized')) {
                      vidSlider.slick('unslick');
@@ -722,20 +601,15 @@ $(document).ready(function () {
                      return
                  }
 
-
-
                 if (!vidSlider.hasClass('slick-initialized')) {
                     vidSlider.removeClass('mobile');
                      return vidSlider.slick(slickSettings);
                   }
 
-
-
             });
 
 
             } // End of music section //
-
 
              // END OF VIDEO SECTION //////////////////////////////////////////////////
             //////////////////////////////////////////////////////////////////////////
@@ -1578,6 +1452,8 @@ $(document).ready(function () {
     var markerArray = [];
 
 
+
+
           // displaying controls  //
            $(aboutContainer).scroll(function() {
 
@@ -1589,7 +1465,26 @@ $(document).ready(function () {
                     $(arrowControlsHolder).removeClass('active');
                 }
 
+                markerStatus();
+
             });
+
+
+            // updating active class when scroll to matching scene //
+            function markerStatus (currentIndex) {
+
+              var markerItems = $('.marker-holder .marker');
+
+              $.each (markerItems, function(index) {
+                if ($(yearScenes[index]).offset().top < $(markerItems[index]).offset().top) {
+                  $(markerItems[index - 1]).removeClass('active');
+                  $(markerItems[index]).addClass('active');
+                } else if ($(yearScenes[index]).offset().top > $(markerItems[index]).offset().top) {
+                  $(markerItems[index]).removeClass('active');
+                }
+              });
+
+            }
 
 
 
@@ -1611,13 +1506,19 @@ $(document).ready(function () {
               $(dotIndicator).on('click', function() {
                   console.log(index);
                   scrollToScene(index);
-                   $('.marker').removeClass('active');
-                  $(this).addClass('active');
+                   /*$('.marker').removeClass('active');
+                  $(this).addClass('active');*/
 
                 });
 
                markerArray.push(dotIndicator);
                $(markerArray[0]).addClass('active');
+
+               /*var markerItem = $('.marker-holder .marker');
+               var markerDistanceTop = $(markerItem).offset().top;*/
+
+
+
 
 
             });
@@ -1634,7 +1535,7 @@ $(document).ready(function () {
 
 
 
-    var sceneOne = new ScrollMagic.Scene({
+  var sceneOne = new ScrollMagic.Scene({
      triggerElement: '.intro-content-holder' ,
     triggerHook: 0,
         duration:'30%'
@@ -1642,953 +1543,6 @@ $(document).ready(function () {
     .addTo(controller);
 
 
-    // add multiple tweens, wrapped in a timeline.
-var timelineOne = new TimelineMax();
-    timelineOne
-   /* .from('.big-year', 0.7, {opacity:0}, 0)*/
-   .to('.photo.first.animated', 1, {y: -150}, 0)
-    .to('.big-year.first.animated', 1, {y: 100}, 0);
-
-var timelineTwo = new TimelineMax();
-    timelineTwo
-   .to('.photo.second.animated', 1, {y: -150}, 0)
-    .to('.big-year.second.animated', 1, {y: 100}, 0);
-
-var timelineThree = new TimelineMax();
-    timelineThree
-   .to('.photo.third.animated', 1, {y: -150}, 0)
-    .to('.big-year.third.animated', 1, {y: 100}, 0);
-
-var timelineFour = new TimelineMax();
-    timelineFour
-   .to('.photo.fourth.animated', 1, {y: -150}, 0)
-    .to('.big-year.fourth.animated', 1, {y: 100}, 0);
-
-
-
-
-
-    // scenes ////////////////////////////////////
-
-    var sceneTwo = new ScrollMagic.Scene({
-     triggerElement: '.photo.first.animated' ,
-    triggerHook: 1,
-        duration:'125%'
-    }).setTween(timelineOne)
-    .addTo(controller);
-
-
-     var sceneThree = new ScrollMagic.Scene({
-     triggerElement: '.photo.second.animated' ,
-    triggerHook: 'onEnter',
-        duration:'125%'
-    }).setTween(timelineTwo)
-    .addTo(controller);
-
-     var sceneFour = new ScrollMagic.Scene({
-     triggerElement: '.photo.third.animated' ,
-    triggerHook: 'onEnter',
-        duration:'125%'
-    }).setTween(timelineThree)
-    .addTo(controller);
-
-    var sceneFive = new ScrollMagic.Scene({
-     triggerElement: '.photo.fourth.animated' ,
-    triggerHook: 'onEnter',
-        duration:'125%'
-    }).setTween(timelineFour)
-    .addTo(controller);
-
-
-
-   /* var sceneSix = new ScrollMagic.Scene({
-     triggerElement: '.big-year.first.animated' ,
-    triggerHook: 0.5,
-        duration:'125%'
-    }).setPin('.big-year.first.animated', {pushFollowers: false})
-    .addIndicators()
-    .addTo(controller);*/
-
-
-
-
-
-
-            }, 1000);
-
-
-
-
-
-
-            });
-
-
-			}, 2000);
-
-
-
-
-
-    }
-
-    // END of About Section //
-
-
-
-
-
-    // Links to Discover Section //
-
-     $('.feature-btn').on('click', function (e) {
-         e.preventDefault();
-         $(function () {discover();});
-    });
-
-   $('.nav-discover').on('click', function (e) {
-        e.preventDefault();
-        $('#navtoggle').removeClass('active');
-    $('#nav-menu-holder').removeClass('show');
-        $('.mainlogo').toggleClass('active');
-       $(function () {discover();});
-    });
-
-$('.nav-about').on('click', function (e) {
-        e.preventDefault();
-        $('#navtoggle').removeClass('active');
-    $('#nav-menu-holder').removeClass('show');
-        $('.mainlogo').toggleClass('active');
-       $(function () {aboutSection();});
-    });
-
-    // END of Links to Discover Section //
-
-
-
-
-                var $redHoverLineInside = $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line');
-               $('.alt-year-select-container.animated .year-nav .year-link-holder>a').on('mouseover', function(){
-                $redHoverLineInside.css({left: $(this).offset().left });
-                  });
-
-                // this sets position of redline to middle on hover off - refers only to intro playlist nav//
-              $('.year-select-container .year-nav .year-link-holder').on('mouseout', function(){
-               $('.year-select-container .year-nav .year-red-line .active-red-line').css({left: '37.5%'});
-                });
-
-                // this sets position of redline to middle on hover off - refers only to inner playlist nav//
-              $('.alt-year-select-container.animated .year-nav .year-link-holder').on('mouseout', function(){
-               $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left: $('.alt-year-select-container.animated .year-nav .year-link-holder>a.active').offset().left});
-                });
-
-          // END OF REDLINE ON INTRO PLAYLIST NAV //
-
-
-
-
-           ///////////////////////////////////////////////////////////////////////////////////////////
-          // ON CLICK ON INTRO PLAYLIST NAV //
-                $('.year-select-container .year-nav .year-link-holder>a').on('click', function(e){
-
-                e.preventDefault();
-                $('.year-select-container').addClass('active');
-                $('.year-select-container .year-nav .year-link-holder>a').addClass('active');
-                $('.year-select-container .label>h4').addClass('active');
-                $('.bg-img>img').addClass('active');
-                $('.year-select-container .year-nav .year-red-line .active-red-line').css({opacity:0});
-                $('.year-title.animated').addClass('active');
-                $('.year-info.animated').addClass('active');
-                $('.soundcloud-container.animated').addClass('active');
-                $('.alt-year-select-container.animated').addClass('active');
-
-
-               // REDLINE ON INNER PLAYLIST NAV //
-                //positioning red line on inner playlist nav when hover off  //
-               setTimeout(function () {
-               var $redHoverLineAlt = $('.alt-year-select-container.animated .year-nav .year-link-holder>a.active');
-               $('.alt-year-select-container.animated .year-nav .year-link-holder').on('mouseout', function(){
-               $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left: $redHoverLineAlt.offset().left});
-               });
-
-               console.log('the left position of active link is ' + $redHoverLineAlt.offset().left);
-
-               }, 1000);
-               // END OF REDLINE ON INNER PLAYLIST NAV //
-
-
-
-                // =====================================================================================
-                // show relevant content depending on what button was clicked using class recognition //
-                    if ($(this).hasClass('2001')) {
-                        currentPlaylistIndex = 0;
-                        movePlaylistValue = 0;
-                        $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left:'7%' });
-                        $('.alt-year-select-container.animated .year-nav .year-link-holder>a.2001').addClass('active');
-                        console.log(movePlaylistValue);
-                    } else if ($(this).hasClass('2006')) {
-                        currentPlaylistIndex = 1;
-                        movePlaylistValue = movePlaylistValue - 100;
-                        $('.playlist-strip').css({left:'-100%'});
-                        $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left:'37.5%' });
-                        $('.alt-year-select-container.animated .year-nav .year-link-holder>a.2006').addClass('active');
-                    }  else if ($(this).hasClass('2011')) {
-                        currentPlaylistIndex = 2;
-                        movePlaylistValue = movePlaylistValue - 200;
-                       $('.playlist-strip').css({left:'-200%'});
-                        $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left:'68%' });
-                        $('.alt-year-select-container.animated .year-nav .year-link-holder>a.2011').addClass('active');
-                        console.log(currentPlaylistIndex);
-                    }
-                // =================================================================================
-
-                 insidePlaylistNav(currentPlaylistIndex, movePlaylistValue);
-
-                });
-        // END OF ON CLICK ON INTRO PLAYLIST NAV //
-        ///////////////////////////////////////////////////////////////////////////////////////////
-
-               function insidePlaylistNav (currentPlaylistIndex, movePlaylistValue) {
-
-
-               function playlistNav(newPlaylistIndex, playlistMoveValue) {
-                var playlistAnimate = playlistMoveValue + '%';
-                $('.playlist-strip').css({left: playlistAnimate});
-                currentPlaylistIndex = newPlaylistIndex;
-                movePlaylistValue = playlistMoveValue;
-                var redlineHoverNoDelay = setTimeout(function () {
-               var $redHoverLineAlt = $('.alt-year-select-container.animated .year-nav .year-link-holder>a.active');
-               $('.alt-year-select-container.animated .year-nav .year-link-holder').on('mouseout', function(){
-               $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left: $redHoverLineAlt.offset().left});
-               });
-               }, 0);
-                }
-
-
-              var playlistmenuOne = $(innerPlaylistLink[0]).on('click', function (e) {
-                e.preventDefault();
-                     $(this).addClass('active')
-                    $(innerPlaylistLink[1]).removeClass('active');
-                     $(innerPlaylistLink[2]).removeClass('active');
-                  if (currentPlaylistIndex == 0) {
-                   console.log('this is first 2001 one');
-                   return false;
-                } else if (currentPlaylistIndex == 1) {
-                    $('.soundcloud-container .ui.embed').embed('reset');
-                    playlistNav(currentPlaylistIndex - 1, movePlaylistValue + 100);
-                    $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left:'7%' });
-                    console.log('this is second 2001 one');
-                } else if (currentPlaylistIndex == 2) {
-                    $('.soundcloud-container .ui.embed').embed('reset');
-                    playlistNav(currentPlaylistIndex - 2, movePlaylistValue + 200);
-                    $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left:'7%' });
-                    console.log('this is third 2001 one');
-                }
-                });
-
-
-                var playlistmenuTwo = $(innerPlaylistLink[1]).on('click', function (e) {
-                e.preventDefault();
-                    $(this).addClass('active')
-                    $(innerPlaylistLink[0]).removeClass('active');
-                     $(innerPlaylistLink[2]).removeClass('active');
-                  if (currentPlaylistIndex == 0) {
-                      $('.soundcloud-container .ui.embed').embed('reset');
-                      playlistNav(currentPlaylistIndex + 1, movePlaylistValue - 100);
-                      $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left:'37.5%' });
-                   console.log('this is first 2006 one');
-                } else if (currentPlaylistIndex == 1) {
-                    console.log('this is second 2006 one');
-                     return false;
-                } else if (currentPlaylistIndex == 2) {
-                    $('.soundcloud-container .ui.embed').embed('reset');
-                    playlistNav(currentPlaylistIndex - 1, movePlaylistValue + 100);
-                     $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left:'37.5%' });
-                    console.log('this is third 2006 one');
-                }
-                });
-
-
-                 var playlistmenuThree = $(innerPlaylistLink[2]).on('click', function (e) {
-                e.preventDefault();
-                      $(this).addClass('active')
-                    $(innerPlaylistLink[0]).removeClass('active');
-                     $(innerPlaylistLink[1]).removeClass('active');
-                  if (currentPlaylistIndex == 0) {
-                      $('.soundcloud-container .ui.embed').embed('reset');
-                      playlistNav(currentPlaylistIndex + 2, movePlaylistValue - 200);
-                       $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left:'68%' });
-                   console.log('this is first 2011 one');
-                } else if (currentPlaylistIndex == 1) {
-                    $('.soundcloud-container .ui.embed').embed('reset');
-                     playlistNav(currentPlaylistIndex + 1, movePlaylistValue - 100);
-                    $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left:'68%' });
-                    console.log('this is second 2011 one');
-                } else if (currentPlaylistIndex == 2) {
-                    console.log('this is third 2011 one');
-                     return false;
-                }
-                });
-
-               }
-                insidePlaylistNav(0, 0);
-
-
-
-
-
-
-            // BROSWER RESIZE ////////////////////////////////////////////////////////////////////////
-
-            $(window).resize(function() {
-            windowHeight = $(window).height();
-			windowWidth = $(window).width();
-            var playlistItem = document.getElementsByClassName('playlist-holder');
-            var playlistNumber = $('.playlist-holder').length;
-            var playlistWidth = $(playlistItem)[0].getBoundingClientRect().width;
-            var totalPlaylistWidth = playlistWidth * playlistNumber;
-            var $activePlaylistLink = $('.alt-year-select-container.animated .year-nav .year-link-holder>a.active');
-            var defaultPlaylistLink = $('.alt-year-select-container.animated .year-nav .year-link-holder>a');
-            var currentPlaylistIndex = 0;
-            var movePlaylistValue = 0;
-
-            $('.playlist-strip').css({width:totalPlaylistWidth});
-
-
-
-                console.log('wtf');
-
-
-             if (windowWidth < 1040) {
-                 var currentPlaylistIndex = 0;
-                 var movePlaylistValue = 0;
-
-             // making the first year active if going to playlist direct //
-                 $(innerPlaylistLink[1]).removeClass('active');
-                 $(innerPlaylistLink[2]).removeClass('active');
-                 $(innerPlaylistLink[0]).addClass('active');
-                 $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left: $activePlaylistLink.offset().left});
-
-                  // this sets position of redline on hover off - refers only to inner playlist nav//
-                $('.alt-year-select-container.animated .year-nav .year-link-holder').on('mouseout', function(){
-                $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left: $('.alt-year-select-container.animated .year-nav .year-link-holder>a.active').offset().left});
-                });
-
-                 // returns the playlist slide to position 0 //
-                 $('.playlist-strip').css({left:'0'});
-
-                 // reset soundcloud player //
-                 $('.soundcloud-container .ui.embed').embed('reset');
-
-                 // reset playlist nav //
-                 insidePlaylistNav(0, 0);
-
-                 // changing years to 2 digits on mobile //
-                 yearsOnMobile();
-
-            };
-
-              // if no active class is present, add it to the first link //
-            if (!$('.alt-year-select-container.animated .year-nav .year-link-holder>a').hasClass('active')) {
-
-                $(defaultPlaylistLink[0]).addClass('active');
-                $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left: $(defaultPlaylistLink[0]).offset().left});
-                console.log('wtf');
-
-                };
-
-            // remove active class from first link if accessing from intro year nav //
-            if ($('.year-select-container').css('display') == 'block') {
-                $(defaultPlaylistLink[0]).removeClass('active');
-            };
-
-            // update position of red line to active link item //
-                $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left: $activePlaylistLink.offset().left});
-
-
-
-
-
-
-
-
-
-
-          /*  function playlistNav(newPlaylistIndex, playlistMoveValue) {
-                var playlistAnimate = playlistMoveValue + '%';
-                $('.playlist-strip').css({left: playlistAnimate});
-                currentPlaylistIndex = newPlaylistIndex;
-                movePlaylistValue = playlistMoveValue;
-
-                var redlineHover = setTimeout(function () {
-               var $redHoverLineAlt = $('.alt-year-select-container.animated .year-nav .year-link-holder>a.active');
-               $('.alt-year-select-container.animated .year-nav .year-link-holder').on('mouseout', function(){
-               $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left: $redHoverLineAlt.offset().left});
-               });
-               }, 0);
-
-                }
-
-
-              var playlistmenuOne = $(innerPlaylistLink[0]).on('click', function (e) {
-                e.preventDefault();
-                     $(this).addClass('active')
-                    $(innerPlaylistLink[1]).removeClass('active');
-                     $(innerPlaylistLink[2]).removeClass('active');
-                  if (currentPlaylistIndex == 0) {
-                   return false;
-                } else if (currentPlaylistIndex == 1) {
-                    $('.soundcloud-container .ui.embed').embed('reset');
-                    playlistNav(currentPlaylistIndex - 1, movePlaylistValue + 100);
-                    $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left:'7%' });
-                } else if (currentPlaylistIndex == 2) {
-                    $('.soundcloud-container .ui.embed').embed('reset');
-                    playlistNav(currentPlaylistIndex - 2, movePlaylistValue + 200);
-                    $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left:'7%' });
-                }
-                });
-
-
-                var playlistmenuTwo = $(innerPlaylistLink[1]).on('click', function (e) {
-                e.preventDefault();
-                    $(this).addClass('active')
-                    $(innerPlaylistLink[0]).removeClass('active');
-                     $(innerPlaylistLink[2]).removeClass('active');
-                  if (currentPlaylistIndex == 0) {
-                      $('.soundcloud-container .ui.embed').embed('reset');
-                      playlistNav(currentPlaylistIndex + 1, movePlaylistValue - 100);
-                      $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left:'37.5%' });
-                } else if (currentPlaylistIndex == 1) {
-                     return false;
-                } else if (currentPlaylistIndex == 2) {
-                    $('.soundcloud-container .ui.embed').embed('reset');
-                    playlistNav(currentPlaylistIndex - 1, movePlaylistValue + 100);
-                     $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left:'37.5%' });
-                }
-                });
-
-
-                 var playlistmenuThree = $(innerPlaylistLink[2]).on('click', function (e) {
-                e.preventDefault();
-                      $(this).addClass('active')
-                    $(innerPlaylistLink[0]).removeClass('active');
-                     $(innerPlaylistLink[1]).removeClass('active');
-                  if (currentPlaylistIndex == 0) {
-                      $('.soundcloud-container .ui.embed').embed('reset');
-                      playlistNav(currentPlaylistIndex + 2, movePlaylistValue - 200);
-                       $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left:'68%' });
-                } else if (currentPlaylistIndex == 1) {
-                    $('.soundcloud-container .ui.embed').embed('reset');
-                     playlistNav(currentPlaylistIndex + 1, movePlaylistValue - 100);
-                    $('.alt-year-select-container.animated .year-nav .year-red-line .active-red-line').css({left:'68%' });
-                } else if (currentPlaylistIndex == 2) {
-                     return false;
-                }
-                });*/
-
-            });
-        // END OF RESIZE //
-            //////////////////////////////////////////////////////////////////////////////////////
-
-
-
-            }
-
-            // END OF SONGS SECTION ///////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-             // START OF GALLERY SECTION /////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////////////////////////
-
-            function gallerySection () {
-              navBehaviour(alternative);
-            stateObj = { state: "gallery" };
-            history.pushState(stateObj, "page 5", "#gallery");
-            var whiteMask = $('.gallery-container .mask');
-            var windowHeight = $(window).height();
-            var galleryInfo = $('#gallery-indicator-holder');
-            var firstGalleryImg = $('.first img');
-
-            $('.mainlogo').removeClass('introAnimate');
-            $('.mainlogo').addClass('hide');
-            $('#navtoggle').addClass('activeAlt');
-            $('#navtoggle').removeClass('introAnimation');
-            $('.slide-container.scale').addClass('active');
-            $('.gallery-container').addClass('active');
-
-
-                // function for positioning info panel //
-                function infoPanel () {
-                var slideHeight = $('.gallery-img').height();
-                var slideDistanceTop = $('.gallery-img').offset().top;
-                var posInfo = slideHeight + slideDistanceTop;
-                var galleryInfo = $('#gallery-indicator-holder');
-                $(galleryInfo).css({top: posInfo + 'px'});
-                }
-
-
-                // fade out bg image //
-                setTimeout(function () {
-               var gallerybgimg = $('.gallery-container .bg-img > img');
-               $(gallerybgimg).addClass('fade');
-               }, 2000);
-
-                // animate gallery in and position info panel //
-                setTimeout(function () {
-                $(firstGalleryImg).css({transform:'translateX(0%)'});
-                $(galleryInfo).addClass('active');
-                if ($(window).width() < 830) { infoPanel(); }
-                }, 3000);
-
-
-                // New responsive method of applying slick slider //
-                $gallerySlider = $('.gallery-holder');
-                var slickSettings = {
-              slidesToShow: 1,
-                 dots:false,
-                    infinite:false
-                }
-                $gallerySlider.not('.slick-initialized').slick(slickSettings);
-
-              /*  if ($(window).width() < 1040) {
-               $gallerySlider.slick('unslick');
-                $gallerySlider.addClass('mobile');
-               }*/
-
-
-
-
-
-            /* setting up gallery indicators  */
-            /////////////////////////////////////
-            var galleryIndex = 0;
-            var galleryNumber = [];
-            var galleryTitles = [];
-            var galleryImages = $('.gallery-img');
-            var prevArrow = $('.gallery-holder .slick-prev');
-            var nextArrow = $('.gallery-holder .slick-next');
-
-
-
-               setTimeout(function () {
-
-                var galleryIndex = 0;
-                   console.log(galleryIndex);
-
-                /* setting the current class on first number and making them clickable */
-                var paraElem = $('#gallery-numbers > p');
-                $(paraElem[0]).addClass('current');
-
-             /*   $(paraElem[0]).on('click', function (e) {
-                e.preventDefault();
-                galleryIndex = 0;
-                    console.log(galleryIndex);
-                $gallerySlider.slick('slickGoTo', 0);
-                $(paraElem[1]).removeClass('current');
-                $(paraElem[2]).removeClass('current');
-                $(paraElem[3]).removeClass('current');
-                $(this).addClass('current');
-                $(titlePara[1]).removeClass('current');
-                $(titlePara[2]).removeClass('current');
-                $(titlePara[3]).removeClass('current');
-                $(titlePara[0]).addClass('current');
-                arrowState(galleryIndex);
-                });
-
-                $(paraElem[1]).on('click', function (e) {
-                e.preventDefault();
-                galleryIndex = 1;
-                    console.log(galleryIndex);
-                $gallerySlider.slick('slickGoTo', 1);
-                $(paraElem[0]).removeClass('current');
-                $(paraElem[2]).removeClass('current');
-                $(paraElem[3]).removeClass('current');
-                $(this).addClass('current');
-                $(titlePara[0]).removeClass('current');
-                $(titlePara[2]).removeClass('current');
-                $(titlePara[3]).removeClass('current');
-                $(titlePara[1]).addClass('current');
-                arrowState(galleryIndex);
-                });
-
-                $(paraElem[2]).on('click', function (e) {
-                e.preventDefault();
-                galleryIndex = 2;
-                    console.log(galleryIndex);
-                $gallerySlider.slick('slickGoTo', 2);
-                $(paraElem[0]).removeClass('current');
-                $(paraElem[1]).removeClass('current');
-                $(paraElem[3]).removeClass('current');
-                $(this).addClass('current');
-                $(titlePara[0]).removeClass('current');
-                $(titlePara[1]).removeClass('current');
-                $(titlePara[3]).removeClass('current');
-                $(titlePara[2]).addClass('current');
-                arrowState(galleryIndex);
-                });
-
-                $(paraElem[3]).on('click', function (e) {
-                e.preventDefault();
-                galleryIndex = 3;
-                    console.log(galleryIndex);
-                $gallerySlider.slick('slickGoTo', 3);
-                $(paraElem[0]).removeClass('current');
-                $(paraElem[1]).removeClass('current');
-                $(paraElem[2]).removeClass('current');
-                $(this).addClass('current');
-                $(titlePara[0]).removeClass('current');
-                $(titlePara[1]).removeClass('current');
-                $(titlePara[2]).removeClass('current');
-                $(titlePara[3]).addClass('current');
-                arrowState(galleryIndex);
-                });
-                // end of clickable numbers //
-
-                */
-
-
-
-
-            /* iterate over each number and make it link to correct photo */
-           $.each(paraElem, function(index) {
-
-           $(this).on('click', function (e) {
-                e.preventDefault();
-
-                galleryIndex = index;
-                $gallerySlider.slick('slickGoTo', index);
-                arrowState(galleryIndex);
-
-               $('#gallery-numbers p.current').removeClass('current');
-               $(this).addClass('current');
-
-               $('#gallery-titles p.current').removeClass('current');
-               $(titlePara[index]).addClass('current');
-
-                });
-            });
-            ////////////////////////////////////
-
-
-
-
-
-
-
-                // gallery arrows //
-
-                /* sending current class to gallery number when arrow nav is used */
-                function currentNumber (index) {
-                $(paraElem[index + 1]).removeClass('current');
-                $(paraElem[index - 1]).removeClass('current');
-                $(paraElem[index]).addClass('current');
-                }
-
-                prevArrow.on('click', function (e) {
-                 e.preventDefault();
-                    if (galleryIndex == 0) {
-                        console.log('index is 0 so do nothing');
-                         console.log(galleryIndex);
-                        return false;
-                    } else if (galleryIndex > 0) {
-                        galleryIndex--;
-                        currentNumber(galleryIndex);
-                        currentTitle(galleryIndex);
-                        arrowState(galleryIndex);
-                        console.log('index is more than 0')
-                        console.log(galleryIndex);
-                    }
-                });
-
-                 nextArrow.on('click', function (e) {
-                e.preventDefault();
-                    if (galleryIndex == galleryImages.length - 1) {
-                        console.log('index is at last slide so do nothing');
-                        console.log(galleryIndex);
-                        return false;
-                    } else if (galleryIndex < galleryImages.length - 1) {
-                        galleryIndex++;
-                        currentNumber(galleryIndex);
-                        currentTitle(galleryIndex);
-                        arrowState(galleryIndex);
-                        console.log('index is increasing')
-                        console.log(galleryIndex);
-                    }
-                });
-                // end gallery arrows ///
-
-
-
-                // Titles //
-                var titlePara = $('#gallery-titles > p');
-                $(titlePara[0]).addClass('current');
-
-                /* sending current class to gallery title when arrow nav is used */
-                function currentTitle (index) {
-                $(titlePara[index + 1]).removeClass('current');
-                $(titlePara[index - 1]).removeClass('current');
-                $(titlePara[index]).addClass('current');
-                }
-                // End Titles //
-
-
-
-                // updating number and titles on swipe event //
-                $($gallerySlider).on('swipe', function(event, slick, direction){
-
-                var getDirection = direction;
-
-               if (galleryIndex == 0 && getDirection == 'right') {
-                    return false;
-                } else if (galleryIndex == galleryImages.length - 1 && getDirection == 'left') {
-                    return false;
-                } else if (getDirection == 'left') {
-                  galleryIndex++;
-                  currentNumber(galleryIndex);
-                  currentTitle(galleryIndex);
-                  arrowState(galleryIndex);
-                } else if (getDirection == 'right') {
-                  galleryIndex--;
-                  currentNumber(galleryIndex);
-                  currentTitle(galleryIndex);
-                  arrowState(galleryIndex);
-                }
-
-                });
-                // End of on swipe event //
-
-
-
-                // Arrow State //
-
-
-                $(prevArrow).addClass('disable');
-
-
-
-               function arrowState (index) {
-                    if (index == 0) {
-                      $(prevArrow).addClass('disable');
-                      $(nextArrow).removeClass('disable');
-                   } else if (index > 0 && index < galleryImages.length - 1) {
-                      $(prevArrow).removeClass('disable');
-                      $(nextArrow).removeClass('disable');
-                   } else if (index == galleryImages.length - 1) {
-                      $(prevArrow).removeClass('disable');
-                      $(nextArrow).addClass('disable');
-                   }
-                }
-
-
-
-
-               }, 2000);
-
-
-
-            /* iterate over each image in slide and add number to string */
-           $.each(galleryImages, function(index) {
-
-            /* populating the numbers */
-            var digit = index + 1;
-            galleryNumber.push('<p>' + digit + '</p>');
-            var digitString = galleryNumber.toString();
-            var digitStringSplit = digitString.replace(/,/g, "");
-
-            var el = document.getElementById('gallery-numbers');
-            el.innerHTML = digitStringSplit;
-
-            /* populating the titles */
-            var titles = $(this).find('img').attr('data-title');
-            galleryTitles.push('<p>' + titles + '</p>');
-            var titleString = galleryTitles.toString();
-            var titleStringSplit = titleString.replace(/,/g, "");
-            console.log(titles);
-
-            var titleElement = document.getElementById('gallery-titles');
-            titleElement.innerHTML = titleStringSplit;
-
-
-            });
-            ////////////////////////////////////
-
-
-
-            $(window).resize(function() {
-             windowHeight = $(window).height();
-			windowWidth = $(window).width();
-
-            // positioning the info panel //
-            if ($(window).width() < 830) {
-                 setTimeout(function () {
-               infoPanel();
-               }, 1000);
-             } else {
-                 document.getElementById('gallery-indicator-holder').removeAttribute('style');
-             }
-
-            });
-
-
-            }
-
-            // END OF GALLERY SECTION /////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-            // The Three Discover Buttons //
-             $('.col-one .feature-btn').on('click', function (e) {
-             e.preventDefault();
-             musicSection();
-             });
-             $('.col-two .feature-btn').on('click', function (e) {
-             e.preventDefault();
-             songSection();
-             });
-             $('.col-three .feature-btn').on('click', function (e) {
-             e.preventDefault();
-             gallerySection();
-             });
-            // End of the Three Discover Buttons //
-
-
-            });
-
-			});
-			}, 2000);
-
-
-
-
-    } /* END of Discover Section */
-
-
-
-    // About Section //
-    function aboutSection () {
-
-        stateObj = { state: "about" };
-        history.pushState(stateObj, "page 6", "#about");
-
-        window = $(window);
-        windowWidth = $(window).width();
-        windowHeight = $(window).height();
-        $('span.breakdefault').removeClass('break');
-        $('span.breakdefault').removeClass('breakNoDelay');
-        $('span.breakdefault').addClass('hidebreak');
-        TweenMax.to('.lead-title', 0.8, {css:{opacity:0}});
-        $('.lead-content-holder').removeClass('animateIntro');
-        $('.lead-content-holder').addClass('hide');
-        $('.lead-content-holder h4').css({visibility:'hidden'});
-        $('.lead-photo').css({left:'-100%'});
-        $('.lead-photo-alt').css({opacity:0});
-        $('.lead-art').removeClass('animateIntro');
-        $('.lead-art').addClass('hide');
-        $('.feature-btn').addClass('btnHide');
-        $("#aboutwrapper").removeClass('hide');
-        $("#aboutwrapper").addClass('show');
-		$("#discoverLoad").addClass('show');
-        $(".mainlogo").addClass('back');
-
-
-          setTimeout(function () {
-        $("#aboutwrapper").load("about.html #about-container", function(){
-
-            $('#load-alt').fadeOut('slow',function(){$('#discoverLoad');});
-
-            setTimeout(function () {
-
-                // setting the height of the background //
-    var sceneEl = document.getElementsByClassName('intro-section');
-    var sceneAmount = sceneEl.length;
-    var sceneHeight = $(sceneEl).height();
-    var totalBgHeight = sceneHeight * sceneAmount;
-    $('.about-bg').css({height:totalBgHeight});
-    $('.intro-title h3').removeClass('hide');
-    $('.intro-title h3').addClass('show');
-    $('.about-bg').removeClass('hide');
-    $('.about-bg').addClass('show');
-    $('.intro-subtitle h4').removeClass('hide');
-    $('.intro-subtitle h4').addClass('show');
-    var aboutContainer = $('#about-container');
-    var markerHolder = $('.marker-holder');
-    var arrowControlsHolder = $('.arrow-controls-holder');
-    var aboutContainerFromTop = $(aboutContainer).scrollTop();
-    var yearScenes = document.getElementsByClassName('yearscene');
-    var firstSceneDistanceTop = $(yearScenes[0]).offset().top;
-    var percentageToSubtract = firstSceneDistanceTop - (firstSceneDistanceTop * .50);
-    var currentIndex = 0;
-    var markerArray = [];
-
-
-          // displaying controls  //
-           $(aboutContainer).scroll(function() {
-
-                if (aboutContainer.scrollTop() >= percentageToSubtract) {
-                  $(markerHolder).addClass('active');
-                  $(arrowControlsHolder).addClass('active');
-                } else {
-                    $(markerHolder).removeClass('active');
-                    $(arrowControlsHolder).removeClass('active');
-                }
-
-            });
-
-
-
-
-           function scrollToScene (sceneIndex) {
-                var theScene = yearScenes[sceneIndex].offsetTop;
-                $('#about-container').animate({
-                 scrollTop: theScene
-                 }, 'slow');
-            }
-
-
-           /* iterate over each year scene and add bull */
-           $.each(yearScenes, function(index) {
-
-               var dotIndicator = $('<span class="marker">&bull;</span>');
-               $(dotIndicator).appendTo('.marker-holder');
-
-              $(dotIndicator).on('click', function() {
-                  console.log(index);
-                  scrollToScene(index);
-                   $('.marker').removeClass('active');
-                  $(this).addClass('active');
-
-                });
-
-               markerArray.push(dotIndicator);
-               $(markerArray[0]).addClass('active');
-
-
-            });
-            ////////////////////////////////////
-
-
-
-
-
-
-
-    // init scrollmagic
-    var controller = new ScrollMagic.Controller();
-
-
-
-    var sceneOne = new ScrollMagic.Scene({
-     triggerElement: '.intro-content-holder' ,
-    triggerHook: 0,
-        duration:'30%'
-    }).setTween('.intro-content-inner', {opacity: 0})
-    .addTo(controller);
 
 
     // add multiple tweens, wrapped in a timeline.
@@ -2721,9 +1675,6 @@ $('.nav-about').on('click', function (e) {
 
 
 
-
-
-
 /* NAV ITEMS */
 $(document).ready(function () {
 
@@ -2738,14 +1689,53 @@ $(document).ready(function () {
        discover();
     });*/
 
-
 });
 
 
 
+/* SCROLLMAGIC STUFF */
+/*$(document).ready(function () {
+
+    // setting the height of the background //
+    var sceneEl = document.getElementsByClassName('intro-section');
+    var sceneAmount = sceneEl.length;
+    var sceneHeight = $(sceneEl).height();
+    var totalBgHeight = sceneHeight * sceneAmount;
+    $('.about-bg').css({height:totalBgHeight});
+
+
+    // init scrollmagic
+    var controller = new ScrollMagic.Controller();
 
 
 
 
+    var sceneOne = new ScrollMagic.Scene({
+     triggerElement: '.intro-content-holder' ,
+    triggerHook: 0,
+        duration:'30%'
+    }).setTween('.intro-content-inner', {opacity: 0})
+    .addTo(controller);
 
-});
+
+    // add multiple tweens, wrapped in a timeline.
+var timelineOne = new TimelineMax();
+
+    timelineOne
+    .from('.big-year', 0.7, {opacity:0}, 0)
+    .to('.photo', 1, {y: -150}, 0)
+    .to('.big-year', 1, {y: 100}, 0);
+
+
+
+    var sceneTwo = new ScrollMagic.Scene({
+     triggerElement: '.photo' ,
+    triggerHook: 1,
+        duration:'100%'
+    }).setTween(timelineOne)
+    .addIndicators()
+    .addTo(controller);
+
+
+
+});*/
