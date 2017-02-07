@@ -2820,12 +2820,6 @@ p {
           -webkit-animation-delay: 1s;
           animation-delay: 1s; }
 
-body {
-  /*  overflow-x:hidden;
-    overflow-y:auto;*/ }
-  body.about #top-nav-logo {
-    position: fixed; }
-
 #aboutwrapper {
   height: 0;
   width: 100%;
@@ -2891,11 +2885,56 @@ body {
         position: relative;
         font-family: 'FontAwesome';
         font-size: 28px;
-        color: #fff; }
+        color: #fff;
+        overflow: hidden; }
+        #aboutwrapper #about-container .arrow-controls-holder .up .hoverbg, #aboutwrapper #about-container .arrow-controls-holder .down .hoverbg {
+          width: 100%;
+          height: 200%;
+          position: absolute;
+          background-color: #fff; }
+        #aboutwrapper #about-container .arrow-controls-holder .up .hoverarrow, #aboutwrapper #about-container .arrow-controls-holder .down .hoverarrow {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          background-color: transparent;
+          color: #020e1a;
+          opacity: 0; }
+        #aboutwrapper #about-container .arrow-controls-holder .up .hoverarrow:before, #aboutwrapper #about-container .arrow-controls-holder .down .hoverarrow:before {
+          padding-left: 32%;
+          padding-top: 21%;
+          position: absolute; }
+        #aboutwrapper #about-container .arrow-controls-holder .up:hover, #aboutwrapper #about-container .arrow-controls-holder .down:hover {
+          cursor: pointer; }
       #aboutwrapper #about-container .arrow-controls-holder .up {
         top: 0; }
+        #aboutwrapper #about-container .arrow-controls-holder .up .hoverbg {
+          transform: translateY(50px);
+          transition: transform 0.3s ease-out; }
+        #aboutwrapper #about-container .arrow-controls-holder .up .hoverarrow {
+          transform: translateY(50px);
+          transition: all 0.4s ease-out; }
+        #aboutwrapper #about-container .arrow-controls-holder .up .hoverarrow:before {
+          content: "\f106"; }
+        #aboutwrapper #about-container .arrow-controls-holder .up:hover .hoverbg {
+          transform: translateY(-50px); }
+        #aboutwrapper #about-container .arrow-controls-holder .up:hover .hoverarrow {
+          opacity: 1;
+          transform: translateY(0); }
       #aboutwrapper #about-container .arrow-controls-holder .down {
         margin-top: 10px; }
+        #aboutwrapper #about-container .arrow-controls-holder .down .hoverbg {
+          transform: translateY(-100px);
+          transition: transform 0.3s ease-out; }
+        #aboutwrapper #about-container .arrow-controls-holder .down .hoverarrow {
+          transform: translateY(-50px);
+          transition: all 0.4s ease-out; }
+        #aboutwrapper #about-container .arrow-controls-holder .down .hoverarrow:before {
+          content: "\f107"; }
+        #aboutwrapper #about-container .arrow-controls-holder .down:hover .hoverbg {
+          transform: translateY(0px); }
+        #aboutwrapper #about-container .arrow-controls-holder .down:hover .hoverarrow {
+          opacity: 1;
+          transform: translateY(0); }
       #aboutwrapper #about-container .arrow-controls-holder .up:before, #aboutwrapper #about-container .arrow-controls-holder .down:before {
         content: "\f106";
         padding-left: 32%;

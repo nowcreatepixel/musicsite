@@ -1,18 +1,6 @@
 // ABOUT SECTION //
 /////////////////////////////////////////////////////////
 
-body {
-  /*  overflow-x:hidden;
-    overflow-y:auto;*/
-
-    &.about {
-        #top-nav-logo {
-            position:fixed;
-        }
-    }
-}
-
-
 // content //
 #aboutwrapper {
     height:0;
@@ -88,14 +76,86 @@ body {
             font-family:'FontAwesome';
             font-size:28px;
             color:$white;
+            overflow:hidden;
+
+            .hoverbg {
+              width:100%;
+              height:200%;
+              position:absolute;
+              background-color:$white;
+            }
+
+            .hoverarrow {
+              width:100%;
+              height:100%;
+              position:absolute;
+              background-color:transparent;
+              color:$dark-grey;
+              opacity:0;
+            }
+            .hoverarrow:before {
+              padding-left: 32%;
+              padding-top: 21%;
+              position: absolute;
+            }
+            &:hover {
+              cursor: pointer;
+            }
         }
 
         .up {
            top:0;
+
+           .hoverbg {
+             transform:translateY(50px);
+             transition: transform 0.3s ease-out;
+           }
+
+           .hoverarrow {
+             transform:translateY(50px);
+             transition: all 0.4s ease-out;
+           }
+           .hoverarrow:before {
+             content: "\f106";
+           }
+
+           &:hover {
+             .hoverbg{
+               transform:translateY(-50px);
+             }
+               .hoverarrow {
+                 opacity:1;
+                transform:translateY(0);
+               }
+           }
+
         }
 
         .down {
             margin-top:10px;
+
+            .hoverbg {
+              transform:translateY(-100px);
+              transition: transform 0.3s ease-out;
+            }
+
+            .hoverarrow {
+              transform:translateY(-50px);
+              transition: all 0.4s ease-out;
+            }
+            .hoverarrow:before {
+              content: "\f107";
+            }
+
+            &:hover {
+              .hoverbg{
+                transform:translateY(0px);
+              }
+                .hoverarrow {
+                  opacity:1;
+                 transform:translateY(0);
+                }
+            }
         }
 
         .up:before, .down:before {
@@ -397,7 +457,7 @@ body {
        &.third {
            background-color: rgba(191,63,63,0.1);
             background-color: $red;
-           
+
 
            /*.content-holder .big-year {top:-20%;}*/
        }
