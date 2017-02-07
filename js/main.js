@@ -1549,6 +1549,8 @@ $(document).ready(function () {
     var aboutContainer = $('#about-container');
     var markerHolder = $('.marker-holder');
     var arrowControlsHolder = $('.arrow-controls-holder');
+    var upArrow = $('.arrow-controls-holder .up');
+    var downArrow = $('.arrow-controls-holder .down');
     var aboutContainerFromTop = $(aboutContainer).scrollTop();
     var yearScenes = document.getElementsByClassName('yearscene');
     var firstSceneDistanceTop = $(yearScenes[0]).offset().top;
@@ -1567,8 +1569,57 @@ $(document).ready(function () {
                     $(markerHolder).removeClass('active');
                     $(arrowControlsHolder).removeClass('active');
                 }
+               
+               markerStatus();
 
             }); 
+                
+                
+                
+                // updating active class when scroll to matching scene //
+            function markerStatus (currentIndex) {
+
+              var markerItems = $('.marker-holder .marker');
+
+              $.each (markerItems, function(index) {
+                if ($(yearScenes[index]).offset().top < $(markerItems[index]).offset().top) {
+                  $(markerItems[index - 1]).removeClass('active');
+                  $(markerItems[index]).addClass('active');
+                } else if ($(yearScenes[index]).offset().top > $(markerItems[index]).offset().top) {
+                  $(markerItems[index]).removeClass('active');
+                }
+              });
+
+            }
+                
+                
+            // arrow navigation //
+                function arrowNavigation () {
+                    
+                    console.log($(yearScenes[1]).offset().top);
+                    
+                    var currentSlideIndex = 0;
+                    
+                   $(downArrow).on('click', function() {
+                       
+                       console.log(yearScenes[1].offsetTop);
+                       
+                   currentSlideIndex++
+                     var howfar = yearScenes[currentSlideIndex].offsetTop;
+                       
+                  console.log('moving scenes');
+                  console.log(howfar);
+                  console.log(currentSlideIndex);
+                       
+                  $('#about-container').animate({
+                 scrollTop: howfar   
+                 }, 'slow'); 
+                  
+                  
+                });    
+                    
+                }
+                arrowNavigation();
                 
            
                    
@@ -1590,8 +1641,8 @@ $(document).ready(function () {
               $(dotIndicator).on('click', function() {
                   console.log(index);
                   scrollToScene(index);
-                   $('.marker').removeClass('active');
-                  $(this).addClass('active');
+                  /* $('.marker').removeClass('active');
+                  $(this).addClass('active');*/
                   
                 });  
                
