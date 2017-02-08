@@ -1571,8 +1571,26 @@ $(document).ready(function () {
                 }
                
                markerStatus();
+               whatsScene();
 
             }); 
+                
+                
+                
+                // what scene is in viewport //
+            function whatsScene () {
+
+
+              $.each (yearScenes, function(index) {
+                if ($(yearScenes[index]).offset().top < (windowHeight - 40) && $(yearScenes[index]).offset().top >= 0) {
+                    
+                 currentIndex = index;
+                 console.log('scene number ' + currentIndex);
+                    
+                } 
+              });
+
+            }
                 
                 
                 
@@ -1593,33 +1611,77 @@ $(document).ready(function () {
             }
                 
                 
-            // arrow navigation //
-                function arrowNavigation () {
+           // arrow navigation //
+               function arrowNavigation () {
                     
-                    console.log($(yearScenes[1]).offset().top);
-                    
-                    var currentSlideIndex = 0;
                     
                    $(downArrow).on('click', function() {
                        
-                       console.log(yearScenes[1].offsetTop);
+                  /*var nextScene = yearScenes[currentIndex + 1].offsetTop;*/
+                  var thisScene = yearScenes[currentIndex].offsetTop;
                        
-                   currentSlideIndex++
-                     var howfar = yearScenes[currentSlideIndex].offsetTop;
-                       
-                  console.log('moving scenes');
-                  console.log(howfar);
-                  console.log(currentSlideIndex);
-                       
+                  /*console.log('moving scenes');
+                  console.log(nextScene);
+                  console.log(currentIndex);*/
+                  
+                if ($(yearScenes[currentIndex]).offset().top <= 0) {
+                    currentIndex++;
+                    var nextScene = yearScenes[currentIndex].offsetTop;
+                    console.log(nextScene);
+                     console.log('move to next scene');
+                    console.log('the current index is ' + currentIndex);
                   $('#about-container').animate({
-                 scrollTop: howfar   
+                 scrollTop: nextScene   
                  }, 'slow'); 
                   
-                  
-                });    
+                } else if ($(yearScenes[currentIndex]).offset().top < windowHeight /*&& $(yearScenes[currentIndex]).offset().top > 0*/) {
+                  var thisScene = yearScenes[currentIndex].offsetTop;
+                    console.log('stay on this scene');
+                    console.log('the current index is ' + currentIndex);
+                    $('#about-container').animate({
+                 scrollTop: thisScene   
+                 }, 'slow'); 
                     
                 }
-                arrowNavigation();
+                       
+                }); 
+                   
+                   
+                   
+                   
+                   $(upArrow).on('click', function() {
+                       
+            
+                       
+                 /* var prevScene = yearScenes[currentIndex - 1].offsetTop;
+                  var thisScene = yearScenes[currentIndex].offsetTop;*/
+                       
+                  
+                if ($(yearScenes[currentIndex]).offset().top <= 0 || $(yearScenes[currentIndex]).offset().top > 200) {
+                    currentIndex--;
+                    var prevScene = yearScenes[currentIndex].offsetTop;
+                    console.log(prevScene);
+                    console.log('move to prev scene');
+                    console.log('the current index is ' + currentIndex);
+                  $('#about-container').animate({
+                 scrollTop: prevScene   
+                 }, 'slow'); 
+                  
+                } else if ($(yearScenes[currentIndex]).offset().top < 200 && $(yearScenes[currentIndex]).offset().top > 0) {
+                  var thisScene = yearScenes[currentIndex].offsetTop;
+                    console.log('stay on this scene');
+                    console.log('the current index is ' + currentIndex);
+                    $('#about-container').animate({
+                 scrollTop: thisScene   
+                 }, 'slow'); 
+                    
+                }
+                       
+                }); 
+                   
+                    
+                }
+                arrowNavigation();  
                 
            
                    
