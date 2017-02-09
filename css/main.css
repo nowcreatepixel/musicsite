@@ -2905,6 +2905,10 @@ p {
           position: absolute; }
         #aboutwrapper #about-container .arrow-controls-holder .up:hover, #aboutwrapper #about-container .arrow-controls-holder .down:hover {
           cursor: pointer; }
+        #aboutwrapper #about-container .arrow-controls-holder .up.endpoint, #aboutwrapper #about-container .arrow-controls-holder .down.endpoint {
+          color: #a41029; }
+          #aboutwrapper #about-container .arrow-controls-holder .up.endpoint:hover, #aboutwrapper #about-container .arrow-controls-holder .down.endpoint:hover {
+            cursor: default; }
       #aboutwrapper #about-container .arrow-controls-holder .up {
         top: 0; }
         #aboutwrapper #about-container .arrow-controls-holder .up .hoverbg {
@@ -2920,6 +2924,11 @@ p {
         #aboutwrapper #about-container .arrow-controls-holder .up:hover .hoverarrow {
           opacity: 1;
           transform: translateY(0); }
+        #aboutwrapper #about-container .arrow-controls-holder .up.endpoint:hover .hoverbg {
+          transform: translateY(50px); }
+        #aboutwrapper #about-container .arrow-controls-holder .up.endpoint:hover .hoverarrow {
+          opacity: 0;
+          transform: translateY(50px); }
       #aboutwrapper #about-container .arrow-controls-holder .down {
         margin-top: 10px; }
         #aboutwrapper #about-container .arrow-controls-holder .down .hoverbg {
@@ -2935,6 +2944,11 @@ p {
         #aboutwrapper #about-container .arrow-controls-holder .down:hover .hoverarrow {
           opacity: 1;
           transform: translateY(0); }
+        #aboutwrapper #about-container .arrow-controls-holder .down.endpoint:hover .hoverbg {
+          transform: translateY(-100px); }
+        #aboutwrapper #about-container .arrow-controls-holder .down.endpoint:hover .hoverarrow {
+          opacity: 0;
+          transform: translateY(-50px); }
       #aboutwrapper #about-container .arrow-controls-holder .up:before, #aboutwrapper #about-container .arrow-controls-holder .down:before {
         content: "\f106";
         padding-left: 32%;

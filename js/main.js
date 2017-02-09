@@ -130,6 +130,8 @@ $(document).ready(function () {
     $('.back').removeClass('back');
              $("#discover").removeClass('show');
              $("#discover").addClass('hide');
+             $("#aboutwrapper").removeClass('show');
+             $("#aboutwrapper").addClass('hide');
              $('span.breakdefault').removeClass('hidebreak');
              $('span.breakdefault').addClass('breakNoDelay');
              /*$('.bgmask').removeClass('hide');
@@ -1469,25 +1471,20 @@ $(document).ready(function () {
 
                 markerStatus();
                whatsScene();
+               endpointClass();
 
             });
 
 
                 // what scene is in viewport //
             function whatsScene () {
-
-
               $.each (yearScenes, function(index) {
                 /*if ($(yearScenes[index]).offset().top < (windowHeight - 40) && $(yearScenes[index]).offset().top >= 0) {*/
-
                   if ($(yearScenes[index]).offset().top < windowHeight && $(yearScenes[index]).offset().top >= 0) {
-
                  currentIndex = index;
                  console.log('scene number ' + currentIndex);
-
                 }
               });
-
             }
 
 
@@ -1508,8 +1505,27 @@ $(document).ready(function () {
             }
 
 
+            // adding endpoint class to first and last scenes //
+            function endpointClass () {
 
-           
+            if ($(yearScenes[0]).offset().top >= 0 && $(yearScenes[0]).offset().top < windowHeight ) {
+              $(upArrow).addClass('endpoint');
+            } else {
+              $(upArrow).removeClass('endpoint');
+            }
+
+            if ($(yearScenes[3]).offset().top >= 0 && $(yearScenes[3]).offset().top < windowHeight ) {
+              $(downArrow).addClass('endpoint');
+            } else {
+              $(downArrow).removeClass('endpoint');
+            }
+
+
+            }
+
+
+
+
 
 
             // arrow navigation //
