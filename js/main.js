@@ -1517,7 +1517,7 @@ $(document).ready(function () {
               $(upArrow).removeClass('endpoint');
             }
 
-            if ($(yearScenes[3]).offset().top >= 0 && $(yearScenes[3]).offset().top < windowHeight ) {
+            if ($(yearScenes[5]).offset().top >= 0 && $(yearScenes[5]).offset().top < percentageToSubtract ) {
               $(downArrow).addClass('endpoint');
             } else {
               $(downArrow).removeClass('endpoint');
@@ -1540,7 +1540,7 @@ $(document).ready(function () {
                    e.preventDefault();
 
             if ($(yearScenes[currentIndex]).offset().top <= 0) {
-              if (currentIndex === 3) {
+              if (currentIndex === 5) {
                 console.log('cant go down last scene');
                 return false;
               }
@@ -1693,6 +1693,11 @@ var timelineFour = new TimelineMax();
     timelineFour
    .to('.photo.fourth.animated', 1, {y: -150}, 0)
     .to('.big-year.fourth.animated', 1, {y: 100}, 0);
+                
+var timelineFive = new TimelineMax();
+    timelineFive
+   .to('.photo.fifth.animated', 1, {y: -150}, 0)
+    .to('.big-year.fifth.animated', 1, {y: 100}, 0);
 
 
 
@@ -1700,7 +1705,7 @@ var timelineFour = new TimelineMax();
 
     // scenes ////////////////////////////////////
 
-    var sceneTwo = new ScrollMagic.Scene({
+   var sceneTwo = new ScrollMagic.Scene({
      triggerElement: '.photo.first.animated' ,
     triggerHook: 1,
         duration:'125%'
@@ -1728,6 +1733,22 @@ var timelineFour = new TimelineMax();
         duration:'125%'
     }).setTween(timelineFour)
     .addTo(controller);
+                
+     var sceneSix = new ScrollMagic.Scene({
+     triggerElement: '.photo.fifth.animated' ,
+    triggerHook: 'onEnter',
+        duration:'125%'
+    }).setTween(timelineFive)
+    .addTo(controller);
+                
+     /*var sceneSeven = new ScrollMagic.Scene({
+     triggerElement: '.intro-section.sixth' ,
+    triggerHook: 0,
+         reverse: true,
+         pushFollowers: false
+    }).setPin('.intro-section.sixth')
+     .addIndicators()
+    .addTo(controller);*/
 
 
 

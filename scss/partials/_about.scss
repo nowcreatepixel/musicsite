@@ -597,7 +597,7 @@
                    top:40%;
                 }
 
-                &.first, &.third {
+                &.first, &.third, &.fifth {
                   margin-left:23%;
                 }
 
@@ -614,7 +614,7 @@
                 z-index:2;
                 top:40%;
 
-                &.first, &.third {
+                &.first, &.third, &.fifth {
                   text-align:left;
                     right:14%;
                      padding:20px 20px 20px 10%;
@@ -659,6 +659,7 @@
 
        &.first {
            background-color: transparent;
+            z-index: 3;
        }
 
        &.second {
@@ -666,6 +667,7 @@
            background-color: $red;
            background-image: url('../img/timelinebg.png');
            background-repeat: repeat;
+            z-index: 3;
 
 
        }
@@ -673,6 +675,7 @@
        &.third {
            background-color: rgba(191,63,63,0.1);
             background-color: $red;
+            z-index: 3;
 
 
            /*.content-holder .big-year {top:-20%;}*/
@@ -683,11 +686,37 @@
            background-color: $red;
            background-image: url('../img/timelinebg.png');
            background-repeat: repeat;
+            z-index: 3;
        }
 
         &.fifth {
            background-color: rgba(191,63,191,0.1);
            background-color: $red;
+            /*background-color:#08335e;*/
+             z-index: 3;
+       }
+       
+       &.sixth {
+           background-color: rgba(191,63,191,0.1);
+           background-color: $red;
+          background-image: url('../img/timelinebg.png');
+           background-repeat: repeat;
+          /* background-image: url('../img/medakota.jpg');
+            background-repeat:no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+           background-position: 0 0;*/
+            z-index: 3;
+       }
+       
+        &.seventh {
+           background-color: rgba(191,63,191,0.1);
+           background-color: $maroon;
+            background-image: url('../img/sidefaceme.jpg');
+            background-repeat:no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            z-index: 2;
             /*background-color:#08335e;*/
        }
 
