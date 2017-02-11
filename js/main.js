@@ -1448,6 +1448,7 @@ $(document).ready(function () {
     var arrowControlsHolder = $('.arrow-controls-holder');
     var upArrow = $('.arrow-controls-holder .up');
     var downArrow = $('.arrow-controls-holder .down');
+    var backToTop = $('.backtotop');
     var aboutContainerFromTop = $(aboutContainer).scrollTop();
     var yearScenes = document.getElementsByClassName('yearscene');
     var firstSceneDistanceTop = $(yearScenes[0]).offset().top;
@@ -1464,9 +1465,11 @@ $(document).ready(function () {
                 if (aboutContainer.scrollTop() >= percentageToSubtract) {
                   $(markerHolder).addClass('active');
                   $(arrowControlsHolder).addClass('active');
+                  $(backToTop).addClass('active');
                 } else {
                     $(markerHolder).removeClass('active');
                     $(arrowControlsHolder).removeClass('active');
+                    $(backToTop).removeClass('active');
                 }
 
                 markerStatus();
@@ -1514,7 +1517,7 @@ $(document).ready(function () {
               $(upArrow).removeClass('endpoint');
             }
 
-            if ($(yearScenes[3]).offset().top >= 0 && $(yearScenes[3]).offset().top < windowHeight ) {
+            if ($(yearScenes[3]).offset().top >= 0 && $(yearScenes[3]).offset().top < percentageToSubtract ) {
               $(downArrow).addClass('endpoint');
             } else {
               $(downArrow).removeClass('endpoint');
@@ -1532,14 +1535,9 @@ $(document).ready(function () {
            function arrowNavigation () {
 
 
-               $(downArrow).on('click', function() {
+               $(downArrow).on('click', function(e) {
 
-              /*var nextScene = yearScenes[currentIndex + 1].offsetTop;
-              var thisScene = yearScenes[currentIndex].offsetTop;*/
-
-              /*console.log('moving scenes');
-              console.log(nextScene);
-              console.log(currentIndex);*/
+                   e.preventDefault();
 
             if ($(yearScenes[currentIndex]).offset().top <= 0) {
               if (currentIndex === 3) {
@@ -1570,12 +1568,10 @@ $(document).ready(function () {
 
 
 
-               $(upArrow).on('click', function() {
+               $(upArrow).on('click', function(e) {
 
 
-
-             /* var prevScene = yearScenes[currentIndex - 1].offsetTop;
-              var thisScene = yearScenes[currentIndex].offsetTop;*/
+                e.preventDefault();
 
 
             if ($(yearScenes[currentIndex]).offset().top <= 0 || $(yearScenes[currentIndex]).offset().top > 200) {
@@ -1605,6 +1601,14 @@ $(document).ready(function () {
             });
 
 
+            $(backToTop).on('click', function(e) {
+               e.preventDefault();
+               $('#about-container').animate({
+               scrollTop: 0
+               }, 'slow');
+            });
+
+
             }
             arrowNavigation();
 
@@ -1625,7 +1629,8 @@ $(document).ready(function () {
                var dotIndicator = $('<span class="marker">&bull;</span>');
                $(dotIndicator).appendTo('.marker-holder');
 
-              $(dotIndicator).on('click', function() {
+              $(dotIndicator).on('click', function(e) {
+                  e.preventDefault();
                   console.log(index);
                   scrollToScene(index);
                    /*$('.marker').removeClass('active');
